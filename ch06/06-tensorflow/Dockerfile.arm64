@@ -1,0 +1,7 @@
+# For Apple Silicon (and other ARM machines): TensorFlow's own image is amd64-only,
+# but its pip packages run natively on ARM. TensorFlow 2.21 supports Python up to 3.13.
+FROM python:3.13-slim
+RUN pip install --no-cache-dir tensorflow==2.21.0
+WORKDIR /app
+COPY main.py .
+CMD ["python", "main.py"]

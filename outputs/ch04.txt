@@ -1,0 +1,437 @@
+### 2026-11-01 17:22 | arm64 | docker 29.5.2 | in ch03
+$ docker pull -q python:3.14
+docker.io/library/python:3.14
+[exit 0]
+
+### 2026-11-01 17:22 | arm64 | docker 29.5.2 | in ch03
+$ docker pull -q python:3.14-alpine
+docker.io/library/python:3.14-alpine
+[exit 0]
+
+### 2026-11-01 17:22 | arm64 | docker 29.5.2 | in ch03
+$ docker images python
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+python:3.14          22caa054c0d3       1.64GB          423MB        
+python:3.14-alpine   eb2c62658b8d       77.7MB         18.9MB        
+python:3.14-slim     cd89c30eda26        206MB           46MB        
+[exit 0]
+
+### 2026-11-01 17:22 | arm64 | docker 29.5.2 | in ch03
+$ docker build -f ../ch04/alpine/Dockerfile -t ml-app:alpine .
+[+] Building 7.9s (8/10)                                          docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 581B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-alpine      0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 147B                                          0.0s
+ => [1/6] FROM docker.io/library/python:3.14-alpine@sha256:eb2c62658b8d51  0.0s
+ => => resolve docker.io/library/python:3.14-alpine@sha256:eb2c62658b8d51  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 218B                                          0.0s
+ => [2/6] WORKDIR /app                                                     0.2s
+ => [3/6] COPY requirements.txt .                                          0.0s
+ => ERROR [4/6] RUN pip install --no-cache-dir -r requirements.txt         7.5s
+------
+ > [4/6] RUN pip install --no-cache-dir -r requirements.txt:
+1.107 Collecting fastapi==0.162.0 (from -r requirements.txt (line 1))
+1.155   Downloading fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+1.179 Collecting uvicorn==0.54.0 (from -r requirements.txt (line 2))
+1.185   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+1.296 Collecting numpy==2.5.4 (from -r requirements.txt (line 3))
+1.305   Downloading numpy-2.5.4-cp314-cp314-musllinux_1_2_aarch64.whl.metadata (6.6 kB)
+1.320 Collecting joblib==1.6.0 (from -r requirements.txt (line 4))
+1.327   Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+1.388 Collecting scikit-learn==1.9.1 (from -r requirements.txt (line 5))
+1.397   Downloading scikit_learn-1.9.1.tar.gz (7.8 MB)
+1.670      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.8/7.8 MB 30.1 MB/s  0:00:00
+1.922   Installing build dependencies: started
+6.253   Installing build dependencies: finished with status 'done'
+6.254   Getting requirements to build wheel: started
+6.374   Getting requirements to build wheel: finished with status 'done'
+6.375   Installing backend dependencies: started
+6.742   Installing backend dependencies: finished with status 'done'
+6.742   Preparing metadata (pyproject.toml): started
+7.430   Preparing metadata (pyproject.toml): finished with status 'error'
+7.431   error: subprocess-exited-with-error
+7.431   
+7.431   × Preparing metadata (pyproject.toml) did not run successfully.
+7.431   │ exit code: 1
+7.431   ╰─> [20 lines of output]
+7.431       + meson setup /tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574 /tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574/.mesonpy-47nzgf10 -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --native-file=/tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574/.mesonpy-47nzgf10/meson-python-native-file.ini
+7.431       The Meson build system
+7.431       Version: 1.12.1
+7.431       Source dir: /tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574
+7.431       Build dir: /tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574/.mesonpy-47nzgf10
+7.431       Build type: native build
+7.431       Project name: scikit-learn
+7.431       Project version: 1.9.1
+7.431       
+7.431       ../meson.build:1:0: ERROR: Unknown compiler(s): [['cc'], ['gcc'], ['clang'], ['nvc'], ['pgcc'], ['icc'], ['icx']]
+7.431       The following exception(s) were encountered:
+7.431       Running `cc --version` gave "[Errno 2] No such file or directory: 'cc'"
+7.431       Running `gcc --version` gave "[Errno 2] No such file or directory: 'gcc'"
+7.431       Running `clang --version` gave "[Errno 2] No such file or directory: 'clang'"
+7.431       Running `nvc --version` gave "[Errno 2] No such file or directory: 'nvc'"
+7.431       Running `pgcc --version` gave "[Errno 2] No such file or directory: 'pgcc'"
+7.431       Running `icc --version` gave "[Errno 2] No such file or directory: 'icc'"
+7.431       Running `icx --version` gave "[Errno 2] No such file or directory: 'icx'"
+7.431       
+7.431       A full log can be found at /tmp/pip-install-f26lau53/scikit-learn_e5469d91305546cc96529f3b150de574/.mesonpy-47nzgf10/meson-logs/meson-log.txt
+7.431       [end of output]
+7.431   
+7.431   note: This error originates from a subprocess, and is likely not a problem with pip.
+7.432 error: metadata-generation-failed
+7.432 
+7.432 × Encountered error while generating package metadata.
+7.432 ╰─> scikit-learn
+7.432 
+7.432 note: This is an issue with the package mentioned above, not pip.
+7.432 hint: See above for details.
+------
+Dockerfile:7
+--------------------
+   5 |     # Copy and install the requirements first, so code changes don't reinstall them
+   6 |     COPY requirements.txt .
+   7 | >>> RUN pip install --no-cache-dir -r requirements.txt
+   8 |     # Copy the project files into the container
+   9 |     COPY . .
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1
+[exit 1]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker build -q -f ../ch04/shell-form/Dockerfile -t ml-app:shell-form .
+sha256:0c9ad715016b2f9241ba42e73e3da54d6305c088d6b294fa6c5cbcb34f629624
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --name shell-form ml-app:shell-form
+2c1e6ba00051b0d14e5f1114aa511c4584d1ff66d750e9c676bc377a5c394ebf
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --name exec-form ml-app
+4f8274dd7888f2bd79c5dc57b466fa8306b3a75b9583a983196bc2bbadafb6ce
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker exec shell-form sh -c 'tr "\0" " " < /proc/1/cmdline; echo'
+/bin/sh -c uvicorn app:app --host 0.0.0.0 --port 8000 
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker exec exec-form sh -c 'tr "\0" " " < /proc/1/cmdline; echo'
+/usr/local/bin/python3.14 /usr/local/bin/uvicorn app:app --host 0.0.0.0 --port 8000 
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ time docker stop shell-form
+shell-form
+
+real	0m10.130s
+user	0m0.008s
+sys	0m0.006s
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ time docker stop exec-form
+exec-form
+
+real	0m0.366s
+user	0m0.007s
+sys	0m0.006s
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker ps -a --filter name=-form --format "table {{.Names}}\t{{.Status}}"
+NAMES        STATUS
+exec-form    Exited (0) Less than a second ago
+shell-form   Exited (137) Less than a second ago
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker rm shell-form exec-form
+shell-form
+exec-form
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --name shell-form ml-app:shell-form
+596dca9bb7e78d1e74ed12774da63d2e3126891f1ec281120b3cfec708a34b51
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --name exec-form ml-app
+aa948a344cd1ba5467913f79662f3b92ebc5322b8f4932be623c58bbe2b32019
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker top shell-form -o pid,ppid,args
+PID                 PPID                COMMAND
+10060               10036               /bin/sh -c uvicorn app:app --host 0.0.0.0 --port 8000
+10083               10060               /usr/local/bin/python3.14 /usr/local/bin/uvicorn app:app --host 0.0.0.0 --port 8000
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker top exec-form -o pid,ppid,args
+PID                 PPID                COMMAND
+10124               10100               /usr/local/bin/python3.14 /usr/local/bin/uvicorn app:app --host 0.0.0.0 --port 8000
+[exit 0]
+
+### 2026-11-01 17:23 | arm64 | docker 29.5.2 | in ch03
+$ docker rm -f shell-form exec-form
+shell-form
+exec-form
+[exit 0]
+
+### 2026-11-01 17:24 | arm64 | docker 29.5.2 | in ch04/app
+$ docker run --rm -v "$PWD":/app -w /app python:3.14-slim sh -c 'pip install -q --root-user-action=ignore uv==0.13.6; uv lock'
+Using CPython 3.14.10 interpreter at: /usr/local/bin/python3
+Resolved 22 packages in 0.74ms
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker build -t ml-app:2.0 .
+[+] Building 10.4s (15/15) FINISHED                               docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 1.20kB                                     0.0s
+ => [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6               0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 147B                                          0.0s
+ => FROM ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405  0.0s
+ => => resolve ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e5515  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 73.06kB                                       0.0s
+ => [stage-0 1/8] FROM docker.io/library/python:3.14-slim@sha256:cd89c30e  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [stage-0 2/8] COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /bin/uv      0.1s
+ => [stage-0 3/8] RUN useradd --create-home appuser                        0.1s
+ => [stage-0 4/8] WORKDIR /app                                             0.0s
+ => [stage-0 5/8] COPY pyproject.toml uv.lock ./                           0.0s
+ => [stage-0 6/8] RUN --mount=type=cache,target=/root/.cache/uv     uv sy  4.2s
+ => [stage-0 7/8] COPY . .                                                 0.0s
+ => [stage-0 8/8] RUN python train.py                                      0.7s
+ => exporting to image                                                     5.1s
+ => => exporting layers                                                    4.1s
+ => => exporting manifest sha256:9a38eac737be33a2b92ab427bf5200c9c6f27d71  0.0s
+ => => exporting config sha256:be0ace7040a76c522e0605f490054f59b125afc693  0.0s
+ => => exporting attestation manifest sha256:387c593f6631bdce2ffad631fbdc  0.0s
+ => => exporting manifest list sha256:53349f5b142722cffc00acf9d01a1664b80  0.0s
+ => => naming to docker.io/library/ml-app:2.0                              0.0s
+ => => unpacking to docker.io/library/ml-app:2.0                           1.0s
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker history --format "table {{.Size}}\t{{.CreatedBy}}" ml-app:2.0 | cut -c1-75
+SIZE      CREATED BY
+0B        CMD ["uvicorn" "app:app" "--host" "0.0.0.0" …
+0B        HEALTHCHECK {Test:[CMD-SHELL python -c "impo…
+0B        EXPOSE [8000/tcp]
+0B        USER appuser
+3.87MB    RUN /bin/sh -c python train.py # buildkit
+32.8kB    COPY . . # buildkit
+316MB     RUN /bin/sh -c uv sync --locked --no-install…
+81.9kB    COPY pyproject.toml uv.lock ./ # buildkit
+8.19kB    WORKDIR /app
+69.6kB    RUN /bin/sh -c useradd --create-home appuser…
+0B        ENV PYTHONUNBUFFERED=1 UV_PYTHON_DOWNLOADS=0…
+35MB      COPY /uv /bin/uv # buildkit
+0B        CMD ["python3"]
+16.4kB    RUN /bin/sh -c set -eux;  for src in idle3 p…
+45.5MB    RUN /bin/sh -c set -eux;   savedAptMark="$(a…
+0B        ENV PYTHON_SHA256=de414a57119abef52784d8993e…
+0B        ENV PYTHON_VERSION=3.14.10
+4.97MB    RUN /bin/sh -c set -eux;  apt-get update;  a…
+0B        ENV LANG=C.UTF-8
+0B        ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…
+110MB     # debian.sh --arch 'arm64' out/ 'trixie' '@1…
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker run -d --name ml-api -p 8000:8000 ml-app:2.0
+65111d2b7a80f2e14219e06bf1d36060ffa5d0674e0be6951b935fb66aaea5bf
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker ps --filter name=ml-api --format "table {{.Names}}\t{{.Status}}"
+NAMES     STATUS
+ml-api    Up Less than a second (health: starting)
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker ps --filter name=ml-api --format "table {{.Names}}\t{{.Status}}"
+NAMES     STATUS
+ml-api    Up 13 seconds (healthy)
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker exec ml-api whoami
+appuser
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ curl http://localhost:8000/health
+{"status":"ok"}
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"input": [6, 7, 8]}'
+{"prediction":[12.000000000000002,14.000000000000002,16.0]}
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker rm -f ml-api
+ml-api
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker build --build-arg PYTHON_VERSION=3.15 -t ml-app:2.0-py3.15 .
+[+] Building 15.1s (15/15) FINISHED                               docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 1.20kB                                     0.0s
+ => [internal] load metadata for docker.io/library/python:3.15-slim        1.5s
+ => [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6               0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 147B                                          0.0s
+ => CACHED FROM ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551  0.0s
+ => => resolve ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e5515  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 245B                                          0.0s
+ => [stage-0 1/8] FROM docker.io/library/python:3.15-slim@sha256:94d3426f  1.1s
+ => => resolve docker.io/library/python:3.15-slim@sha256:94d3426f1def7db4  0.0s
+ => => sha256:f8fee3cb2e4aa708222e06f188df39ac7e99bea44272766 251B / 251B  0.3s
+ => => sha256:dfd973b63774c14d6fb5fdce32f658fb6dc9c715b 13.06MB / 13.06MB  1.0s
+ => => sha256:0f905dfed6ffcd676f1aa0837527fb6b6edb8ae9f38 1.27MB / 1.27MB  0.5s
+ => => extracting sha256:0f905dfed6ffcd676f1aa0837527fb6b6edb8ae9f38381c3  0.0s
+ => => extracting sha256:dfd973b63774c14d6fb5fdce32f658fb6dc9c715b05b5700  0.1s
+ => => extracting sha256:f8fee3cb2e4aa708222e06f188df39ac7e99bea44272766d  0.0s
+ => [stage-0 2/8] COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /bin/uv      0.1s
+ => [stage-0 3/8] RUN useradd --create-home appuser                        0.1s
+ => [stage-0 4/8] WORKDIR /app                                             0.0s
+ => [stage-0 5/8] COPY pyproject.toml uv.lock ./                           0.0s
+ => [stage-0 6/8] RUN --mount=type=cache,target=/root/.cache/uv     uv sy  5.2s
+ => [stage-0 7/8] COPY . .                                                 0.0s
+ => [stage-0 8/8] RUN python train.py                                      0.9s
+ => exporting to image                                                     6.1s
+ => => exporting layers                                                    4.5s
+ => => exporting manifest sha256:2ce760ff28b998139eaf392d759a99bdba3b0fe8  0.0s
+ => => exporting config sha256:efa3abede5ac77cc980bde23fdaa4621654e47defa  0.0s
+ => => exporting attestation manifest sha256:60efc1a282c4c35075a44a92dc77  0.0s
+ => => exporting manifest list sha256:78f3e51027ee50ed15f45983835bd5b8944  0.0s
+ => => naming to docker.io/library/ml-app:2.0-py3.15                       0.0s
+ => => unpacking to docker.io/library/ml-app:2.0-py3.15                    1.6s
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/app
+$ docker run --rm ml-app:2.0-py3.15 python --version
+Python 3.15.2
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/leaky-arg
+$ docker build -q --build-arg API_KEY=sk-not-a-real-key -t leaky .
+sha256:f7d4b9e36c0e39639aec84de500b733342c2c1855e767a1005892f5982718ae1
+[exit 0]
+
+### 2026-11-01 17:27 | arm64 | docker 29.5.2 | in ch04/leaky-arg
+$ docker history --no-trunc --format "{{.CreatedBy}}" leaky | head -2
+RUN |1 API_KEY=sk-not-a-real-key /bin/sh -c echo "Downloading the training data with the API key..." # buildkit
+ARG API_KEY=sk-not-a-real-key
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ docker run --rm ml-app python -c "import sklearn; print(sklearn.__version__)"
+1.9.1
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ docker build -q -f ../ch04/entrypoint/Dockerfile -t ml-app:entrypoint .
+sha256:97758fd432115a8b601192824552aa742201211e8b3fb2614c413f612e4acc6e
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --rm --name ep -p 9000:9000 ml-app:entrypoint --port 9000
+9d1531501d378e317aae4d3fc85c2a3b377817a0232e6fb6e082bb66f2fd1111
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in exercises/ch04-cache-demo
+$ docker run --rm -v "$PWD":/app -w /app python:3.14-slim sh -c 'pip install -q --root-user-action=ignore uv==0.13.6; uv add httpx'
+Using CPython 3.14.10 interpreter at: /usr/local/bin/python3
+Creating virtual environment at: .venv
+Resolved 25 packages in 371ms
+Downloading pydantic-core (2.0MiB)
+Downloading numpy (15.0MiB)
+Downloading scikit-learn (8.5MiB)
+Downloading scipy (32.5MiB)
+ Downloaded pydantic-core
+ Downloaded scikit-learn
+ Downloaded numpy
+ Downloaded scipy
+Prepared 24 packages in 2.24s
+warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 24 packages in 3.51s
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + certifi==2026.10.23
+ + click==8.5.0
+ + cloudpickle==3.1.2
+ + fastapi==0.162.0
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + joblib==1.6.0
+ + narwhals==2.28.0
+ + numpy==2.5.4
+ + opentelemetry-api==1.45.2
+ + pydantic==2.14.2
+ + pydantic-core==2.50.2
+ + scikit-learn==1.9.1
+ + scipy==1.18.1
+ + starlette==1.10.0
+ + threadpoolctl==3.7.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + uvicorn==0.54.0
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in exercises/ch04-cache-demo
+$ docker build --progress=plain -t ml-app:cache-demo . 2>&1 | grep -E "Resolved|Prepared|Installed|Downloading|DONE" | head -12
+#1 DONE 0.0s
+#2 DONE 0.0s
+#3 DONE 0.0s
+#4 DONE 0.0s
+#5 DONE 0.0s
+#6 DONE 0.0s
+#7 DONE 0.0s
+#11 DONE 0.0s
+#12 0.133 Resolved 25 packages in 5ms
+#12 0.228 Prepared 3 packages in 87ms
+#12 0.879 Installed 24 packages in 651ms
+#12 DONE 2.5s
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ docker run -d --rm --name ep -p 9000:9000 ml-app:entrypoint --port 9000
+998d66bb7af5119d5f9f6d2ae4244d9876207e49f294cd3dd289e116d2d84b5f
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ curl http://localhost:9000/
+{"message":"Welcome to the ML Prediction API!","endpoints":{"Predict":"/predict (POST)","Docs":"/docs"}}
+[exit 0]
+
+### 2026-11-01 17:28 | arm64 | docker 29.5.2 | in ch03
+$ docker stop ep
+ep
+[exit 0]
+
+### 2026-11-01 17:30 | arm64 | docker 29.5.2 | in ch04/app
+$ docker run --rm -v "$PWD":/app -w /app python:3.14-slim sh -c 'pip install -q --root-user-action=ignore uv==0.13.6; uv lock'
+Using CPython 3.14.10 interpreter at: /usr/local/bin/python3
+Resolved 22 packages in 343ms
+[exit 0]
+

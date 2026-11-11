@@ -1,0 +1,5 @@
+# Same packages, but pip's download cache is deleted in a later step
+FROM python:3.14-slim
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+RUN rm -rf /root/.cache/pip

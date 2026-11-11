@@ -1,0 +1,354 @@
+### 2026-11-02 11:40 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ sudo apt-get update -qq && sudo apt-get install -y docker-model-plugin
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be upgraded:
+  docker-model-plugin
+1 upgraded, 0 newly installed, 0 to remove and 113 not upgraded.
+Need to get 6372 kB of archives.
+After this operation, 459 kB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu noble/stable arm64 docker-model-plugin arm64 1.2.9-1~ubuntu.24.04~noble [6372 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 6372 kB in 0s (23.1 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 17479 files and directories currently installed.)
+Preparing to unpack .../docker-model-plugin_1.2.9-1~ubuntu.24.04~noble_arm64.deb ...
+Unpacking docker-model-plugin (1.2.9-1~ubuntu.24.04~noble) over (1.2.1-1~ubuntu.24.04~noble) ...
+Setting up docker-model-plugin (1.2.9-1~ubuntu.24.04~noble) ...
+[exit 0]
+
+### 2026-11-02 11:40 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model version
+Client:
+ Version:    v1.2.9
+ OS/Arch:    linux/arm64
+
+Server:
+ Version:    (not reachable)
+ Engine:     Docker Engine
+[exit 0]
+
+### 2026-11-02 11:40 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model install-runner
+latest: Pulling from docker/model-runner
+eabf0d312b0e: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+b2b4144bf869: Pulling fs layer
+ade0b5cbf7f1: Pulling fs layer
+222dd6512099: Pulling fs layer
+c0584cd00386: Pulling fs layer
+9336f66ac802: Pulling fs layer
+a3e6cd91b9ea: Pulling fs layer
+74d443a6bddb: Pulling fs layer
+6d3ae9b1af23: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+6791a65bce6a: Pulling fs layer
+9336f66ac802: Download complete
+4f4fb700ef54: Download complete
+ade0b5cbf7f1: Download complete
+74d443a6bddb: Download complete
+eabf0d312b0e: Download complete
+6d3ae9b1af23: Download complete
+44136fa355b3: Download complete
+8772c7886e89: Download complete
+c0584cd00386: Download complete
+9d69406950cc: Download complete
+6791a65bce6a: Download complete
+b2b4144bf869: Download complete
+ade0b5cbf7f1: Pull complete
+b2b4144bf869: Pull complete
+222dd6512099: Download complete
+222dd6512099: Pull complete
+9336f66ac802: Pull complete
+4f4fb700ef54: Pull complete
+74d443a6bddb: Pull complete
+6d3ae9b1af23: Pull complete
+c0584cd00386: Pull complete
+a3e6cd91b9ea: Download complete
+a3e6cd91b9ea: Pull complete
+6791a65bce6a: Pull complete
+eabf0d312b0e: Pull complete
+Digest: sha256:60e6a14d8cc331fab3e51d7b78bba98274b4d28573f4e0b345e475d52d167869
+Status: Downloaded newer image for docker/model-runner:latest
+Successfully pulled docker/model-runner:latest
+Creating model storage volume docker-model-runner-models...
+Starting model runner container docker-model-runner...
+[exit 0]
+
+### 2026-11-02 11:40 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model version
+Client:
+ Version:    v1.2.9
+ OS/Arch:    linux/arm64
+
+Server:
+ Version:    v1.2.9
+ Engine:     Docker Engine
+[exit 0]
+
+### 2026-11-02 11:41 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model pull ai/gemma3:1b-q4_K_M
+Downloaded 16.88kB of 806.06MB
+Downloaded 49.64kB of 806.06MB
+Downloaded 85.48kB of 806.06MB
+Downloaded 382.44kB of 806.06MB
+Downloaded 802.82kB of 806.06MB
+Downloaded 3.18MB of 806.06MB
+Downloaded 9.85MB of 806.06MB
+Downloaded 17.71MB of 806.06MB
+Downloaded 24.79MB of 806.06MB
+Downloaded 33.50MB of 806.06MB
+Downloaded 42.07MB of 806.06MB
+Downloaded 50.53MB of 806.06MB
+Downloaded 58.64MB of 806.06MB
+Downloaded 67.04MB of 806.06MB
+Downloaded 75.32MB of 806.06MB
+Downloaded 83.50MB of 806.06MB
+Downloaded 92.04MB of 806.06MB
+Downloaded 100.37MB of 806.06MB
+Downloaded 108.64MB of 806.06MB
+Downloaded 117.12MB of 806.06MB
+Downloaded 125.55MB of 806.06MB
+Downloaded 134.09MB of 806.06MB
+Downloaded 142.28MB of 806.06MB
+Downloaded 150.53MB of 806.06MB
+Downloaded 158.74MB of 806.06MB
+Downloaded 167.13MB of 806.06MB
+Downloaded 175.67MB of 806.06MB
+Downloaded 183.64MB of 806.06MB
+Downloaded 191.81MB of 806.06MB
+Downloaded 200.11MB of 806.06MB
+Downloaded 208.38MB of 806.06MB
+Downloaded 216.91MB of 806.06MB
+Downloaded 224.58MB of 806.06MB
+Downloaded 232.93MB of 806.06MB
+Downloaded 241.05MB of 806.06MB
+Downloaded 249.30MB of 806.06MB
+Downloaded 257.80MB of 806.06MB
+Downloaded 266.10MB of 806.06MB
+Downloaded 273.93MB of 806.06MB
+Downloaded 282.47MB of 806.06MB
+Downloaded 290.55MB of 806.06MB
+Downloaded 298.78MB of 806.06MB
+Downloaded 306.82MB of 806.06MB
+Downloaded 315.09MB of 806.06MB
+Downloaded 323.26MB of 806.06MB
+Downloaded 330.59MB of 806.06MB
+Downloaded 339.39MB of 806.06MB
+Downloaded 347.99MB of 806.06MB
+Downloaded 356.46MB of 806.06MB
+Downloaded 364.71MB of 806.06MB
+Downloaded 373.54MB of 806.06MB
+Downloaded 381.81MB of 806.06MB
+Downloaded 389.72MB of 806.06MB
+Downloaded 398.27MB of 806.06MB
+Downloaded 406.86MB of 806.06MB
+Downloaded 415.39MB of 806.06MB
+Downloaded 423.21MB of 806.06MB
+Downloaded 431.54MB of 806.06MB
+Downloaded 439.95MB of 806.06MB
+Downloaded 448.11MB of 806.06MB
+Downloaded 456.46MB of 806.06MB
+Downloaded 465.04MB of 806.06MB
+Downloaded 473.35MB of 806.06MB
+Downloaded 481.82MB of 806.06MB
+Downloaded 490.24MB of 806.06MB
+Downloaded 498.43MB of 806.06MB
+Downloaded 506.63MB of 806.06MB
+Downloaded 515.07MB of 806.06MB
+Downloaded 523.70MB of 806.06MB
+Downloaded 532.12MB of 806.06MB
+Downloaded 540.37MB of 806.06MB
+Downloaded 548.97MB of 806.06MB
+Downloaded 558.08MB of 806.06MB
+Downloaded 567.01MB of 806.06MB
+Downloaded 575.35MB of 806.06MB
+Downloaded 584.00MB of 806.06MB
+Downloaded 592.70MB of 806.06MB
+Downloaded 601.37MB of 806.06MB
+Downloaded 608.93MB of 806.06MB
+Downloaded 617.60MB of 806.06MB
+Downloaded 626.20MB of 806.06MB
+Downloaded 634.20MB of 806.06MB
+Downloaded 642.99MB of 806.06MB
+Downloaded 651.25MB of 806.06MB
+Downloaded 660.10MB of 806.06MB
+Downloaded 668.82MB of 806.06MB
+Downloaded 677.53MB of 806.06MB
+Downloaded 686.54MB of 806.06MB
+Downloaded 694.89MB of 806.06MB
+Downloaded 703.25MB of 806.06MB
+Downloaded 711.83MB of 806.06MB
+Downloaded 720.31MB of 806.06MB
+Downloaded 728.68MB of 806.06MB
+Downloaded 737.01MB of 806.06MB
+Downloaded 745.83MB of 806.06MB
+Downloaded 753.99MB of 806.06MB
+Downloaded 762.28MB of 806.06MB
+Downloaded 770.99MB of 806.06MB
+Downloaded 779.13MB of 806.06MB
+Downloaded 787.49MB of 806.06MB
+Downloaded 796.13MB of 806.06MB
+Downloaded 804.11MB of 806.06MB
+Downloaded 806.06MB of 806.06MB
+Model pulled successfully
+[exit 0]
+
+### 2026-11-02 11:41 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model list
+MODEL NAME        PARAMETERS  QUANTIZATION  ARCHITECTURE  MODEL ID      CREATED       CONTEXT  SIZE  
+gemma3:1b-q4_K_M                                          08d331e86d9f  56 years ago                 
+[exit 0]
+
+### 2026-11-02 11:41 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model run ai/gemma3:1b-q4_K_M "In one sentence, what is a Docker image?"
+A Docker image is a read-only template that contains everything needed to run a container—code, runtime, system tools, and settings—allowing you to easily deploy and run applications consistently across different environments.
+[exit 0]
+
+### 2026-11-02 11:41 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model ps
+MODEL NAME        BACKEND    MODE        UNTIL               
+gemma3:1b-q4_k_m  llama.cpp  completion  4 minutes from now  
+[exit 0]
+
+### 2026-11-02 11:42 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model pull ai/gemma3:1B-Q4_K_M
+Downloaded 0.00B of 806.06MB
+Downloaded 32.77kB of 806.06MB
+Downloaded 40.96kB of 806.06MB
+Downloaded 5.23MB of 806.06MB
+Downloaded 12.38MB of 806.06MB
+Downloaded 19.53MB of 806.06MB
+Downloaded 27.43MB of 806.06MB
+Downloaded 35.44MB of 806.06MB
+Downloaded 43.40MB of 806.06MB
+Downloaded 51.90MB of 806.06MB
+Downloaded 60.08MB of 806.06MB
+Downloaded 69.26MB of 806.06MB
+Downloaded 77.90MB of 806.06MB
+Downloaded 87.20MB of 806.06MB
+Downloaded 96.54MB of 806.06MB
+Downloaded 106.27MB of 806.06MB
+Downloaded 116.77MB of 806.06MB
+Downloaded 126.21MB of 806.06MB
+Downloaded 135.51MB of 806.06MB
+Downloaded 144.19MB of 806.06MB
+Downloaded 152.94MB of 806.06MB
+Downloaded 161.23MB of 806.06MB
+Downloaded 171.14MB of 806.06MB
+Downloaded 180.87MB of 806.06MB
+Downloaded 189.30MB of 806.06MB
+Downloaded 196.76MB of 806.06MB
+Downloaded 205.00MB of 806.06MB
+Downloaded 213.83MB of 806.06MB
+Downloaded 222.89MB of 806.06MB
+Downloaded 231.83MB of 806.06MB
+Downloaded 240.29MB of 806.06MB
+Downloaded 248.93MB of 806.06MB
+Downloaded 257.10MB of 806.06MB
+Downloaded 265.15MB of 806.06MB
+Downloaded 273.92MB of 806.06MB
+Downloaded 282.21MB of 806.06MB
+Downloaded 290.80MB of 806.06MB
+Downloaded 298.91MB of 806.06MB
+Downloaded 307.26MB of 806.06MB
+Downloaded 316.01MB of 806.06MB
+Downloaded 323.96MB of 806.06MB
+Downloaded 332.77MB of 806.06MB
+Downloaded 341.19MB of 806.06MB
+Downloaded 349.28MB of 806.06MB
+Downloaded 357.46MB of 806.06MB
+Downloaded 365.55MB of 806.06MB
+Downloaded 373.69MB of 806.06MB
+Downloaded 381.74MB of 806.06MB
+Downloaded 390.21MB of 806.06MB
+Downloaded 397.66MB of 806.06MB
+Downloaded 405.55MB of 806.06MB
+Downloaded 413.94MB of 806.06MB
+Downloaded 421.60MB of 806.06MB
+Downloaded 429.64MB of 806.06MB
+Downloaded 436.90MB of 806.06MB
+Downloaded 444.69MB of 806.06MB
+Downloaded 449.29MB of 806.06MB
+Downloaded 455.34MB of 806.06MB
+Downloaded 461.46MB of 806.06MB
+Downloaded 467.30MB of 806.06MB
+Downloaded 472.93MB of 806.06MB
+Downloaded 478.54MB of 806.06MB
+Downloaded 483.56MB of 806.06MB
+Downloaded 490.79MB of 806.06MB
+Downloaded 499.32MB of 806.06MB
+Downloaded 507.98MB of 806.06MB
+Downloaded 516.22MB of 806.06MB
+Downloaded 524.30MB of 806.06MB
+Downloaded 532.86MB of 806.06MB
+Downloaded 541.39MB of 806.06MB
+Downloaded 549.31MB of 806.06MB
+Downloaded 557.28MB of 806.06MB
+Downloaded 566.01MB of 806.06MB
+Downloaded 574.69MB of 806.06MB
+Downloaded 582.78MB of 806.06MB
+Downloaded 591.04MB of 806.06MB
+Downloaded 599.65MB of 806.06MB
+Downloaded 607.95MB of 806.06MB
+Downloaded 616.44MB of 806.06MB
+Downloaded 624.36MB of 806.06MB
+Downloaded 632.87MB of 806.06MB
+Downloaded 641.72MB of 806.06MB
+Downloaded 650.57MB of 806.06MB
+Downloaded 659.10MB of 806.06MB
+Downloaded 667.74MB of 806.06MB
+Downloaded 676.44MB of 806.06MB
+Downloaded 684.92MB of 806.06MB
+Downloaded 693.19MB of 806.06MB
+Downloaded 701.72MB of 806.06MB
+Downloaded 710.30MB of 806.06MB
+Downloaded 718.63MB of 806.06MB
+Downloaded 726.78MB of 806.06MB
+Downloaded 735.35MB of 806.06MB
+Downloaded 743.78MB of 806.06MB
+Downloaded 751.67MB of 806.06MB
+Downloaded 760.10MB of 806.06MB
+Downloaded 768.57MB of 806.06MB
+Downloaded 776.95MB of 806.06MB
+Downloaded 785.04MB of 806.06MB
+Downloaded 793.49MB of 806.06MB
+Downloaded 801.26MB of 806.06MB
+Downloaded 806.06MB of 806.06MB
+Model pulled successfully
+[exit 0]
+
+### 2026-11-02 11:43 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model list
+MODEL NAME        PARAMETERS  QUANTIZATION    ARCHITECTURE  MODEL ID      CREATED        CONTEXT  SIZE        
+gemma3:1B-Q4_K_M  999.89 M    IQ2_XXS/Q4_K_M  gemma3        dbe29fa01698  19 months ago           762.49 MiB  
+[exit 0]
+
+### 2026-11-02 11:43 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model run ai/gemma3:1B-Q4_K_M "In one sentence, what is a Docker image?"
+A Docker image is a read-only template that contains everything needed to run an application – code, runtime, system tools, and settings – allowing you to quickly and consistently deploy that application.
+[exit 0]
+
+### 2026-11-02 11:43 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model ps
+MODEL NAME        BACKEND    MODE        UNTIL               
+gemma3:1b-q4_k_m  llama.cpp  completion  3 minutes from now  
+gemma3:1b-q4_k_m  llama.cpp  completion  4 minutes from now  
+[exit 0]
+
+### 2026-11-02 11:43 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model run ai/gemma3:1B-Q4_K_M "In one sentence, what is a Docker image?"
+A Docker image is a read-only template that contains everything needed to run an application – code, libraries, configurations, and dependencies – allowing you to easily deploy and run it consistently.
+[exit 0]
+
+### 2026-11-02 11:43 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ docker model ps
+MODEL NAME        BACKEND    MODE        UNTIL               
+gemma3:1b-q4_k_m  llama.cpp  completion  4 minutes from now  
+[exit 0]
+
+### 2026-11-02 11:50 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~
+$ sudo dmesg | grep "Out of memory"
+[  773.394623] Out of memory: Killed process 9272 (llama-server) total-vm:7950680kB, anon-rss:5728264kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:11448kB oom_score_adj:0
+[exit 0]
+

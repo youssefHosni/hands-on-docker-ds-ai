@@ -1,0 +1,25 @@
+# Chapter 11 exercise: the server from ch11/server, plus a load-test service
+name: sentiment
+
+services:
+  server:
+    build:
+      context: ../../ch11/server
+      target: baked
+    image: sentiment-server:1.0-baked
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
+
+  load:
+    build: ./load
+    profiles: ["load"]
+    # Default arguments; `docker compose run load <url> <clients> <requests>` replaces them
+    command: ["http://server:8000/predict", "4", "40"]
+    depends_on:
+      server:
+        condition: service_healthy

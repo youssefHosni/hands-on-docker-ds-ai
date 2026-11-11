@@ -1,0 +1,104 @@
+### 2026-11-02 02:17 | arm64 | docker 29.5.2 | in exercises/ch09
+$ docker compose --profile cpu up --build
+ Image torch-check:cpu Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 838B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 402B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.14-slim
+#3 DONE 0.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 346B done
+#6 DONE 0.0s
+
+#7 [2/4] RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+#7 CACHED
+
+#8 [3/4] WORKDIR /app
+#8 CACHED
+
+#9 [4/4] COPY check_gpu.py .
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:917a071403d6de2ddcb3bf28a1c1f53495856f3c6814c04eca6e1defc66328ca 0.0s done
+#10 exporting config sha256:3c98f14ea114dc2d1acafc52acab5846f2b5d9b06156933f0836dd27d21c04bd done
+#10 exporting attestation manifest sha256:e0b656edd4294175e29d81e1976f301f9c65568a80d237d242f2d7be53318819 done
+#10 exporting manifest list sha256:20fd04c8acd1a40805c23b376a36dcc91c2c940fd02d1702d554d703b016b467 done
+#10 naming to docker.io/library/torch-check:cpu done
+#10 unpacking to docker.io/library/torch-check:cpu
+#10 unpacking to docker.io/library/torch-check:cpu 3.0s done
+#10 DONE 3.0s
+
+#11 resolving provenance for metadata file
+#11 DONE 0.0s
+ Image torch-check:cpu Built 
+ Network ch09_default Creating 
+ Network ch09_default Creating 
+ Network ch09_default Created 
+ Network ch09_default Created 
+ Container ch09-check-cpu-1 Creating 
+ Container ch09-check-cpu-1 Created 
+Attaching to check-cpu-1
+ Container ch09-check-cpu-1 Starting 
+ Container ch09-check-cpu-1 Started 
+check-cpu-1  | /usr/local/lib/python3.14/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+check-cpu-1  |   cpu = _conversion_method_template(device=torch.device("cpu"))
+check-cpu-1  | PyTorch: 2.15.0+cpu
+check-cpu-1  | Built for CUDA: None
+check-cpu-1  | NVIDIA GPU available: False
+check-cpu-1  | Apple GPU (MPS) available: False
+[Kcheck-cpu-1 exited with code 0
+[exit 0]
+
+### 2026-11-02 02:17 | arm64 | docker 29.5.2 | in exercises/ch09
+$ docker compose --profile gpu config
+name: ch09
+services:
+  check-gpu:
+    profiles:
+      - gpu
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+                - gpu
+              driver: nvidia
+              count: -1
+    image: torch-check:cuda
+    networks:
+      default: null
+    build:
+      context: /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for
+        AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/exercises/ch09
+      dockerfile: Dockerfile
+networks:
+  default:
+    name: ch09_default
+[exit 0]
+
+### 2026-11-02 02:17 | arm64 | docker 29.5.2 | in exercises/ch09
+$ docker compose --profile cpu down
+ Container ch09-check-cpu-1 Stopping 
+ Container ch09-check-cpu-1 Stopped 
+ Container ch09-check-cpu-1 Removing 
+ Container ch09-check-cpu-1 Removed 
+ Network ch09_default Removing 
+ Network ch09_default Removed 
+[exit 0]
+

@@ -1,0 +1,69 @@
+### 2026-11-01 16:58 | arm64 | docker 29.5.2 | in ch03
+$ curl -s -i http://localhost:5000/ | head -3
+HTTP/1.1 403 Forbidden
+Content-Length: 0
+Server: AirTunes/960.13.1
+[exit 0]
+
+### 2026-11-01 16:58 | arm64 | docker 29.5.2 | in ch03
+$ docker build -t ml-app .
+[+] Building 15.3s (11/11) FINISHED                               docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 578B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 147B                                          0.0s
+ => [1/6] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 2.91kB                                        0.0s
+ => [2/6] WORKDIR /app                                                     0.0s
+ => [3/6] COPY requirements.txt .                                          0.0s
+ => [4/6] RUN pip install --no-cache-dir -r requirements.txt               9.4s
+ => [5/6] COPY . .                                                         0.0s
+ => [6/6] RUN python train.py                                              0.6s
+ => exporting to image                                                     5.2s
+ => => exporting layers                                                    4.2s
+ => => exporting manifest sha256:b367ff803b5872a266c9d7842323e9bf12f10e8d  0.0s
+ => => exporting config sha256:5a8610032e6d55fd6bf2d226bdf04814d5c1b4658c  0.0s
+ => => exporting attestation manifest sha256:69833c3af3693047a3f72d422bdf  0.0s
+ => => exporting manifest list sha256:d918c3061712f2a8586b23c36788691c702  0.0s
+ => => naming to docker.io/library/ml-app:latest                           0.0s
+ => => unpacking to docker.io/library/ml-app:latest                        1.0s
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+CONTAINER ID   IMAGE     STATUS         PORTS
+7c9116a62bb9   ml-app    Up 5 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ curl http://localhost:8000/
+{"message":"Welcome to the ML Prediction API!","endpoints":{"Predict":"/predict (POST)","Docs":"/docs"}}
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"input": [6, 7, 8]}'
+{"prediction":[12.000000000000002,14.000000000000002,16.0]}
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"input": "six"}'
+{"detail":[{"type":"list_type","loc":["body","input"],"msg":"Input should be a valid list","input":"six"}]}
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"input": []}'
+{"detail":"Missing 'input' data"}
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ time docker stop 7c9116a62bb9
+7c9116a62bb9
+
+real	0m0.394s
+user	0m0.007s
+sys	0m0.005s
+[exit 0]
+

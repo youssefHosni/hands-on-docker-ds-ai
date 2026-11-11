@@ -1,0 +1,258 @@
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name sentiment-server -p 8000:8000 sentiment-server:1.0
+7858f85ce7154d0ac3dc989d185f269dd8b387cd5a2e799f9c70edfb2a980fa8
+[exit 0]
+
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ docker logs sentiment-server 2>&1 | grep -v "HTTP Request"
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 15276.59it/s]
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 11.93}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58352 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47956 - "GET /health HTTP/1.1" 200 OK
+[exit 0]
+
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s http://localhost:8000/health
+{"status":"ok","model":"distilbert/distilbert-base-uncased-finetuned-sst-2-english","revision":"714eb0f"}
+[exit 0]
+
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s http://localhost:8000/predict -H "Content-Type: application/json" -d '{"texts": ["This movie was a wonderful surprise.", "The build failed again and nobody knows why."]}'
+[{"label":"POSITIVE","score":1.0},{"label":"NEGATIVE","score":1.0}]
+[exit 0]
+
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s http://localhost:8000/predict -H "Content-Type: application/json" -d '{"texts": []}'
+{"detail":[{"type":"too_short","loc":["body","texts"],"msg":"List should have at least 1 item after validation, not 0","input":[],"ctx":{"field_type":"List","min_length":1,"actual_length":0}}]}
+[exit 0]
+
+### 2026-11-02 15:02 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name no-network --network none sentiment-server:1.0 && sleep 60 && docker logs no-network 2>&1 | tail -4; docker ps -a --filter name=no-network --format "table {{.Names}}\t{{.Status}}"
+4b02e0acbe6e727ff6d9909a6ebddb7a89424a703c3bba1901187597f0b7bf89
+OSError: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+
+ERROR:    Application startup failed. Exiting.
+NAMES        STATUS
+no-network   Exited (3) 34 seconds ago
+[exit 0]
+
+### 2026-11-02 15:03 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f sentiment-server no-network
+sentiment-server
+no-network
+[exit 0]
+
+### 2026-11-02 15:03 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name from-volume -v model-cache:/models sentiment-server:1.0 && sleep 30 && docker logs from-volume 2>&1 | grep model_loaded && docker rm -f from-volume
+a85b0548a99e4985aefdbd5ad8c8d043ff6ce532fcf9a3c2a4bb492e7a4b5749
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 13.01}
+from-volume
+[exit 0]
+
+### 2026-11-02 15:04 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name from-volume -v model-cache:/models sentiment-server:1.0 && sleep 15 && docker logs from-volume 2>&1 | grep model_loaded && docker rm -f from-volume
+0c072e455aaf99aaeccc35a91abdff478f0c10a5f2ae27f944ae8d2580037451
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 0.4}
+from-volume
+[exit 0]
+
+### 2026-11-02 15:04 | arm64 | docker 29.5.2 | in ch11/server
+$ docker images sentiment-server
+IMAGE                        ID             DISK USAGE   CONTENT SIZE   EXTRA
+sentiment-server:1.0         25e1af7b3fcc       1.66GB          349MB        
+sentiment-server:1.0-baked   fd5449c8dcda       2.18GB          596MB        
+[exit 0]
+
+### 2026-11-02 15:04 | arm64 | docker 29.5.2 | in ch11/server
+$ docker history sentiment-server:1.0-baked --format "{{.Size}}\t{{.CreatedBy}}" | head -3
+0B	ENV HF_HUB_OFFLINE=1
+268MB	COPY --chown=appuser /models /models # build…
+0B	CMD ["uvicorn" "app:app" "--host" "0.0.0.0" …
+[exit 0]
+
+### 2026-11-02 15:04 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name baked --network none sentiment-server:1.0-baked && sleep 15 && docker logs baked 2>&1 | grep model_loaded && docker ps --filter name=baked --format "table {{.Names}}\t{{.Status}}" && docker rm -f baked
+c10b66ac413cdeb5354555249f077a98789a5809dc9bab79dc04636c72a76dd9
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 0.06}
+NAMES     STATUS
+baked     Up 15 seconds (healthy)
+baked
+[exit 0]
+
+### 2026-11-02 15:04 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name sentiment-server -p 8000:8000 --cpus 2 --memory 1g sentiment-server:1.0-baked
+26c4ffae5a3add4be84e4b5f54a287994e326e94900eddd1a2fe26da2723b35b
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/server
+$ docker inspect --format "{{.State.Health.Status}}" sentiment-server
+healthy
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/load
+$ python3 load.py http://localhost:8000/predict 1 20
+20 ok, 0 errors [], 3.9 requests/s
+latency: median 0.27 s, 95th percentile 0.29 s
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/load
+$ python3 load.py http://localhost:8000/predict 4 40
+40 ok, 0 errors [], 3.8 requests/s
+latency: median 1.02 s, 95th percentile 1.11 s
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/server
+$ docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}" sentiment-server
+NAME               CPU %     MEM USAGE / LIMIT
+sentiment-server   0.35%     387.2MiB / 1GiB
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f sentiment-server && docker run -d --name sentiment-server -p 8000:8000 --cpus 2 --memory 1g sentiment-server:1.0-baked uvicorn app:app --host 0.0.0.0 --port 8000 --workers 2
+sentiment-server
+847a2b7f6f557984f6ba182ef8ac25a50ee94c7a66d725382d1c3fae39a69d24
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/load
+$ python3 load.py http://localhost:8000/predict 4 40
+40 ok, 0 errors [], 3.4 requests/s
+latency: median 1.10 s, 95th percentile 1.55 s
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/server
+$ docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}" sentiment-server
+NAME               CPU %     MEM USAGE / LIMIT
+sentiment-server   0.74%     752.9MiB / 1GiB
+[exit 0]
+
+### 2026-11-02 15:05 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f sentiment-server && docker run -d --name sentiment-server -p 8000:8000 --cpus 2 --memory 1g sentiment-server:1.0-baked
+sentiment-server
+9bfbec7af825ae7e5506f272d5ac75f9578fcde2b57f96ae3680257a3ae46f49
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ python3 ../load/load.py http://localhost:8000/predict 4 20 > /dev/null & sleep 2; curl -s -o /dev/null -w "health: %{http_code} in %{time_total} s\n" http://localhost:8000/health; wait
+health: 200 in 0.006626 s
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f sentiment-server
+sentiment-server
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ sed 's/^def predict/async def predict/' app.py > app_async.py && grep -n 'def predict' app_async.py
+58:async def predict(reviews: Reviews):
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name async-server -p 8000:8000 --cpus 2 --memory 1g -v ./app_async.py:/app/app_async.py sentiment-server:1.0-baked uvicorn app_async:app --host 0.0.0.0 --port 8000
+a6cd16ceda9a73289fc82fce676b41491a5f98b603228aa05a0b08e547b5b27c
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ python3 ../load/load.py http://localhost:8000/predict 4 20 > /dev/null & sleep 2; curl -s -o /dev/null -w "health: %{http_code} in %{time_total} s\n" http://localhost:8000/health; wait
+health: 200 in 1.441251 s
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f async-server && rm app_async.py
+async-server
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run -d --name sentiment-server -p 8000:8000 --cpus 2 --memory 1g sentiment-server:1.0-baked uvicorn app:app --host 0.0.0.0 --port 8000 --limit-concurrency 8
+59bd2c4799cab994b48d8282cb55db8fb3356a5dc5934726d29bd935a458bdc2
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/load
+$ python3 load.py http://localhost:8000/predict 4 4
+4 ok, 0 errors [], 3.9 requests/s
+latency: median 1.00 s, 95th percentile 1.02 s
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/load
+$ python3 load.py http://localhost:8000/predict 8 8
+3 ok, 5 errors [503], 4.2 requests/s
+latency: median 0.71 s, 95th percentile 0.72 s
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker rm -f sentiment-server
+sentiment-server
+[exit 0]
+
+### 2026-11-02 15:06 | arm64 | docker 29.5.2 | in ch11/server
+$ docker compose up -d 2>&1 | tail -1
+ Container sentiment-server-1 Started 
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ python3 ../load/load.py http://localhost:8000/predict 2 10
+10 ok, 0 errors [], 4.0 requests/s
+latency: median 0.50 s, 95th percentile 0.52 s
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ docker compose logs server --no-log-prefix | grep "{" | tail -3
+{"event": "predict", "texts": 16, "seconds": 0.495}
+{"event": "predict", "texts": 16, "seconds": 0.492}
+{"event": "predict", "texts": 16, "seconds": 0.496}
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ docker info --format "{{.LoggingDriver}}"
+json-file
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ docker run --rm -d --name default-logs alpine:3.22 sleep 5 >/dev/null && docker inspect --format "{{.HostConfig.LogConfig}}" default-logs
+{json-file map[]}
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ docker inspect --format "{{.HostConfig.LogConfig}}" sentiment-server-1
+{json-file map[max-file:3 max-size:10m]}
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s http://localhost:8000/metrics | grep -E "^(predictions_total|predict_seconds_(count|sum))"
+predictions_total{label="NEGATIVE"} 160.0
+predict_seconds_count 10.0
+predict_seconds_sum 4.990427861997887
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ docker compose --profile monitoring up -d 2>&1 | tail -1
+ Container sentiment-prometheus-1 Started 
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ python3 ../load/load.py http://localhost:8000/predict 2 20
+20 ok, 0 errors [], 4.1 requests/s
+latency: median 0.50 s, 95th percentile 0.51 s
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s "http://localhost:9090/api/v1/targets" | python3 -c "import json,sys; [print(t[\"scrapeUrl\"], t[\"health\"]) for t in json.load(sys.stdin)[\"data\"][\"activeTargets\"]]"
+http://server:8000/metrics up
+[exit 0]
+
+### 2026-11-02 15:07 | arm64 | docker 29.5.2 | in ch11/server
+$ curl -s "http://localhost:9090/api/v1/query" --data-urlencode "query=predict_seconds_sum / predict_seconds_count" | python3 -c "import json,sys; print(json.load(sys.stdin)[\"data\"][\"result\"][0][\"value\"][1])"
+0.49216865103323165
+[exit 0]
+
+### 2026-11-02 15:13 | arm64 | docker 29.5.2 | in ch11/server
+$ docker compose --profile monitoring down 2>&1 | tail -1
+ Network sentiment_default Removed 
+[exit 0]
+

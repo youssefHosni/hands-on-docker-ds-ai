@@ -1,0 +1,340 @@
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm -v "$PWD":/project -w /project python:3.14-slim sh -c "mkdir -p output && date > output/run.txt"
+Unable to find image 'python:3.14-slim' locally
+3.14-slim: Pulling from library/python
+Digest: sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+Status: Downloaded newer image for python:3.14-slim
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ ls -l output
+total 4
+-rw-r--r-- 1 root root 29 Nov  2 00:19 run.txt
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ rm output/run.txt
+rm: cannot remove 'output/run.txt': Permission denied
+time="2026-11-02T00:19:50+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm -v "$PWD":/project ds-project:1.0 rm -r output
+rm: cannot remove 'output/run.txt': Permission denied
+time="2026-11-02T00:19:50+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm --user root -v "$PWD":/project ds-project:1.0 rm -r output
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ id
+uid=502(hosniy1) gid=1000(hosniy1) groups=1000(hosniy1),991(docker),999(systemd-journal)
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm ds-project:1.0 id
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm -v "$PWD":/project ds-project:1.0 python summarize.py data/houses.csv output/summary.csv
+Traceback (most recent call last):
+  File "/project/summarize.py", line 11, in <module>
+    target.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'output'
+time="2026-11-02T00:19:52+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD":/project ds-project:1.0 python summarize.py data/houses.csv output/summary.csv
+       size_m2  rooms  age_years  price_k
+count     20.0   20.0       20.0     20.0
+mean      99.7    3.2       33.6    237.0
+std       29.4    1.3       15.0     70.7
+min       50.0    1.0        5.0    122.0
+25%       75.8    2.0       25.5    192.0
+50%       97.5    3.0       36.5    234.0
+75%      123.0    4.0       42.0    295.2
+max      147.0    5.0       59.0    342.0
+[exit 0]
+
+### 2026-11-02 00:19 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ ls -l output
+total 4
+-rw-r--r-- 1 hosniy1 hosniy1 228 Nov  2 00:19 summary.csv
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run -d --name lab-linux --user "$(id -u):$(id -g)" -v "$PWD":/project ds-project:1.0
+16353c5960963f47ba8ca16364380ee1ddbb861a4736638faeacc2f6c6e1bf45
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker logs lab-linux
+[I 2026-11-01 22:21:17.930 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-11-01 22:21:17.932 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-11-01 22:21:17.933 ServerApp] jupyterlab | extension was successfully linked.
+[W 2026-11-01 22:21:17.933 ServerApp] notebook_shim | error linking extension: [Errno 13] Permission denied: '/.local'
+    Traceback (most recent call last):
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 652, in get
+        value = obj._trait_values[self.name]
+                ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+    KeyError: 'browser_open_file'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 652, in get
+        value = obj._trait_values[self.name]
+                ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+    KeyError: 'runtime_dir'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+        os.mkdir(self, mode)
+        ~~~~~~~~^^^^^^^^^^^^
+    FileNotFoundError: [Errno 2] No such file or directory: '/.local/share/jupyter/runtime'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+        os.mkdir(self, mode)
+        ~~~~~~~~^^^^^^^^^^^^
+    FileNotFoundError: [Errno 2] No such file or directory: '/.local/share/jupyter'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+        os.mkdir(self, mode)
+        ~~~~~~~~^^^^^^^^^^^^
+    FileNotFoundError: [Errno 2] No such file or directory: '/.local/share'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/manager.py", line 388, in link_extension
+        extension.link_all_points(self.serverapp)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/manager.py", line 265, in link_all_points
+        self.link_point(point_name, serverapp)
+        ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/manager.py", line 250, in link_point
+        point.link(serverapp)
+        ~~~~~~~~~~^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/manager.py", line 165, in link
+        linker(serverapp)
+        ~~~~~~^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/notebook_shim/nbserver.py", line 109, in _link_jupyter_server_extension
+        members = diff_members(serverapp, nbapp)
+      File "/opt/venv/lib/python3.14/site-packages/notebook_shim/nbserver.py", line 62, in diff_members
+        m1 = public_members(obj1)
+      File "/opt/venv/lib/python3.14/site-packages/notebook_shim/nbserver.py", line 56, in public_members
+        members = inspect.getmembers(obj)
+      File "/usr/local/lib/python3.14/inspect.py", line 531, in getmembers
+        return _getmembers(object, predicate, getattr)
+      File "/usr/local/lib/python3.14/inspect.py", line 509, in _getmembers
+        value = getter(object, key)
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 705, in __get__
+        return self.get(obj, cls)  # type:ignore[return-value]
+               ~~~~~~~~^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 655, in get
+        default = obj.trait_defaults(self.name)
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 1904, in trait_defaults
+        return self._get_trait_default_generator(names[0])(self)  # type:ignore[no-any-return]
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 1263, in __call__
+        return self.func(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_server/serverapp.py", line 1777, in _default_browser_open_file
+        return os.path.join(self.runtime_dir, basename)
+                            ^^^^^^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 705, in __get__
+        return self.get(obj, cls)  # type:ignore[return-value]
+               ~~~~~~~~^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 655, in get
+        default = obj.trait_defaults(self.name)
+      File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 1904, in trait_defaults
+        return self._get_trait_default_generator(names[0])(self)  # type:ignore[no-any-return]
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_core/application.py", line 111, in _runtime_dir_default
+        ensure_dir_exists(rd, mode=0o700)
+        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+      File "/opt/venv/lib/python3.14/site-packages/jupyter_core/utils/__init__.py", line 27, in ensure_dir_exists
+        Path(path).mkdir(parents=True, mode=mode)
+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+        self.parent.mkdir(parents=True, exist_ok=True)
+        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+        self.parent.mkdir(parents=True, exist_ok=True)
+        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+        self.parent.mkdir(parents=True, exist_ok=True)
+        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+        os.mkdir(self, mode)
+        ~~~~~~~~^^^^^^^^^^^^
+    PermissionError: [Errno 13] Permission denied: '/.local'
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 652, in get
+    value = obj._trait_values[self.name]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'runtime_dir'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/.local/share/jupyter/runtime'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/.local/share/jupyter'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/.local/share'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/venv/bin/jupyter-lab", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/application.py", line 628, in launch_instance
+    serverapp = cls.initialize_server(argv=args)
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_server/extension/application.py", line 598, in initialize_server
+    serverapp.initialize(
+    ~~~~~~~~~~~~~~~~~~~~^
+        argv=argv or [],
+        ^^^^^^^^^^^^^^^^
+        starter_extension=cls.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        find_extensions=find_extensions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/venv/lib/python3.14/site-packages/traitlets/config/application.py", line 117, in inner
+    return method(app, *args, **kwargs)
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_server/serverapp.py", line 2877, in initialize
+    self.init_configurables()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_server/serverapp.py", line 2115, in init_configurables
+    "connection_dir": self.runtime_dir,
+                      ^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 705, in __get__
+    return self.get(obj, cls)  # type:ignore[return-value]
+           ~~~~~~~~^^^^^^^^^^
+  File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 655, in get
+    default = obj.trait_defaults(self.name)
+  File "/opt/venv/lib/python3.14/site-packages/traitlets/traitlets.py", line 1904, in trait_defaults
+    return self._get_trait_default_generator(names[0])(self)  # type:ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_core/application.py", line 111, in _runtime_dir_default
+    ensure_dir_exists(rd, mode=0o700)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.14/site-packages/jupyter_core/utils/__init__.py", line 27, in ensure_dir_exists
+    Path(path).mkdir(parents=True, mode=mode)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1015, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/.local'
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker exec lab-linux sh -c "whoami; echo HOME=\$HOME"
+Error response from daemon: container 16353c5960963f47ba8ca16364380ee1ddbb861a4736638faeacc2f6c6e1bf45 is not running
+time="2026-11-02T00:21:23+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker rm lab-linux
+lab-linux
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker run -d --name lab-linux --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD":/project ds-project:1.0
+7d1c30e94e828b4b7d251625fe2b9dfacb1632251736a7c3ba257a119029dadf
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker logs lab-linux
+[I 2026-11-01 22:21:32.010 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-11-01 22:21:32.011 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-11-01 22:21:32.012 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-11-01 22:21:32.014 ServerApp] Writing Jupyter server cookie secret to /tmp/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2026-11-01 22:21:32.030 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-11-01 22:21:32.035 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-11-01 22:21:32.036 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2026-11-01 22:21:32.036 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-11-01 22:21:32.037 LabApp] JupyterLab extension loaded from /opt/venv/lib/python3.14/site-packages/jupyterlab
+[I 2026-11-01 22:21:32.037 LabApp] JupyterLab application directory is /opt/venv/share/jupyter/lab
+[I 2026-11-01 22:21:32.037 LabApp] Extension Manager is 'pypi'.
+[I 2026-11-01 22:21:32.050 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-11-01 22:21:32.050 ServerApp] Serving notebooks from local directory: /project
+[I 2026-11-01 22:21:32.050 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-11-01 22:21:32.050 ServerApp] http://0.0.0.0:8888/lab?token=d233482f77f458d6ca6fdfd43ba7122f5f2a02a4fd2825fe
+[I 2026-11-01 22:21:32.050 ServerApp]     http://127.0.0.1:8888/lab?token=d233482f77f458d6ca6fdfd43ba7122f5f2a02a4fd2825fe
+[I 2026-11-01 22:21:32.050 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2026-11-01 22:21:32.051 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:/tmp/.local/share/jupyter/runtime/jpserver-1-open.html
+    Or copy and paste one of these URLs:
+        http://7d1c30e94e82:8888/lab?token=d233482f77f458d6ca6fdfd43ba7122f5f2a02a4fd2825fe
+        http://127.0.0.1:8888/lab?token=d233482f77f458d6ca6fdfd43ba7122f5f2a02a4fd2825fe
+    The server is listening on all interfaces, so any hostname or IP of this machine will work.
+[I 2026-11-01 22:21:32.056 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker exec lab-linux jupyter nbconvert --to notebook --execute notebooks/explore.ipynb --output-dir output
+[NbConvertApp] Converting notebook notebooks/explore.ipynb to notebook
+/opt/venv/lib/python3.14/site-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  _validate(nbdict, ref, version, version_minor, relax_add_props)
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 25401 bytes to output/explore.ipynb
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ ls -l output
+total 32
+-rw-r--r-- 1 hosniy1 hosniy1 25401 Nov  2 00:21 explore.ipynb
+-rw-r--r-- 1 hosniy1 hosniy1   228 Nov  2 00:19 summary.csv
+[exit 0]
+
+### 2026-11-02 00:21 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) ~/project
+$ docker rm -f lab-linux
+lab-linux
+[exit 0]
+

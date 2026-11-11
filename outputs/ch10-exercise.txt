@@ -1,0 +1,37 @@
+### 2026-11-02 11:56 | arm64 | docker 29.5.2 | in exercises/ch10
+$ docker compose -f compose.yaml -f compose.dmr.yaml --profile ui up -d
+ Volume ch10_webui-data Creating 
+ Volume ch10_models Creating 
+ Volume ch10_webui-data Creating 
+ Volume ch10_models Creating 
+ Network ch10_default Creating 
+ Network ch10_default Creating 
+ Volume ch10_webui-data Created 
+ Volume ch10_webui-data Created 
+ Volume ch10_models Created 
+ Volume ch10_models Created 
+ Network ch10_default Created 
+ Network ch10_default Created 
+ Container ch10-ollama-1 Creating 
+ Container ch10-ollama-1 Created 
+ Container ch10-pull-1 Creating 
+ Container ch10-pull-1 Created 
+ Container ch10-open-webui-1 Creating 
+ Container ch10-open-webui-1 Created 
+ Container ch10-ollama-1 Starting 
+ Container ch10-ollama-1 Started 
+ Container ch10-ollama-1 Waiting 
+ Container ch10-ollama-1 Healthy 
+ Container ch10-pull-1 Starting 
+ Container ch10-pull-1 Started 
+ Container ch10-pull-1 Waiting 
+ Container ch10-pull-1 Exited 
+ Container ch10-open-webui-1 Starting 
+ Container ch10-open-webui-1 Started 
+[exit 0]
+
+### 2026-11-02 11:58 | arm64 | docker 29.5.2 | in exercises/ch10
+$ docker compose exec open-webui curl -s http://model-runner.docker.internal:12434/engines/v1/models
+{"object":"list","data":[{"id":"docker.io/ai/gemma3:1B-Q4_K_M","object":"model","created":1744032217,"owned_by":"docker","dmr":{"architecture":"gemma3","parameters":"999.89 M","quantization":"IQ2_XXS/Q4_K_M","size":"762.49 MiB"}}]}
+[exit 0]
+

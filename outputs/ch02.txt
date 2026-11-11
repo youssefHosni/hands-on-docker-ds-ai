@@ -1,0 +1,383 @@
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker run ubuntu:26.04 ls
+Unable to find image 'ubuntu:26.04' locally
+26.04: Pulling from library/ubuntu
+6f01cc7d6fb3: Pulling fs layer
+afa7f7d582de: Pulling fs layer
+6f01cc7d6fb3: Download complete
+afa7f7d582de: Download complete
+d597c14cfeb9: Download complete
+6f01cc7d6fb3: Pull complete
+afa7f7d582de: Pull complete
+Digest: sha256:6a06111c3b0a8600feadb270aec771dc239bf407b25625f93f44ab00e11f4d3c
+Status: Downloaded newer image for ubuntu:26.04
+bin
+boot
+dev
+etc
+home
+lib
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker run -d --name my-container -p 8888:8000 python:3.14-slim python -m http.server 8000
+294edf0bfb7c69e49887436be7914e1b280cf4511c42e76288bbbe3dc06fd0df
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ curl -s http://localhost:8888 | head -4
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+NAMES          IMAGE              STATUS
+my-container   python:3.14-slim   Up 2 seconds
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker port my-container
+8000/tcp -> 0.0.0.0:8888
+8000/tcp -> [::]:8888
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+NAMES               IMAGE              STATUS
+my-container        python:3.14-slim   Up 2 seconds
+epic_lewin          ubuntu:26.04       Exited (0) 2 seconds ago
+romantic_einstein   hello-world        Exited (0) 7 seconds ago
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker ps --format "ID: {{.ID}}, Image: {{.Image}}, Status: {{.Status}}"
+ID: 294edf0bfb7c, Image: python:3.14-slim, Status: Up 2 seconds
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ time docker stop my-container
+my-container
+
+real	0m10.182s
+user	0m0.006s
+sys	0m0.007s
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker ps -a --filter name=my-container --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+NAMES          IMAGE              STATUS
+my-container   python:3.14-slim   Exited (137) Less than a second ago
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker rm my-container
+my-container
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker run -d --init --name my-container -p 8888:8000 python:3.14-slim python -m http.server 8000
+0fc831619916f565c8382a79d2e5f985144abad74cce74294954ef88b1247873
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ time docker stop my-container
+my-container
+
+real	0m0.094s
+user	0m0.008s
+sys	0m0.006s
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker ps -a --filter name=my-container --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+NAMES          IMAGE              STATUS
+my-container   python:3.14-slim   Exited (143) Less than a second ago
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker rm my-container
+my-container
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker images
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest       c567b231f656       22.6kB         10.3kB   U    
+iris-classifier:latest   b30628c02555        595MB          128MB        
+python:3.14-slim         cd89c30eda26        206MB           46MB        
+registry:3.1.2           d4032d4cc323       82.4MB         19.4MB        
+ubuntu:26.04             6a06111c3b0a        181MB         44.9MB   U    
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker images -a --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+IMAGE ID       REPOSITORY        TAG
+b30628c02555   iris-classifier   latest
+cd89c30eda26   python            3.14-slim
+d4032d4cc323   registry          3.1.2
+c567b231f656   hello-world       latest
+6a06111c3b0a   ubuntu            26.04
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker rmi ubuntu:26.04
+Error response from daemon: conflict: unable to delete ubuntu:26.04 (must be forced) - container b4e8b8e0d7f6 is using its referenced image 6a06111c3b0a
+[exit 1]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker rm epic_lewin
+epic_lewin
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch02
+$ docker rmi ubuntu:26.04
+Untagged: ubuntu:26.04
+Deleted: sha256:6a06111c3b0a8600feadb270aec771dc239bf407b25625f93f44ab00e11f4d3c
+[exit 0]
+
+### 2026-11-01 16:44 | arm64 | docker 29.5.2 | in ch01
+$ docker build -t iris-classifier:1.0 .
+[+] Building 14.3s (10/10) FINISHED                               docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 198B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/5] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 1.12kB                                        0.0s
+ => [2/5] WORKDIR /src                                                     0.0s
+ => [3/5] COPY requirements.txt .                                          0.0s
+ => [4/5] RUN pip install --no-cache-dir -r requirements.txt               9.0s
+ => [5/5] COPY . .                                                         0.0s
+ => exporting to image                                                     5.1s
+ => => exporting layers                                                    4.1s
+ => => exporting manifest sha256:e6e54fc30d49f56b499b9dd1779806e3d443b3a9  0.0s
+ => => exporting config sha256:81da8e81bd4afe689387d38c45f8a53b70eb71ed45  0.0s
+ => => exporting attestation manifest sha256:15e3038a2eacc12531af8997f959  0.0s
+ => => exporting manifest list sha256:0a11fe030e5c588ec18927a20ad7b0b0876  0.0s
+ => => naming to docker.io/library/iris-classifier:1.0                     0.0s
+ => => unpacking to docker.io/library/iris-classifier:1.0                  1.0s
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker run -d --init --name my-container -p 8888:8000 python:3.14-slim python -m http.server 8000
+0fb9f4eb8dbaea3d03fe99b09b0788a259acbc673579d6677632b6b4d8ff06d6
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker exec my-container ls
+bin
+boot
+dev
+etc
+home
+lib
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker exec my-container python --version
+Python 3.14.10
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker pull ubuntu:26.04
+26.04: Pulling from library/ubuntu
+6f01cc7d6fb3: Pulling fs layer
+afa7f7d582de: Pulling fs layer
+6f01cc7d6fb3: Download complete
+d597c14cfeb9: Download complete
+afa7f7d582de: Download complete
+6f01cc7d6fb3: Pull complete
+afa7f7d582de: Pull complete
+Digest: sha256:6a06111c3b0a8600feadb270aec771dc239bf407b25625f93f44ab00e11f4d3c
+Status: Downloaded newer image for ubuntu:26.04
+docker.io/library/ubuntu:26.04
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker run -d --name registry -p 5000:5000 registry:3.1.2
+ff329bf75df21ad91e482a9e1e14fa572f2072ae06680d53a51f18d2c59eebcd
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker tag iris-classifier:1.0 localhost:5000/iris-classifier:1.0
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker push localhost:5000/iris-classifier:1.0
+The push refers to repository [localhost:5000/iris-classifier]
+d30d0fc700eb: Pushed
+6d0b40b61955: Pushed
+19534e75488e: Pushed
+aa5b2faf2aa5: Pushed
+fd71dd7cec99: Pushed
+05d726e892c3: Pushed
+e232ddaa6e0a: Pushed
+2b70e040f7d1: Pushed
+175f1a697622: Pushed
+1.0: digest: sha256:0a11fe030e5c588ec18927a20ad7b0b0876fe32c8401385b0cd5b3ffe070bd35 size: 856
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker rmi localhost:5000/iris-classifier:1.0
+Untagged: localhost:5000/iris-classifier:1.0
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker pull localhost:5000/iris-classifier:1.0
+1.0: Pulling from iris-classifier
+Digest: sha256:0a11fe030e5c588ec18927a20ad7b0b0876fe32c8401385b0cd5b3ffe070bd35
+Status: Downloaded newer image for localhost:5000/iris-classifier:1.0
+localhost:5000/iris-classifier:1.0
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ curl -s http://localhost:8888 > /dev/null; curl -s http://localhost:8888/missing.txt > /dev/null; docker logs my-container
+172.17.0.1 - - [01/Nov/2026 14:45:13] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [01/Nov/2026 14:45:13] code 404, message File not found
+172.17.0.1 - - [01/Nov/2026 14:45:13] "GET /missing.txt HTTP/1.1" 404 -
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker inspect --format "{{.State.Status}}" my-container
+running
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker inspect --format "{{.Config.Image}} {{.Config.Cmd}}" my-container
+python:3.14-slim [python -m http.server 8000]
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker volume create my-data
+my-data
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker run --rm -v my-data:/data python:3.14-slim sh -c "echo Saved by the first container > /data/note.txt"
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker run --rm -v my-data:/data python:3.14-slim cat /data/note.txt
+Saved by the first container
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     0dc4fcc73f7568ac76541f45570306a0031bf226c7da6061a82c4863f7698fc9
+local     my-data
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          6         3         1.561GB   962.8MB (61%)
+Containers      3         2         2.658MB   4.096kB (0%)
+Local Volumes   2         1         128.1MB   29B (0%)
+Build Cache     13        0         544.5MB   391.1MB
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker stop my-container registry
+my-container
+registry
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ echo y | docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - unused build cache
+
+Are you sure you want to continue? [y/N] Deleted Containers:
+ff329bf75df21ad91e482a9e1e14fa572f2072ae06680d53a51f18d2c59eebcd
+0fb9f4eb8dbaea3d03fe99b09b0788a259acbc673579d6677632b6b4d8ff06d6
+8b5cf89228478866c47df3c4b878aac161cfee6aceed88a32ce5a2e819cd789f
+
+Deleted build cache objects:
+cg18ti9uxppf1lp5y6o0cnvho
+ug7apedpzsqqo7f7tn3hxg8fs
+2r0go258mtom2lp791h7uf8vt
+m7badnts9px6fj2nx0esopba7
+njiig8zq24vagw41rg69wsvsu
+
+Total reclaimed space: 393.8MB
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker compose up -d
+ Network ch02_default Creating 
+ Network ch02_default Creating 
+ Network ch02_default Created 
+ Network ch02_default Created 
+ Container ch02-web-1 Creating 
+ Container ch02-web-1 Created 
+ Container ch02-web-1 Starting 
+ Container ch02-web-1 Started 
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ curl -s http://localhost:8888 | head -1
+<!DOCTYPE HTML>
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker compose down
+ Container ch02-web-1 Stopping 
+ Container ch02-web-1 Stopped 
+ Container ch02-web-1 Removing 
+ Container ch02-web-1 Removed 
+ Network ch02_default Removing 
+ Network ch02_default Removed 
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker images
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest       c567b231f656       22.6kB         10.3kB   U    
+iris-classifier:latest   b30628c02555        595MB          128MB        
+python:3.14-slim         cd89c30eda26        206MB           46MB        
+ubuntu:26.04             6a06111c3b0a        181MB         44.9MB   U    
+[exit 0]
+
+### 2026-11-01 16:45 | arm64 | docker 29.5.2 | in ch02
+$ docker images -a --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+IMAGE ID       REPOSITORY        TAG
+b30628c02555   iris-classifier   latest
+cd89c30eda26   python            3.14-slim
+c567b231f656   hello-world       latest
+6a06111c3b0a   ubuntu            26.04
+[exit 0]
+

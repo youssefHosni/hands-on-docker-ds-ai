@@ -1,0 +1,332 @@
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in ch13
+$ docker run -i --rm python:3.14-slim python - < sandbox/untrusted.py; echo "exit code: $?"
+Reach the internet: yes (200)
+Change files in the image: yes (7)
+Start 500 threads: yes (500 threads)
+Use 1 GB of memory: yes (1000000000)
+exit code: 0
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in ch13
+$ docker run -i --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --user 1000 --memory 256m --pids-limit 64 python:3.14-slim python -u - < sandbox/untrusted.py; echo "exit code: $?"
+Reach the internet: no (URLError)
+Change files in the image: no (OSError)
+Start 500 threads: no (RuntimeError)
+exit code: 137
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in ch13
+$ docker build -q -t data-tools:1.0 tools | cut -c1-19
+sha256:31be07ab4a03
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in ch13
+$ (cat requests.jsonl; sleep 2) | docker run -i --rm --network none data-tools:1.0
+{"jsonrpc":"2.0","id":1,"result":{"capabilities":{"prompts":{"listChanged":false},"resources":{"listChanged":false,"subscribe":false},"tools":{"listChanged":false}},"protocolVersion":"2025-06-18","serverInfo":{"name":"data-tools","version":""}}}
+{"jsonrpc":"2.0","id":2,"result":{"content":[{"text":"237.0","type":"text"}],"isError":false,"structuredContent":{"result":237.0}}}
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ cp .env.example .env; docker compose up -d gateway 2>&1 | tail -3
+ Container agents-gateway-1 Running 
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose logs gateway
+gateway-1  | Note: dynamic-tools disabled when using --servers flag
+gateway-1  | - Reading configuration...
+gateway-1  |   - Reading catalog from [https://desktop.docker.com/mcp/catalog/v3/catalog.yaml tools.yaml]
+gateway-1  | Warning: Failed to fetch secrets from secrets engine: secrets engine is not available: unavailable: dial unix /root/.cache/docker-secrets-engine/engine.sock: connect: no such file or directory
+gateway-1  | - Configuration read in 119.571204ms
+gateway-1  | - Using images:
+gateway-1  |   - data-tools:1.0
+gateway-1  |   - mcp/time@sha256:9c46a918633fb474bf8035e3ee90ebac6bcf2b18ccb00679ac4c179cba0ebfcf
+gateway-1  | - Verifying images [mcp/time]
+gateway-1  | > Images verified in 1.760568457s
+gateway-1  | > Images pulled in 28.711492ms
+gateway-1  | - Those servers are enabled: time, data-tools
+gateway-1  | - Listing MCP tools...
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   - Running mcp/time with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=time -l docker-mcp-transport=stdio --network agents_default]
+gateway-1  |   > time: (2 tools)
+gateway-1  |   > data-tools: (3 tools)
+gateway-1  | > 5 tools listed in 589.84717ms
+gateway-1  | > Initialized in 2.500757316s
+gateway-1  | > Start streaming server on port 8811
+gateway-1  | > Gateway URL: http://localhost:8811/mcp
+gateway-1  | > Use Bearer token from MCP_GATEWAY_AUTH_TOKEN environment variable
+gateway-1  | - Client initialized docker agent@1.0.0 
+gateway-1  | - Current working directory: /
+gateway-1  | - Initialize request:
+gateway-1  |   {
+gateway-1  |     "capabilities": {
+gateway-1  |       "roots": {},
+gateway-1  |       "elicitation": {
+gateway-1  |         "form": {}
+gateway-1  |       }
+gateway-1  |     },
+gateway-1  |     "clientInfo": {
+gateway-1  |       "name": "docker agent",
+gateway-1  |       "version": "1.0.0"
+gateway-1  |     },
+gateway-1  |     "protocolVersion": "2025-11-25"
+gateway-1  |   }
+gateway-1  |   - Scanning tool call arguments for secrets...
+gateway-1  |   > No secret found in arguments.
+gateway-1  |   - Calling tool describe with arguments: object with 1 field(s)
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   > Calling tool describe took: 656.872913ms
+gateway-1  |   - Scanning tool call response for secrets...
+gateway-1  |   > No secret found in response.
+gateway-1  |   - Scanning tool call arguments for secrets...
+gateway-1  |   > No secret found in arguments.
+gateway-1  |   - Calling tool column_stat with arguments: object with 3 field(s)
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   > Calling tool column_stat took: 456.183853ms
+gateway-1  |   - Scanning tool call response for secrets...
+gateway-1  |   > No secret found in response.
+gateway-1  | - Client disconnected docker agent@1.0.0, releasing containers
+gateway-1  | - Client initialized docker agent@1.0.0 
+gateway-1  | - Current working directory: /
+gateway-1  | - Initialize request:
+gateway-1  |   {
+gateway-1  |     "capabilities": {
+gateway-1  |       "roots": {},
+gateway-1  |       "elicitation": {
+gateway-1  |         "form": {}
+gateway-1  |       }
+gateway-1  |     },
+gateway-1  |     "clientInfo": {
+gateway-1  |       "name": "docker agent",
+gateway-1  |       "version": "1.0.0"
+gateway-1  |     },
+gateway-1  |     "protocolVersion": "2025-11-25"
+gateway-1  |   }
+gateway-1  |   - Scanning tool call arguments for secrets...
+gateway-1  |   > No secret found in arguments.
+gateway-1  |   - Calling tool list_files with arguments: object with 0 field(s)
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   > Calling tool list_files took: 462.517536ms
+gateway-1  |   - Scanning tool call response for secrets...
+gateway-1  |   > No secret found in response.
+gateway-1  |   - Scanning tool call arguments for secrets...
+gateway-1  |   > No secret found in arguments.
+gateway-1  |   - Calling tool describe with arguments: object with 1 field(s)
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   > Calling tool describe took: 454.709102ms
+gateway-1  |   - Scanning tool call response for secrets...
+gateway-1  |   > No secret found in response.
+gateway-1  | - Client disconnected docker agent@1.0.0, releasing containers
+gateway-1  | - Client initialized docker agent@1.0.0 
+gateway-1  | - Current working directory: /
+gateway-1  | - Initialize request:
+gateway-1  |   {
+gateway-1  |     "capabilities": {
+gateway-1  |       "roots": {},
+gateway-1  |       "elicitation": {
+gateway-1  |         "form": {}
+gateway-1  |       }
+gateway-1  |     },
+gateway-1  |     "clientInfo": {
+gateway-1  |       "name": "docker agent",
+gateway-1  |       "version": "1.0.0"
+gateway-1  |     },
+gateway-1  |     "protocolVersion": "2025-11-25"
+gateway-1  |   }
+gateway-1  |   - Scanning tool call arguments for secrets...
+gateway-1  |   > No secret found in arguments.
+gateway-1  |   - Calling tool describe with arguments: object with 1 field(s)
+gateway-1  |   - Running data-tools:1.0 with [run --rm -i --init --security-opt no-new-privileges --cpus 1 --memory 2Gb --pull never -l docker-mcp=true -l docker-mcp-tool-type=mcp -l docker-mcp-name=data-tools -l docker-mcp-transport=stdio --network none]
+gateway-1  |   > Calling tool describe took: 466.484768ms
+gateway-1  |   - Scanning tool call response for secrets...
+gateway-1  |   > No secret found in response.
+gateway-1  | - Client disconnected docker agent@1.0.0, releasing containers
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm -T --entrypoint python agent -c "import urllib.request as u; u.urlopen(u.Request(\"http://gateway:8811/mcp\", data=b\"{}\", headers={\"Content-Type\": \"application/json\"}))" 2>&1 | tail -1
+
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker model unload --all
+Unloaded 1 model(s).
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "What is the average price of the houses in houses.csv?" 2>&1 | grep -vE '^ *(llm|Container|Network|Image)|^#|^$'
+[tool] describe {'file': 'houses.csv'}
+[result] {
+  "columns": [
+    "size_m2",
+    "rooms",
+    "age_years",
+    "price_k"
+  ],
+  "rows": 20
+}
+[tool] column_stat {'column': 'price_k', 'file': 'houses.csv', 'stat': 'mean'}
+[result] 237.0
+The average price of the houses in houses.csv is 237.0 thousand krones.
+[exit 0]
+
+### 2026-11-05 00:07 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "What time is it in Helsinki?" 2>&1 | grep -vE '^ *(llm|Container|Network|Image)|^#|^$'
+[tool] get_current_time {'timezone': 'Europe/Helsinki'}
+[result] {
+  "timezone": "Europe/Helsinki",
+  "datetime": "2026-11-05T00:08:03+02:00",
+  "is_dst": false
+}
+The current time in Helsinki is 00:08:03, 5 November 2026.
+[exit 0]
+
+### 2026-11-05 00:08 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "What is the largest house in houses.csv, in square meters?" 2>&1 | grep -vE '^ *(llm|Container|Network|Image)|^#|^$'
+[tool] describe {'file': 'houses.csv'}
+[result] {
+  "columns": [
+    "size_m2",
+    "rooms",
+    "age_years",
+    "price_k"
+  ],
+  "rows": 20
+}
+[tool] column_stat {'column': 'size_m2', 'file': 'houses.csv', 'stat': 'max'}
+[result] 147.0
+The largest house in houses.csv is 147.0 square meters.
+[exit 0]
+
+### 2026-11-05 00:08 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "How many houses are in houses.csv?" 2>&1 | grep -vE '^ *(llm|Container|Network|Image)|^#|^$'
+[tool] describe {'file': 'houses.csv'}
+[result] {
+  "columns": [
+    "size_m2",
+    "rooms",
+    "age_years",
+    "price_k"
+  ],
+  "rows": 20
+}
+The file houses.csv contains 20 houses.
+[exit 0]
+
+### 2026-11-05 00:08 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "What is the capital of France?" 2>&1 | grep -vE '^ *(llm|Container|Network|Image)|^#|^$'
+The capital of France is Paris.
+[exit 0]
+
+### 2026-11-05 00:08 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm -T --entrypoint python agent -c "import urllib.request as u; u.urlopen(u.Request(\"http://gateway:8811/mcp\", data=b\"{}\", headers={\"Content-Type\": \"application/json\"}))" 2>&1 | grep HTTPError
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 401: Unauthorized
+[exit 0]
+
+### 2026-11-05 00:08 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker model unload --all >/dev/null; for q in "What is the average price of the houses in houses.csv?" "How many houses are in houses.csv?"; do MODEL=ai/llama3.2:3B-Q4_K_M docker compose run --rm agent "$q" 2>&1 | grep -E "^(\[tool\]|\[result\] [A-Z0-9]|The|Stopped)"; echo; done
+[tool] column_stat {'file': 'houses.csv', 'column': 'price', 'stat': 'mean'}
+[result] Error executing tool column_stat: No column 'price'. The columns are: size_m2, rooms, age_years, price_k
+[tool] column_stat {'file': 'houses.csv', 'column': 'price', 'stat': 'mean'}
+[result] Error executing tool column_stat: No column 'price'. The columns are: size_m2, rooms, age_years, price_k
+[tool] column_stat {'file': 'houses.csv', 'column': 'price_k', 'stat': 'mean'}
+[result] 237.0
+[tool] column_stat {'file': 'houses.csv', 'column': 'price_k', 'stat': 'mean'}
+[result] 237.0
+[tool] column_stat {'file': 'houses.csv', 'column': 'size_m2', 'stat': 'mean'}
+[result] 99.7
+[tool] column_stat {'file': 'houses.csv', 'column': 'rooms', 'stat': 'mean'}
+[result] 3.15
+Stopped after 6 steps without an answer.
+
+[tool] describe {'file': 'houses.csv'}
+[tool] column_stat {'file': 'houses.csv', 'stat': 'count', 'column': 'size_m2'}
+[result] Error executing tool column_stat: 1 validation error for column_statArguments
+[tool] column_stat {'file': 'houses.csv', 'stat': 'count', 'column': 'rooms'}
+[result] Error executing tool column_stat: 1 validation error for column_statArguments
+[tool] column_stat {'file': 'houses.csv', 'stat': 'max', 'column': 'price_k'}
+[result] 342.0
+[tool] column_stat {'file': 'houses.csv', 'stat': 'min', 'column': 'price_k'}
+[result] 122.0
+[tool] column_stat {'file': 'houses.csv', 'stat': 'mean', 'column': 'price_k'}
+[result] 237.0
+Stopped after 6 steps without an answer.
+
+[exit 0]
+
+### 2026-11-05 00:09 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker model unload --all >/dev/null; docker compose run --rm docker-agent "How many houses are in houses.csv?" 2>&1 | grep -vE "^ *(llm|Container|Network|Image)|^\$|Welcome|feedback"
+I don't have access to the specific file content or metadata to determine the number of houses in houses.csv. Could you clarify or provide more context?
+[exit 0]
+
+### 2026-11-05 00:10 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm docker-agent "What is the largest house in houses.csv, in square meters?" 2>&1 | grep -vE "^ *(llm|Container|Network|Image)|^\$|Welcome|feedback"
+I need to find the largest house in square meters from the houses.csv file. First, I'll check the file's structure to see if it has a column for house size in square meters.
+Calling describe(file: "houses.csv")
+describe response → (
+  columns: [
+  "size_m2",
+  "rooms",
+  "age_years",
+  "price_k"
+]
+  rows: 20
+)
+The largest house in houses.csv is 250 square meters, as the "size_m2" column contains the house sizes in square meters.
+[exit 0]
+
+### 2026-11-05 00:12 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm docker-agent "What is the largest house in houses.csv, in square meters?" 2>&1 | grep -vE "^ *(llm|Container|Network|Image)|^\$|Welcome|feedback"
+Calling describe(file: "houses.csv")
+describe response → (
+  rows: 20
+  columns: [
+  "size_m2",
+  "rooms",
+  "age_years",
+  "price_k"
+]
+)
+Calling column_stat(
+  column: "size_m2"
+  file: "houses.csv"
+  stat: "max"
+)
+column_stat response → (147)
+The largest house in houses.csv is 147.0 square meters.
+[exit 0]
+
+### 2026-11-05 00:12 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose down 2>&1 | tail -1
+ Network agents_default Removed 
+[exit 0]
+
+### 2026-11-05 00:12 | arm64 | docker 29.5.2 | in ch13
+$ docker images --format "table {{.Repository}}:{{.Tag}}\t{{.Size}}" | grep -E "REPOSITORY|agents-|data-tools|mcp|docker-agent"
+REPOSITORY:TAG                SIZE
+data-tools:1.0                278MB
+agents-agent:latest           314MB
+docker/docker-agent:1.156.2   305MB
+docker/mcp-gateway:v0.44.3    139MB
+mcp/time:latest               360MB
+[exit 0]
+
+### 2026-11-05 00:13 | arm64 | docker 29.5.2 | in ch13
+$ docker build -q -t data-tools:1.0 tools | cut -c1-19
+sha256:ec3af9320896
+[exit 0]
+
+### 2026-11-05 00:13 | arm64 | docker 29.5.2 | in ch13
+$ (cat requests.jsonl; sleep 2) | docker run -i --rm --network none data-tools:1.0
+{"jsonrpc":"2.0","id":1,"result":{"capabilities":{"prompts":{"listChanged":false},"resources":{"listChanged":false,"subscribe":false},"tools":{"listChanged":false}},"protocolVersion":"2025-06-18","serverInfo":{"name":"data-tools","version":""}}}
+{"jsonrpc":"2.0","id":2,"result":{"content":[{"text":"237.0","type":"text"}],"isError":false,"structuredContent":{"result":237.0}}}
+[exit 0]
+
+### 2026-11-05 00:13 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose up -d gateway 2>&1 | tail -1; sleep 6; docker compose run --rm agent "What is the largest house in houses.csv, in square meters?" 2>&1 | tail -1; docker compose down 2>&1 | tail -1
+ Container agents-gateway-1 Started 
+The largest house in houses.csv is 147.0 square meters.
+ Network agents_default Removed 
+[exit 0]
+

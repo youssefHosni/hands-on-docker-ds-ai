@@ -1,0 +1,7 @@
+services:
+  web:
+    image: python:3.14-slim
+    command: python -m http.server 8000
+    init: true
+    ports:
+      - "8888:8000"

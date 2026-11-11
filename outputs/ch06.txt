@@ -1,0 +1,562 @@
+### 2026-11-01 18:37 | arm64 | docker 29.5.2 | in ch06/01-python
+$ docker build -q -t ds-python .
+sha256:953d5b32e552e18b9b65efdee7309a736116b76d742aebc1e3e9a30c7fd421ba
+[exit 0]
+
+### 2026-11-01 18:37 | arm64 | docker 29.5.2 | in ch06/01-python
+$ docker run --rm ds-python python -c "import numpy, pandas; print(numpy.__version__, pandas.__version__)"
+2.5.4 3.1.0
+[exit 0]
+
+### 2026-11-01 18:37 | arm64 | docker 29.5.2 | in ch06/01-python-uv
+$ docker build -t ds-python:uv .
+[+] Building 9.5s (6/6) FINISHED                                  docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 159B                                       0.0s
+ => [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6-python3.14-t  1.3s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/2] FROM ghcr.io/astral-sh/uv:0.13.6-python3.14-trixie-slim@sha256:  3.8s
+ => => resolve ghcr.io/astral-sh/uv:0.13.6-python3.14-trixie-slim@sha256:  0.0s
+ => => sha256:37cd338f1d810cbd831594783288d469d6877df07 18.12MB / 18.12MB  1.7s
+ => => sha256:e623427576e10fdabc83d039774c6fd6f2ea1ab85145801 248B / 248B  0.4s
+ => => sha256:1c02e772a93271d8b320556859073951e8764f325 12.33MB / 12.33MB  1.3s
+ => => sha256:ca79f135281071304babe832425a5c91eae8528d144 1.53MB / 1.53MB  0.7s
+ => => sha256:ddc0c1e36a6793411b6c8d48e1ddad2987405d377 30.20MB / 30.20MB  2.2s
+ => => extracting sha256:ddc0c1e36a6793411b6c8d48e1ddad2987405d377da92bcf  0.7s
+ => => extracting sha256:ca79f135281071304babe832425a5c91eae8528d144a22fe  0.1s
+ => => extracting sha256:1c02e772a93271d8b320556859073951e8764f3255d44790  0.3s
+ => => extracting sha256:e623427576e10fdabc83d039774c6fd6f2ea1ab85145801d  0.0s
+ => => extracting sha256:37cd338f1d810cbd831594783288d469d6877df07d005123  0.2s
+ => [2/2] RUN uv pip install --system --no-cache numpy==2.5.4 pandas==3.1  2.1s
+ => exporting to image                                                     2.3s
+ => => exporting layers                                                    1.5s
+ => => exporting manifest sha256:73def92645c8cd7fdc12eb479facd819b2beeb84  0.0s
+ => => exporting config sha256:aaa76e04ea9bcc74bbd608e5df381bf72b155001e8  0.0s
+ => => exporting attestation manifest sha256:cc331b6c43013ec959b170499d03  0.0s
+ => => exporting manifest list sha256:768ae92958cd738eb5ac53bdb255ac30073  0.0s
+ => => naming to docker.io/library/ds-python:uv                            0.0s
+ => => unpacking to docker.io/library/ds-python:uv                         0.7s
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06/01-python-uv
+$ docker run --rm ds-python:uv python -c "import numpy, pandas; print(numpy.__version__, pandas.__version__)"
+2.5.4 3.1.0
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06/01-python
+$ docker build --no-cache -t ds-python .
+[+] Building 11.0s (6/6) FINISHED                                 docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 117B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => CACHED [1/2] FROM docker.io/library/python:3.14-slim@sha256:cd89c30ed  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [2/2] RUN pip install --no-cache-dir numpy==2.5.4 pandas==3.1.0        7.6s
+ => exporting to image                                                     3.3s
+ => => exporting layers                                                    2.6s
+ => => exporting manifest sha256:57b9cabb9eafef55459271fdfba13cbf8ed95694  0.0s
+ => => exporting config sha256:d496ad0864552996bc0b972e856ab911a4d2a34876  0.0s
+ => => exporting attestation manifest sha256:71665af864efbfc0343ea23cf688  0.0s
+ => => exporting manifest list sha256:0a9b697c261b2d49777632636c64e526aa1  0.0s
+ => => naming to docker.io/library/ds-python:latest                        0.0s
+ => => unpacking to docker.io/library/ds-python:latest                     0.7s
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name qdrant -p 6333:6333 -p 6334:6334 -v qdrant_storage:/qdrant/storage qdrant/qdrant:v1.20.0
+Unable to find image 'qdrant/qdrant:v1.20.0' locally
+v1.20.0: Pulling from qdrant/qdrant
+1c52c891fb2b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+2988bb90826a: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+a9cc22cb0052: Pulling fs layer
+a96b6ec55d3a: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4a34fa9f5c69: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c2eca27d9aee: Pulling fs layer
+4f4fb700ef54: Already exists
+1c52c891fb2b: Download complete
+a9cc22cb0052: Download complete
+4a34fa9f5c69: Download complete
+a96b6ec55d3a: Download complete
+c2eca27d9aee: Download complete
+44136fa355b3: Already exists
+4f4fb700ef54: Pull complete
+1c52c891fb2b: Pull complete
+e711d6c291bc: Download complete
+2988bb90826a: Download complete
+29d8fc43b690: Download complete
+a9cc22cb0052: Pull complete
+4a34fa9f5c69: Pull complete
+a96b6ec55d3a: Pull complete
+2988bb90826a: Pull complete
+c2eca27d9aee: Pull complete
+Digest: sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2
+Status: Downloaded newer image for qdrant/qdrant:v1.20.0
+099f9819a158e767b9c471af56e58326cdcfdb0ad55c2b6bd673aec884385789
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ curl -s -X PUT http://localhost:6333/collections/movies -H 'Content-Type: application/json' -d '{"vectors": {"size": 3, "distance": "Cosine"}}'
+{"result":true,"status":"ok","time":0.025355834}
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ curl -s -X PUT http://localhost:6333/collections/movies/points -H 'Content-Type: application/json' -d '{"points": [{"id": 1, "vector": [0.9, 0.1, 0.0], "payload": {"title": "Alien"}}, {"id": 2, "vector": [0.1, 0.9, 0.0], "payload": {"title": "Notting Hill"}}, {"id": 3, "vector": [0.8, 0.2, 0.1], "payload": {"title": "The Thing"}}]}'
+{"result":{"operation_id":1,"status":"acknowledged"},"status":"ok","time":0.00045696}
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ curl -s -X POST http://localhost:6333/collections/movies/points/query -H 'Content-Type: application/json' -d '{"query": [1.0, 0.0, 0.0], "limit": 2, "with_payload": true}'
+{"result":{"points":[{"id":1,"version":1,"score":0.9938837,"payload":{"title":"Alien"}},{"id":3,"version":1,"score":0.9630868,"payload":{"title":"The Thing"}}]},"status":"ok","time":0.001209546}
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:6333/dashboard
+200
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ docker rm -f qdrant
+qdrant
+[exit 0]
+
+### 2026-11-01 18:38 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name pgvector -e POSTGRES_PASSWORD=change-me -p 5432:5432 -v pgdata:/var/lib/postgresql pgvector/pgvector:0.8.7-pg18-trixie
+Unable to find image 'pgvector/pgvector:0.8.7-pg18-trixie' locally
+0.8.7-pg18-trixie: Pulling from pgvector/pgvector
+6ff057780a44: Pulling fs layer
+54ddeb74882a: Pulling fs layer
+fbdebc7a485d: Pulling fs layer
+3a714400795f: Pulling fs layer
+22aa5aa83b7d: Pulling fs layer
+de23c21b57f2: Pulling fs layer
+3c3225ba1025: Pulling fs layer
+acba8632a2fc: Pulling fs layer
+8648fbfa17a8: Pulling fs layer
+7672a6ce4d85: Pulling fs layer
+24b05182f7a5: Pulling fs layer
+97f720713f77: Pulling fs layer
+d1a3067f9c98: Pulling fs layer
+dedef932f12c: Pulling fs layer
+3a714400795f: Download complete
+acba8632a2fc: Download complete
+7672a6ce4d85: Download complete
+97f720713f77: Download complete
+d1a3067f9c98: Download complete
+54ddeb74882a: Download complete
+dedef932f12c: Download complete
+24b05182f7a5: Download complete
+6ff057780a44: Download complete
+de23c21b57f2: Download complete
+3a714400795f: Pull complete
+fbdebc7a485d: Download complete
+aeb55db4d113: Download complete
+3c3225ba1025: Download complete
+3c3225ba1025: Pull complete
+6ff057780a44: Pull complete
+8648fbfa17a8: Download complete
+acba8632a2fc: Pull complete
+54ddeb74882a: Pull complete
+de23c21b57f2: Pull complete
+8648fbfa17a8: Pull complete
+22aa5aa83b7d: Download complete
+7672a6ce4d85: Pull complete
+24b05182f7a5: Pull complete
+22aa5aa83b7d: Pull complete
+97f720713f77: Pull complete
+d1a3067f9c98: Pull complete
+dedef932f12c: Pull complete
+fbdebc7a485d: Pull complete
+Digest: sha256:5895949dfcdf308eb0cd31c950c93c14895c77f33fbedfecf1fa511ab1d4bcd2
+Status: Downloaded newer image for pgvector/pgvector:0.8.7-pg18-trixie
+7e1b1d9813026fa579a8224ab01e95dbf130f9cc5ceece0da0ecdf5957f611e3
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06
+$ docker exec pgvector psql -U postgres -tAc "SELECT extversion FROM pg_extension WHERE extname = 'vector'"
+0.8.7
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06
+$ docker exec pgvector ls /var/lib/postgresql
+18
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06
+$ docker rm -f pgvector
+pgvector
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06/11-pgvector
+$ docker run -d --name pgvector -e POSTGRES_PASSWORD=change-me -p 5432:5432 -v pgdata:/var/lib/postgresql pgvector/pgvector:0.8.7-pg18-trixie
+0469daec9da684f6ebfbcd62abe068e9f01d9dad463c9a2510229c4884d4bdd4
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06/11-pgvector
+$ docker exec -i pgvector psql -U postgres < movies.sql
+CREATE EXTENSION
+CREATE TABLE
+INSERT 0 3
+   title   |       distance       
+-----------+----------------------
+ Alien     | 0.006116251198662548
+ The Thing |   0.0369132008962616
+(2 rows)
+
+[exit 0]
+
+### 2026-11-01 18:39 | arm64 | docker 29.5.2 | in ch06/11-pgvector
+$ docker rm -f pgvector
+pgvector
+[exit 0]
+
+### 2026-11-01 18:40 | arm64 | docker 29.5.2 | in ch06
+$ docker image inspect --format "{{.Config.Cmd}}" ghcr.io/mlflow/mlflow:v3.17.2
+[python3]
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker network create mlflow
+f8b03f80b067ccf90a7d801adcc6f345ab0178ec87f8ff0b926daede8a1fb599
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker run -d --name mlflow --network mlflow -p 5001:5000 -v mlflow:/mlflow ghcr.io/mlflow/mlflow:v3.17.2 mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --artifacts-destination /mlflow/artifacts
+8641e5d0a5c11883be0c3b79579c4ceda9953bde52c8593e23f8c72185cafdcb
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker run --rm --network mlflow -e GIT_PYTHON_REFRESH=quiet -v "$PWD":/work -w /work ghcr.io/mlflow/mlflow:v3.17.2 python log_run.py 2>&1 | tail -1
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/experiments/get-by-name failed with error code 403 != 200. Response body: 'Invalid Host header - possible DNS rebinding attack detected'
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker rm -f mlflow
+mlflow
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker run -d --name mlflow --network mlflow -p 5001:5000 -v mlflow:/mlflow ghcr.io/mlflow/mlflow:v3.17.2 mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --artifacts-destination /mlflow/artifacts --allowed-hosts "mlflow:5000,localhost:5001"
+9f44d01ca72b2db2186d0759ca53490f7817c2ab1cdd80fa5e492cb46619f98c
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker run --rm --network mlflow -e GIT_PYTHON_REFRESH=quiet -v "$PWD":/work -w /work ghcr.io/mlflow/mlflow:v3.17.2 python log_run.py
+2026/11/01 16:41:58 INFO mlflow.tracking.fluent: Experiment with name 'iris' does not exist. Creating a new experiment.
+🏃 View run selective-mouse-241 at: http://mlflow:5000/#/experiments/1/runs/2ba9c129c1a242f0b217dc70a484b037
+🧪 View experiment at: http://mlflow:5000/#/experiments/1
+  params.C  metrics.accuracy    status
+0      1.0            0.9733  FINISHED
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5001/
+200
+[exit 0]
+
+### 2026-11-01 18:41 | arm64 | docker 29.5.2 | in ch06/12-mlflow
+$ docker rm -f mlflow
+mlflow
+[exit 0]
+
+### 2026-11-01 18:42 | arm64 | docker 29.5.2 | in ch06
+$ docker image inspect --format "{{.Config.Entrypoint}} {{.Config.Cmd}}" apache/airflow:3.3.2
+[/usr/bin/dumb-init -- /entrypoint] []
+[exit 0]
+
+### 2026-11-01 18:42 | arm64 | docker 29.5.2 | in ch06
+$ docker run --rm apache/airflow:3.3.2 2>&1 | tail -6
+      version           Show the version
+
+Options:
+  -h, --help            show this help message and exit
+
+airflow command error: the following arguments are required: GROUP_OR_COMMAND, see help above.
+[exit 0]
+
+### 2026-11-01 18:42 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name airflow -p 8080:8080 apache/airflow:3.3.2 standalone
+8ad8452c31a67dc197b7042a00cdefead9fd224435cf42d5cc79df47d4856405
+[exit 0]
+
+### 2026-11-01 18:44 | arm64 | docker 29.5.2 | in ch06
+$ docker logs airflow 2>&1 | grep -i -m3 "password\|login with"
+2026-11-01T16:42:58.413989Z [warning  ] SimpleAuthManager is active but the deployment shape looks like production (non-sqlite backend, non-local API host, or a distributed executor). SimpleAuthManager stores passwords in plaintext at /opt/airflow/simple_auth_manager_passwords.json.generated and prints generated passwords to stdout/logs on first init. Use a real auth manager (e.g. FAB or Keycloak) for production deployments. [airflow.api_fastapi.auth.managers.simple.simple_auth_manager] loc=simple_auth_manager.py:176
+Simple auth manager | Password for user 'admin': 2NhU6X57sQ4aK2cW
+[exit 0]
+
+### 2026-11-01 18:44 | arm64 | docker 29.5.2 | in ch06
+$ curl -s http://localhost:8080/api/v2/monitor/health
+{"metadatabase":{"status":"healthy"},"scheduler":{"status":"healthy","latest_scheduler_heartbeat":"2026-11-01T16:44:00.174754+00:00"},"triggerer":{"status":"healthy","latest_triggerer_heartbeat":"2026-11-01T16:44:01.311099+00:00"},"dag_processor":{"status":"healthy","latest_dag_processor_heartbeat":"2026-11-01T16:44:01.483586+00:00"}}
+[exit 0]
+
+### 2026-11-01 18:44 | arm64 | docker 29.5.2 | in ch06
+$ docker logs airflow 2>&1 | grep "Password for user"
+Simple auth manager | Password for user 'admin': 2NhU6X57sQ4aK2cW
+[exit 0]
+
+### 2026-11-01 18:44 | arm64 | docker 29.5.2 | in ch06
+$ docker rm -f airflow
+airflow
+[exit 0]
+
+### 2026-11-01 18:45 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker pull -q quay.io/jupyter/datascience-notebook:2026-10-28
+quay.io/jupyter/datascience-notebook:2026-10-28
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker run -d --name jupyter -p 8888:8888 -v "$PWD":/home/jovyan/work quay.io/jupyter/datascience-notebook:2026-10-28
+51f72fafae3333bfd0f8b454930e0d1daf22cd641282842d4c2beb1899495490
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker logs jupyter 2>&1 | grep -m1 "http://127.0.0.1:8888/lab?token="
+[I 2026-11-01 16:47:32.531 ServerApp]     http://127.0.0.1:8888/lab?token=cdf2d8bf15f4ddfb08bab0a2b2ae59e04282b4811e34d28a
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ curl -s http://localhost:8888/api
+{"version": "2.21.1"}
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker exec jupyter python -c "import sys, numpy, pandas, sklearn; print(sys.version.split()[0], numpy.__version__, pandas.__version__, sklearn.__version__)"
+3.13.18 2.5.4 3.1.0 1.9.1
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker exec jupyter sh -c "R --version | head -1; julia --version"
+R version 4.5.3 (2026-03-11) -- "Reassured Reassurer"
+julia version 1.13.3
+[exit 0]
+
+### 2026-11-01 18:47 | arm64 | docker 29.5.2 | in ch06/02-jupyter
+$ docker exec jupyter ls /home/jovyan/work
+README.md
+[exit 0]
+
+### 2026-11-01 18:48 | arm64 | docker 29.5.2 | in ch06/03-pytorch
+$ docker build -q -t torch-demo .
+sha256:cdd2a81dd9882ddddd79892caa07cd9225627aa8754c86f110b31d3f740f07aa
+[exit 0]
+
+### 2026-11-01 18:51 | arm64 | docker 29.5.2 | in ch06/03-pytorch
+$ docker run --rm torch-demo
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+PyTorch 2.15.0+cu134, running on: cpu
+Result shape: torch.Size([1000, 1000])
+[exit 0]
+
+### 2026-11-01 18:52 | arm64 | docker 29.5.2 | in ch06/04-transformers
+$ docker run --rm pytorch/pytorch:2.15.0-cuda13.4-cudnn9-runtime pip install transformers==5.22.1 2>&1 | grep -E "error:|externally-managed|^hint"
+error: externally-managed-environment
+hint: See PEP 668 for the detailed specification.
+[exit 0]
+
+### 2026-11-01 18:52 | arm64 | docker 29.5.2 | in ch06/03-pytorch-jupyter
+$ docker build -q -t torch-jupyter .
+sha256:046eb7135b368d4f27824144a7d429ac0dd240c92be9269970c870d051b30c00
+[exit 0]
+
+### 2026-11-01 18:53 | arm64 | docker 29.5.2 | in ch06/03-pytorch-jupyter
+$ docker run -d --name torch-jupyter -p 8888:8888 torch-jupyter
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+c016edc724d862c08d868cedaf88e1464b4dfbeff94c715d6d9ece63b674903f
+[exit 0]
+
+### 2026-11-01 18:53 | arm64 | docker 29.5.2 | in ch06/03-pytorch-jupyter
+$ docker logs torch-jupyter 2>&1 | grep -m1 "http://127.0.0.1:8888/tree?token="
+[I 2026-11-01 16:53:23.865 ServerApp]     http://127.0.0.1:8888/tree?token=f0162fce53771f538206fcd17ea469e24e97fb078fe76737
+[exit 0]
+
+### 2026-11-01 18:53 | arm64 | docker 29.5.2 | in ch06/03-pytorch-jupyter
+$ curl -s http://localhost:8888/api
+{"version": "2.21.1"}
+[exit 0]
+
+### 2026-11-01 18:56 | arm64 | docker 29.5.2 | in ch06/04-transformers
+$ docker build -q -t hf-demo .
+sha256:a043dd19d95155dbef318c5bf0d57faefeaeb775c02afad8f0b4f86794fe61c8
+[exit 0]
+
+### 2026-11-01 18:56 | arm64 | docker 29.5.2 | in ch06/04-transformers
+$ docker run --rm -v hf-cache:/root/.cache/huggingface hf-demo
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 104/104 [00:00<00:00, 2757.20it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+[exit 0]
+
+### 2026-11-01 18:57 | arm64 | docker 29.5.2 | in ch06/06-tensorflow
+$ docker build -q -t tf-demo .
+sha256:855b37673591cca07559b6d1ed8fbf6c049d76f8a360b53efac33b0bdc4d4d99
+[exit 0]
+
+### 2026-11-01 18:58 | arm64 | docker 29.5.2 | in ch06/06-tensorflow
+$ docker run --rm tf-demo
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+[mutex.cc : 452] RAW: Lock blocking 0xc4af48   @ 0x400452734c 0x400452696f 0x40045267b0 0x40044bb9ff 0x40044b623a 0x40044b66fd 0x400080747e
+[mutex.cc : 1990] RAW: Check (v & (kMuWait | kMuWrWait)) != kMuWrWait failed: Lock: Mutex corrupt: waiting writer with no waiters: 0x40014a2370
+[exit 137]
+
+### 2026-11-01 19:08 | arm64 | docker 29.5.2 | in ch06/06-tensorflow
+$ docker build -q -f Dockerfile.arm64 -t tf-demo:arm64 .
+sha256:fc20b7cde8d91544e9b11052b9ebc957485e10d40843591d92e12333744699a4
+[exit 0]
+
+### 2026-11-01 19:09 | arm64 | docker 29.5.2 | in ch06/06-tensorflow
+$ docker run --rm tf-demo:arm64
+TensorFlow 2.21.0
+GPUs: []
+Loss after one epoch: 2.717
+[exit 0]
+
+### 2026-11-01 19:09 | arm64 | docker 29.5.2 | in ch06/05-cuda
+$ docker build -q -t cuda-demo .
+sha256:557ed023b19b05cfe54c0df455fcdcb22dada9f494f2e306651e2c66c0e9f720
+[exit 0]
+
+### 2026-11-01 19:11 | arm64 | docker 29.5.2 | in ch06/05-cuda
+$ docker run --rm cuda-demo
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.4.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+CUDA runtime 13.4
+No GPU visible (CUDA error code 35 )
+[exit 0]
+
+### 2026-11-01 19:11 | arm64 | docker 29.5.2 | in ch06/05-cuda
+$ docker run --rm cuda-demo python --version
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.4.3
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+Python 3.12.3
+[exit 0]
+
+### 2026-11-01 19:11 | arm64 | docker 29.5.2 | in ch06
+$ docker network create llm
+ded2b05b3ab6be3eb0c2c89ec1f1c19e9ff4bd6678afd530cbd0b4d3b9d08cc9
+[exit 0]
+
+### 2026-11-01 19:11 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name ollama --network llm -p 11434:11434 -v ollama:/root/.ollama ollama/ollama:0.40.13
+Unable to find image 'ollama/ollama:0.40.13' locally
+0.40.13: Pulling from ollama/ollama
+5d3ac83230bd: Pulling fs layer
+a3f062c14749: Pulling fs layer
+34c7fa60abdd: Pulling fs layer
+e2d2bb84d022: Pulling fs layer
+5d3ac83230bd: Download complete
+e2d2bb84d022: Download complete
+e2d2bb84d022: Pull complete
+a3f062c14749: Download complete
+a3f062c14749: Pull complete
+5d3ac83230bd: Pull complete
+34c7fa60abdd: Download complete
+34c7fa60abdd: Pull complete
+Digest: sha256:b2f0122c476bc9fe7ce679d8bb4bd555351e25e2554eefb156f61cb0a89cf429
+Status: Downloaded newer image for ollama/ollama:0.40.13
+a320d4cd18ead60fb82eced0aa69f706e73e52d1a3f790149a0357520e7e1731
+[exit 0]
+
+### 2026-11-01 19:13 | arm64 | docker 29.5.2 | in ch06
+$ docker exec ollama ollama pull gemma3:270m 2>&1 | tail -2
+writing manifest 
+success 
+[exit 0]
+
+### 2026-11-01 19:14 | arm64 | docker 29.5.2 | in ch06
+$ curl -s http://localhost:11434/api/generate -d '{"model": "gemma3:270m", "prompt": "Name one benefit of Docker for data scientists, in one sentence.", "stream": false}' | python3 -c 'import json,sys; print(json.load(sys.stdin)["response"])'
+Docker provides a consistent and isolated environment for data scientists, enabling them to experiment with different data sources and configurations without affecting their code.
+
+[exit 0]
+
+### 2026-11-01 19:14 | arm64 | docker 29.5.2 | in ch06
+$ docker exec ollama ollama list
+NAME           ID              SIZE      MODIFIED     
+gemma3:270m    e7d36fb2c3b3    291 MB    1 second ago    
+[exit 0]
+
+### 2026-11-01 19:14 | arm64 | docker 29.5.2 | in ch06
+$ docker exec -it ollama ollama run gemma3:270m "In one sentence, what is a Docker container?"
+A Docker container is a lightweight, self-contained environment that runs a
+a containerized application.
+
+
+[exit 0]
+
+### 2026-11-01 21:28 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name open-webui --network llm -p 3001:8080 -e OLLAMA_BASE_URL=http://ollama:11434 -e WEBUI_AUTH=False -v open-webui:/app/backend/data ghcr.io/open-webui/open-webui:v0.12.5
+096c0610336b2fd4b2ebc3a65b1f7646b24a8795656f1a4338ab0de35c03d79a
+[exit 0]
+
+### 2026-11-01 21:29 | arm64 | docker 29.5.2 | in ch06
+$ curl -s http://localhost:3001/health
+{"status":true}
+[exit 0]
+
+### 2026-11-01 21:39 | arm64 | docker 29.5.2 | in ch06
+$ docker run -d --name vllm -p 8000:8000 --shm-size=2g -e VLLM_CPU_KVCACHE_SPACE=1 -v hf-cache:/root/.cache/huggingface vllm/vllm-openai-cpu:v0.31.0 --model HuggingFaceTB/SmolLM2-135M-Instruct
+40795bba2a1e616cbe1689aa9f80189dfb425c8fad24144f2ec41eaf15d0fb97
+[exit 0]
+
+### 2026-11-01 21:40 | arm64 | docker 29.5.2 | in ch06
+$ docker logs vllm 2>&1 | grep "Application startup complete"
+INFO:     Application startup complete.
+[exit 0]
+
+### 2026-11-01 21:40 | arm64 | docker 29.5.2 | in ch06
+$ curl -s http://localhost:8000/v1/models | python3 -c "import json,sys; print([m[\"id\"] for m in json.load(sys.stdin)[\"data\"]])"
+['HuggingFaceTB/SmolLM2-135M-Instruct']
+[exit 0]
+
+### 2026-11-01 21:40 | arm64 | docker 29.5.2 | in ch06
+$ curl -s http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{"model": "HuggingFaceTB/SmolLM2-135M-Instruct", "messages": [{"role": "user", "content": "In one sentence, what is Docker?"}], "max_tokens": 60, "temperature": 0}' | python3 -c "import json,sys; print(json.load(sys.stdin)[\"choices\"][0][\"message\"][\"content\"])"
+Docker is a container-based software platform that allows developers to create, deploy, and manage applications on a single, isolated environment.
+[exit 0]
+

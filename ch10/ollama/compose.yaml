@@ -1,0 +1,45 @@
+services:
+  ollama:
+    image: ollama/ollama:0.40.13
+    ports:
+      - "11434:11434"
+    volumes:
+      - models:/root/.ollama
+    environment:
+      # Keep a model in memory for 30 minutes after the last request (the default is 5)
+      OLLAMA_KEEP_ALIVE: 30m
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Downloads the model once Ollama is up, then exits
+  pull:
+    image: ollama/ollama:0.40.13
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    command: ["pull", "${MODEL:-gemma3:1b}"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:v0.12.5
+    profiles: ["ui"]
+    ports:
+      - "3001:8080"
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      WEBUI_AUTH: "False"
+      # Gemma 3 can't call tools in Ollama: turn off Open WebUI's built-in tools by default
+      DEFAULT_MODEL_PARAMS: '{"function_calling": "legacy"}'
+    volumes:
+      - webui-data:/app/backend/data
+    depends_on:
+      pull:
+        condition: service_completed_successfully
+
+volumes:
+  models:
+  webui-data:

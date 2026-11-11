@@ -1,0 +1,5 @@
+# A release that builds and starts, but has lost its model
+FROM ml-api:1.0.0
+USER root
+RUN rm model.pkl
+USER 1000

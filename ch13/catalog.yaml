@@ -1,0 +1,8 @@
+# Our own MCP server, next to the ones in Docker's catalog
+registry:
+  data-tools:
+    title: Data tools
+    description: Statistics on the CSV files in a folder
+    type: server
+    image: data-tools:1.0
+    disableNetwork: true

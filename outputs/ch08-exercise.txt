@@ -1,0 +1,167 @@
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose up -d
+ Volume project_db-data Creating 
+ Volume project_mlflow-artifacts Creating 
+ Network project_default Creating 
+ Network project_default Creating 
+ Volume project_db-data Creating 
+ Volume project_mlflow-artifacts Creating 
+ Volume project_db-data Created 
+ Volume project_db-data Created 
+ Volume project_mlflow-artifacts Created 
+ Volume project_mlflow-artifacts Created 
+ Network project_default Created 
+ Network project_default Created 
+ Container project-db-1 Creating 
+ Container project-db-1 Created 
+ Container project-mlflow-1 Creating 
+ Container project-mlflow-1 Created 
+ Container project-trainer-1 Creating 
+ Container project-trainer-1 Created 
+ Container project-api-1 Creating 
+ Container project-api-1 Created 
+ Container project-db-1 Starting 
+ Container project-db-1 Started 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Starting 
+ Container project-mlflow-1 Started 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-1 Starting 
+ Container project-trainer-1 Started 
+ Container project-trainer-1 Waiting 
+ Container project-trainer-1 Exited 
+ Container project-api-1 Starting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose run --rm -e C=0.01 trainer
+ Container project-mlflow-1 Running 
+ Container project-db-1 Running 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-run-91abbc3398f4 Creating 
+ Container project-trainer-run-91abbc3398f4 Created 
+2026/11/01 23:25:42 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+2026/11/01 23:25:42 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+2026/11/01 23:25:42 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+Registered model 'iris' already exists. Creating a new version of this model...
+2026/11/01 23:25:45 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: iris, version 2
+Created version '2' of model 'iris'.
+🏃 View run bittersweet-foal-636 at: http://mlflow:5000/#/experiments/1/runs/a83569d8744d4eeb997cc12765ba3bec
+🧪 View experiment at: http://mlflow:5000/#/experiments/1
+C=0.01, accuracy=0.8222: iris version 2 is now the champion
+[exit 0]
+
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose restart api
+ Container project-api-1 Restarting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s http://localhost:8000/health
+{"status":"ok","model_version":"2"}
+[exit 0]
+
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose run --rm trainer python -c "from mlflow import MlflowClient; MlflowClient().set_registered_model_alias('iris', 'champion', '1')"
+ Container project-db-1 Running 
+ Container project-mlflow-1 Running 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-run-b8d51c7fa821 Creating 
+ Container project-trainer-run-b8d51c7fa821 Created 
+[exit 0]
+
+### 2026-11-02 01:25 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose restart api
+ Container project-api-1 Restarting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:26 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s http://localhost:8000/health
+{"status":"ok","model_version":"1"}
+[exit 0]
+
+### 2026-11-02 01:26 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose down -v
+ Container project-api-1 Stopping 
+ Container project-api-1 Stopped 
+ Container project-api-1 Removing 
+ Container project-api-1 Removed 
+ Container project-trainer-1 Stopping 
+ Container project-trainer-1 Stopped 
+ Container project-trainer-1 Removing 
+ Container project-trainer-1 Removed 
+ Container project-mlflow-1 Stopping 
+ Container project-mlflow-1 Stopped 
+ Container project-mlflow-1 Removing 
+ Container project-mlflow-1 Removed 
+ Container project-db-1 Stopping 
+ Container project-db-1 Stopped 
+ Container project-db-1 Removing 
+ Container project-db-1 Removed 
+ Volume project_mlflow-artifacts Removing 
+ Volume project_db-data Removing 
+ Network project_default Removing 
+ Volume project_mlflow-artifacts Removed 
+ Volume project_db-data Removed 
+ Network project_default Removed 
+[exit 0]
+

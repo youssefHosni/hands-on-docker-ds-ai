@@ -1,0 +1,19 @@
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in ch03
+$ docker run -p 8000:8000 ml-app
+2026-11-01 15:00:16,353 - INFO - Model loaded successfully from model.pkl
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.17.0.1:45882 - "GET / HTTP/1.1" 200 OK
+2026-11-01 15:00:21,142 - INFO - Prediction successful: [12.000000000000002, 14.000000000000002, 16.0]
+INFO:     172.17.0.1:45884 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:45900 - "POST /predict HTTP/1.1" 422 Unprocessable Content
+2026-11-01 15:00:21,273 - WARNING - Prediction request failed: Missing 'input' data.
+INFO:     172.17.0.1:45906 - "POST /predict HTTP/1.1" 400 Bad Request
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]
+[exit 0]
+

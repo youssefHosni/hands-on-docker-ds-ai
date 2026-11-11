@@ -1,0 +1,24 @@
+models:
+  local:
+    provider: dmr
+    model: ${env.LLM_MODEL}
+    base_url: ${env.LLM_URL}
+    temperature: 0
+
+agents:
+  root:
+    model: local
+    description: A data analyst
+    instruction: |
+      You answer questions about the CSV files you can reach with your tools.
+      Every number in your answer must come from a tool result. Never guess one.
+      Look at a file's columns before you use them. Answer in one sentence.
+    toolsets:
+      - type: mcp
+        # The gateway is on our Compose network, which Docker Agent refuses by default
+        allow_private_ips: true
+        remote:
+          url: http://gateway:8811/mcp
+          transport_type: streamable
+          headers:
+            Authorization: Bearer ${env.MCP_GATEWAY_AUTH_TOKEN}

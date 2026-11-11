@@ -1,0 +1,42 @@
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in exercises/ch03
+$ docker build -t ml-app .
+[+] Building 0.7s (11/11) FINISHED                                docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 578B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 147B                                          0.0s
+ => [1/6] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 2.84kB                                        0.0s
+ => CACHED [2/6] WORKDIR /app                                              0.0s
+ => CACHED [3/6] COPY requirements.txt .                                   0.0s
+ => CACHED [4/6] RUN pip install --no-cache-dir -r requirements.txt        0.0s
+ => [5/6] COPY . .                                                         0.0s
+ => [6/6] RUN python train.py                                              0.6s
+ => exporting to image                                                     0.1s
+ => => exporting layers                                                    0.1s
+ => => exporting manifest sha256:bc254690feb8a9b4a91503dd03939799573ce516  0.0s
+ => => exporting config sha256:366f83693da2c0fd064719a7834ffdf346ef89c4b8  0.0s
+ => => exporting attestation manifest sha256:1f5bc2ffc9c459af4bde05d8f923  0.0s
+ => => exporting manifest list sha256:dbbcc9be4fd42008bcb142191fac286e753  0.0s
+ => => naming to docker.io/library/ml-app:latest                           0.0s
+ => => unpacking to docker.io/library/ml-app:latest                        0.0s
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in exercises/ch03
+$ docker run -d --rm --name ml-api -p 8000:8000 ml-app
+819a4b3f4da0884b6e20dbd4f0f066dd594e7be0ce3aba73ea4fece9810a05cb
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in exercises/ch03
+$ curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"input": [6, 7, 8]}'
+{"prediction":[18.000000000000004,21.000000000000004,24.000000000000004]}
+[exit 0]
+
+### 2026-11-01 17:00 | arm64 | docker 29.5.2 | in exercises/ch03
+$ docker stop ml-api
+ml-api
+[exit 0]
+

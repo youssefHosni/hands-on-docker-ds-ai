@@ -1,0 +1,125 @@
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ docker run -d --name qdrant -p 6333:6333 -v qdrant_storage:/qdrant/storage qdrant/qdrant:v1.20.0
+Unable to find image 'qdrant/qdrant:v1.20.0' locally
+v1.20.0: Pulling from qdrant/qdrant
+4f4fb700ef54: Pulling fs layer
+1c52c891fb2b: Pulling fs layer
+4a34fa9f5c69: Pulling fs layer
+ddc0c1e36a67: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+2988bb90826a: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+a9cc22cb0052: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+a96b6ec55d3a: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c2eca27d9aee: Pulling fs layer
+44136fa355b3: Download complete
+e711d6c291bc: Download complete
+29d8fc43b690: Download complete
+4f4fb700ef54: Download complete
+a96b6ec55d3a: Download complete
+1c52c891fb2b: Download complete
+a9cc22cb0052: Download complete
+4a34fa9f5c69: Download complete
+c2eca27d9aee: Download complete
+2988bb90826a: Download complete
+ddc0c1e36a67: Download complete
+4f4fb700ef54: Pull complete
+1c52c891fb2b: Pull complete
+ddc0c1e36a67: Pull complete
+a96b6ec55d3a: Pull complete
+a9cc22cb0052: Pull complete
+4a34fa9f5c69: Pull complete
+c2eca27d9aee: Pull complete
+2988bb90826a: Pull complete
+Digest: sha256:9bfc89f9914fc14876a88c05270685921a55b8877b254a98bcc1cc2f0a424cd2
+Status: Downloaded newer image for qdrant/qdrant:v1.20.0
+b201105be0b30f5b382721013f1f6937b92c3fc781b1a2b75279a778e0288c2e
+[exit 0]
+
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ curl -s -X PUT http://localhost:6333/collections/movies -H 'Content-Type: application/json' -d '{"vectors": {"size": 3, "distance": "Cosine"}}'
+{"result":true,"status":"ok","time":0.011702274}
+[exit 0]
+
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ curl -s -X PUT http://localhost:6333/collections/movies/points -H 'Content-Type: application/json' -d '{"points": [{"id": 1, "vector": [0.9, 0.1, 0.0], "payload": {"title": "Alien"}}, {"id": 2, "vector": [0.1, 0.9, 0.0], "payload": {"title": "Notting Hill"}}, {"id": 3, "vector": [0.8, 0.2, 0.1], "payload": {"title": "The Thing"}}, {"id": 4, "vector": [0.2, 0.8, 0.1], "payload": {"title": "Love Actually"}}]}'
+{"result":{"operation_id":1,"status":"acknowledged"},"status":"ok","time":0.00039325}
+[exit 0]
+
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ curl -s -X POST http://localhost:6333/collections/movies/points/query -H 'Content-Type: application/json' -d '{"query": [0.0, 1.0, 0.0], "limit": 2, "with_payload": true}'
+{"result":{"points":[{"id":2,"version":1,"score":0.9938837,"payload":{"title":"Notting Hill"}},{"id":4,"version":1,"score":0.9630868,"payload":{"title":"Love Actually"}}]},"status":"ok","time":0.000591293}
+[exit 0]
+
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ docker run -d --name pgvector -e POSTGRES_PASSWORD=change-me -p 5432:5432 -v pgdata:/var/lib/postgresql pgvector/pgvector:0.8.7-pg18-trixie
+Unable to find image 'pgvector/pgvector:0.8.7-pg18-trixie' locally
+0.8.7-pg18-trixie: Pulling from pgvector/pgvector
+2b70e040f7d1: Pulling fs layer
+fbdebc7a485d: Pulling fs layer
+22aa5aa83b7d: Pulling fs layer
+7672a6ce4d85: Pulling fs layer
+24b05182f7a5: Pulling fs layer
+97f720713f77: Pulling fs layer
+d1a3067f9c98: Pulling fs layer
+dedef932f12c: Pulling fs layer
+54ddeb74882a: Pulling fs layer
+6ff057780a44: Pulling fs layer
+3a714400795f: Pulling fs layer
+8648fbfa17a8: Pulling fs layer
+3c3225ba1025: Pulling fs layer
+de23c21b57f2: Pulling fs layer
+acba8632a2fc: Pulling fs layer
+acba8632a2fc: Download complete
+d1a3067f9c98: Download complete
+3a714400795f: Download complete
+97f720713f77: Download complete
+7672a6ce4d85: Download complete
+24b05182f7a5: Download complete
+54ddeb74882a: Download complete
+dedef932f12c: Download complete
+fbdebc7a485d: Download complete
+6ff057780a44: Download complete
+de23c21b57f2: Download complete
+3c3225ba1025: Download complete
+aeb55db4d113: Download complete
+8648fbfa17a8: Download complete
+2b70e040f7d1: Download complete
+3a714400795f: Pull complete
+2b70e040f7d1: Pull complete
+6ff057780a44: Pull complete
+3c3225ba1025: Pull complete
+acba8632a2fc: Pull complete
+54ddeb74882a: Pull complete
+de23c21b57f2: Pull complete
+8648fbfa17a8: Pull complete
+22aa5aa83b7d: Download complete
+d1a3067f9c98: Pull complete
+97f720713f77: Pull complete
+7672a6ce4d85: Pull complete
+24b05182f7a5: Pull complete
+dedef932f12c: Pull complete
+fbdebc7a485d: Pull complete
+22aa5aa83b7d: Pull complete
+Digest: sha256:5895949dfcdf308eb0cd31c950c93c14895c77f33fbedfecf1fa511ab1d4bcd2
+Status: Downloaded newer image for pgvector/pgvector:0.8.7-pg18-trixie
+cdc1ea0f9ed77960ffe576bc1dde4106feca2c374cc3e1cbb56d262b8e488ebc
+[exit 0]
+
+### 2026-11-01 21:41 | arm64 | docker 29.5.2 | in exercises/ch06
+$ docker exec -i pgvector psql -U postgres < movies.sql
+CREATE EXTENSION
+CREATE TABLE
+INSERT 0 4
+     title     |       distance       
+---------------+----------------------
+ Notting Hill  | 0.006116251198662548
+ Love Actually |  0.03691315929883732
+(2 rows)
+
+[exit 0]
+

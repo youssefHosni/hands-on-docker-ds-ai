@@ -1,0 +1,14 @@
+# Use the official Python image as the build image
+FROM python:3.14-slim
+
+# Install the dependencies
+RUN pip install pandas==3.1.0
+RUN pip install matplotlib==3.11.2
+RUN pip install seaborn==0.13.2
+
+# Copy necessary files
+COPY my_script.py .
+COPY data/ .
+
+# Run the script
+CMD ["python","my_script.py"]

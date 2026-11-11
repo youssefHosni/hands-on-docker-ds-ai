@@ -1,0 +1,81 @@
+### 2026-11-02 00:25 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer up --workspace-folder .
+[2026-11-01T22:25:36.788Z] @devcontainers/cli 0.90.0. Node.js v25.6.1. darwin 25.6.0 arm64.
+[2026-11-01T22:25:37.122Z] Start: Run: docker buildx build --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /var/folders/nb/08hcpckx43j89l0tdm3ll5kr0000gp/T/devcontainercli/container-features/0.90.0-1793571937120/Dockerfile-with-features -t vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12 --target dev_containers_target_stage --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project
+[2026-11-01T22:25:37.538Z] #0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile-with-features
+
+[2026-11-01T22:25:37.538Z] #1 transferring dockerfile: 1.41kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.14-slim
+#2 DONE 0.0s
+
+#3 [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6
+
+[2026-11-01T22:25:37.913Z] #3 DONE 0.5s
+
+[2026-11-01T22:25:38.020Z] 
+#4 [internal] load .dockerignore
+#4 transferring context: 65B done
+#4 DONE 0.0s
+
+#5 [dev_container_auto_added_stage_label 1/7] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+
+[2026-11-01T22:25:38.020Z] #5 DONE 0.0s
+
+#6 FROM ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405c02df61919d18028f0cea8eda93bc9986d0
+#6 resolve ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405c02df61919d18028f0cea8eda93bc9986d0 done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 64B done
+#7 DONE 0.0s
+
+#8 [dev_container_auto_added_stage_label 3/7] RUN useradd --create-home appuser
+#8 CACHED
+
+#9 [dev_container_auto_added_stage_label 4/7] RUN mkdir /datasets && chown appuser /datasets
+#9 CACHED
+
+#10 [dev_container_auto_added_stage_label 5/7] WORKDIR /project
+#10 CACHED
+
+#11 [dev_container_auto_added_stage_label 2/7] COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /bin/uv
+#11 CACHED
+
+#12 [dev_container_auto_added_stage_label 6/7] COPY pyproject.toml uv.lock ./
+#12 CACHED
+
+#13 [dev_container_auto_added_stage_label 7/7] RUN --mount=type=cache,target=/root/.cache/uv     uv sync --locked --no-install-project
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 preparing layers for inline cache 0.0s done
+#14 exporting manifest sha256:e317bd90b3ef3ae4fb48d32830d39f29356e8869d289f506cceaf0d55a5b02e2 done
+#14 exporting config sha256:eb179cda1dd9dd7bc566aae9bbc3594d4fa6048a9d958ba787b1b222061b920b done
+#14 exporting attestation manifest sha256:5da03e271f6cd92c57dc516c106c146375a3e34f1525c8b74372bf15e68996c8 done
+#14 exporting manifest list sha256:4ea371f4cf60957a5aea3c061483d4a0989eb6c8409c8a60af08da96fd981ab7 done
+#14 naming to docker.io/library/vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12:latest done
+#14 unpacking to docker.io/library/vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12:latest done
+#14 DONE 0.1s
+
+[2026-11-01T22:25:38.028Z] Start: Run: docker run --sig-proxy=false -a STDOUT -a STDERR --mount source=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project,target=/project,type=bind --mount source=datasets,target=/datasets,type=volume -l devcontainer.local_folder=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project -l devcontainer.config_file=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project/.devcontainer/devcontainer.json -e SCIKIT_LEARN_DATA=/datasets --entrypoint /bin/sh vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12 -c echo Container started
+[2026-11-01T22:25:38.126Z] Container started
+{"outcome":"success","containerId":"09625a94b7366fc599b8f04f4b8248b1fd273744f9db0c232bd19e1ce2a3b755","remoteUser":"appuser","remoteWorkspaceFolder":"/project","ociAuthDiagnostics":{"authLookupWouldBeBlocked":false,"registryRedirectWouldPreventCredentialForwarding":false,"authServerRedirect":false}}
+[exit 0]
+
+### 2026-11-02 00:25 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer exec --workspace-folder . ls -l /datasets
+total 360
+-rw-r--r-- 1 appuser appuser 366871 Nov  1 22:18 cal_housing_py3.pkz
+[exit 0]
+
+### 2026-11-02 00:25 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer exec --workspace-folder . python -c "from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)"
+(20640, 8)
+[exit 0]
+

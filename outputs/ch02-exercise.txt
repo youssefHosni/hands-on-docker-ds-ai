@@ -1,0 +1,32 @@
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker run --name iris-run iris-classifier:1.0
+Accuracy: 1.0
+[exit 0]
+
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker ps -a --filter name=iris-run
+CONTAINER ID   IMAGE                 COMMAND                  CREATED                  STATUS                              PORTS     NAMES
+afc16ab663f8   iris-classifier:1.0   "python iris_classif…"   Less than a second ago   Exited (0) Less than a second ago             iris-run
+[exit 0]
+
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker logs iris-run
+Accuracy: 1.0
+[exit 0]
+
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker rmi iris-classifier:1.0
+Error response from daemon: conflict: unable to delete iris-classifier:1.0 (must be forced) - container afc16ab663f8 is using its referenced image 84428fbd3b28
+[exit 1]
+
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker rm iris-run
+iris-run
+[exit 0]
+
+### 2026-11-01 16:40 | arm64 | docker 29.5.2 | in ch02
+$ docker rmi iris-classifier:1.0
+Untagged: iris-classifier:1.0
+Deleted: sha256:84428fbd3b283412a8f1074ef2d8d07f5409affd6e5f9302c9f4940f8b5c3269
+[exit 0]
+

@@ -1,0 +1,43 @@
+### 2026-11-04 23:03 | arm64 | docker 29.5.2 | in ch12/rag
+$ docker compose -f compose.yaml -f compose.ollama.yaml up -d --wait 2>&1 | tail -6
+ Container rag-api-1 Healthy 
+ Container rag-ollama-pull-1 Exited 
+ Container rag-ingest-1 Exited 
+ Container rag-ui-1 Healthy 
+ Container rag-qdrant-1 Healthy 
+ Container rag-ollama-1 Healthy 
+[exit 0]
+
+### 2026-11-04 23:06 | arm64 | docker 29.5.2 | in ch12/rag
+$ docker compose -f compose.yaml -f compose.ollama.yaml logs ingest
+ingest-1  | Ingested 18 chunks from 6 files (768 dimensions) in 11.2 s
+[exit 0]
+
+### 2026-11-04 23:06 | arm64 | docker 29.5.2 | in ch12/rag
+$ python3 questions.py
+Q: Do I need permission to roll back a model?
+A: “Anyone on the team can roll back a model without asking.”
+
+Q: Can I start a model release on a Friday?
+A: “Releases never start on a Friday.”
+
+Q: Who has to approve a model release?
+A: “Two reviewers must approve the release, and at least one of them must be from outside the project team.”
+
+Q: Can I copy raw data with phone numbers to my laptop?
+A: “Use the `pii-scrub` tool before copying data to a laptop.” You can copy raw data with phone numbers to your laptop, but you must first use the `pii-scrub` tool.
+
+Q: Is my development machine running at night?
+A: “Development machines are stopped automatically at 20:00 every evening.” Therefore, your development machine is not running at night.
+
+Q: What happens to a resource without a project label?
+A: “Resources without a `project` label are deleted after 7 days.”
+
+Q: Which queue is for a one-hour job at 10:00?
+A: “Short jobs (under 2 hours) go to the `quick` queue.” Therefore, a one-hour job at 10:00 would go to the `quick` queue.
+
+Q: Who is the CEO of the company?
+A: I don't know.
+
+[exit 0]
+

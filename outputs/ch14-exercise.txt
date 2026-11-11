@@ -1,0 +1,17 @@
+### 2026-11-05 01:01 | arm64 | docker 29.5.2 | in ch14
+$ docker build -q -t ml-app:ci . | cut -c1-19; ci/test.sh ml-app:ci; echo "exit code: $?"
+sha256:eeca884b3e34
+Answer: {"prediction":[12.000000000000002]}
+Bad request: 422
+PASSED
+exit code: 0
+[exit 0]
+
+### 2026-11-05 01:01 | arm64 | docker 29.5.2 | in ch14
+$ docker build -q -t ml-app:ci . | cut -c1-19; ci/test.sh ml-app:ci; echo "exit code: $?"
+sha256:abe0ce036a3a
+Answer: {"prediction":[18.000000000000004]}
+FAILED: expected 12.0
+exit code: 1
+[exit 0]
+

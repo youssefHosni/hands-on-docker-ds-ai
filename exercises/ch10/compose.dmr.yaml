@@ -1,0 +1,11 @@
+# Adds Docker Model Runner to Open WebUI, next to Ollama:
+#   docker compose -f compose.yaml -f compose.dmr.yaml --profile ui up -d
+services:
+  open-webui:
+    environment:
+      # Docker Engine: Model Runner listens on port 12434 of the host.
+      # (Docker Desktop: http://model-runner.docker.internal/engines/v1, and no extra_hosts.)
+      OPENAI_API_BASE_URL: http://model-runner.docker.internal:12434/engines/v1
+      OPENAI_API_KEY: not-needed
+    extra_hosts:
+      - "model-runner.docker.internal:host-gateway"

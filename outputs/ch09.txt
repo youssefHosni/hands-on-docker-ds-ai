@@ -1,0 +1,818 @@
+### 2026-11-02 02:02 | arm64 | docker 29.5.2 | in ch09/toolkit
+$ docker run --rm -v "$PWD":/work -w /work ubuntu:24.04 sh -c "apt-get update -qq && apt-get install -y -qq sudo >/dev/null && bash install.sh; nvidia-ctk --version; cat /etc/docker/daemon.json"
+Unable to find image 'ubuntu:24.04' locally
+24.04: Pulling from library/ubuntu
+e2d2bb84d022: Pulling fs layer
+e2d2bb84d022: Download complete
+2238dc1b4376: Download complete
+e2d2bb84d022: Pull complete
+Digest: sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+Status: Downloaded newer image for ubuntu:24.04
+debconf: delaying package configuration, since apt-utils is not installed
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  adduser dirmngr gnupg gnupg-utils gpg gpg-agent gpgconf gpgsm keyboxd
+  libbrotli1 libcurl4t64 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+  libkrb5support0 libksba8 libldap2 libnghttp2-14 libpsl5t64 libreadline8t64
+  librtmp1 libsasl2-2 libsasl2-modules-db libsqlite3-0 libssh-4 openssl
+  pinentry-curses readline-common
+Suggested packages:
+  liblocale-gettext-perl perl cron quota ecryptfs-utils dbus-user-session
+  libpam-systemd pinentry-gnome3 tor parcimonie xloadimage gpg-wks-server
+  scdaemon krb5-doc krb5-user pinentry-doc readline-doc
+Recommended packages:
+  gnupg-l10n gpg-wks-client krb5-locales libldap-common publicsuffix
+  libsasl2-modules
+The following NEW packages will be installed:
+  adduser ca-certificates curl dirmngr gnupg gnupg-utils gnupg2 gpg gpg-agent
+  gpgconf gpgsm keyboxd libbrotli1 libcurl4t64 libgssapi-krb5-2 libk5crypto3
+  libkeyutils1 libkrb5-3 libkrb5support0 libksba8 libldap2 libnghttp2-14
+  libpsl5t64 libreadline8t64 librtmp1 libsasl2-2 libsasl2-modules-db
+  libsqlite3-0 libssh-4 openssl pinentry-curses readline-common
+0 upgraded, 32 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6416 kB of archives.
+After this operation, 17.1 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openssl arm64 3.0.13-0ubuntu3.16 [985 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 ca-certificates all 20260816ubuntu0.24.04.1 [139 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libkrb5support0 arm64 1.20.1-6ubuntu2.10 [35.4 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libk5crypto3 arm64 1.20.1-6ubuntu2.10 [85.8 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libkeyutils1 arm64 1.6.3-3build1 [9654 B]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libkrb5-3 arm64 1.20.1-6ubuntu2.10 [350 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgssapi-krb5-2 arm64 1.20.1-6ubuntu2.10 [142 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 readline-common all 8.2-4build1 [56.5 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libreadline8t64 arm64 8.2-4build1 [153 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-0 arm64 3.45.1-1ubuntu2.8 [691 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libnghttp2-14 arm64 1.59.0-1ubuntu0.4 [74.8 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpsl5t64 arm64 0.21.2-1.1build1 [57.4 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libbrotli1 arm64 1.1.0-2ubuntu0.1 [340 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg1-5ubuntu3.1 [21.6 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-2 arm64 2.1.28+dfsg1-5ubuntu3.1 [54.7 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libldap2 arm64 2.6.10+dfsg-0ubuntu0.24.04.1 [196 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librtmp1 arm64 2.4+20151223.gitfa8646d.1-2build7 [57.8 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libssh-4 arm64 0.10.6-2ubuntu0.5 [192 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgconf arm64 2.4.4-2ubuntu17.6 [103 kB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libksba8 arm64 1.6.6-1build1 [119 kB]
+Get:24 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dirmngr arm64 2.4.4-2ubuntu17.6 [316 kB]
+Get:25 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg-utils arm64 2.4.4-2ubuntu17.6 [107 kB]
+Get:26 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg arm64 2.4.4-2ubuntu17.6 [549 kB]
+Get:27 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pinentry-curses arm64 1.2.1-3ubuntu5 [34.3 kB]
+Get:28 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg-agent arm64 2.4.4-2ubuntu17.6 [221 kB]
+Get:29 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgsm arm64 2.4.4-2ubuntu17.6 [225 kB]
+Get:30 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 keyboxd arm64 2.4.4-2ubuntu17.6 [75.9 kB]
+Get:31 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg all 2.4.4-2ubuntu17.6 [359 kB]
+Get:32 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 gnupg2 all 2.4.4-2ubuntu17.6 [4748 B]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 6416 kB in 0s (19.4 MB/s)
+Selecting previously unselected package adduser.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4449 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
+Selecting previously unselected package openssl.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4497 files and directories currently installed.)
+Preparing to unpack .../00-openssl_3.0.13-0ubuntu3.16_arm64.deb ...
+Unpacking openssl (3.0.13-0ubuntu3.16) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../01-ca-certificates_20260816ubuntu0.24.04.1_all.deb ...
+Unpacking ca-certificates (20260816ubuntu0.24.04.1) ...
+Selecting previously unselected package libkrb5support0:arm64.
+Preparing to unpack .../02-libkrb5support0_1.20.1-6ubuntu2.10_arm64.deb ...
+Unpacking libkrb5support0:arm64 (1.20.1-6ubuntu2.10) ...
+Selecting previously unselected package libk5crypto3:arm64.
+Preparing to unpack .../03-libk5crypto3_1.20.1-6ubuntu2.10_arm64.deb ...
+Unpacking libk5crypto3:arm64 (1.20.1-6ubuntu2.10) ...
+Selecting previously unselected package libkeyutils1:arm64.
+Preparing to unpack .../04-libkeyutils1_1.6.3-3build1_arm64.deb ...
+Unpacking libkeyutils1:arm64 (1.6.3-3build1) ...
+Selecting previously unselected package libkrb5-3:arm64.
+Preparing to unpack .../05-libkrb5-3_1.20.1-6ubuntu2.10_arm64.deb ...
+Unpacking libkrb5-3:arm64 (1.20.1-6ubuntu2.10) ...
+Selecting previously unselected package libgssapi-krb5-2:arm64.
+Preparing to unpack .../06-libgssapi-krb5-2_1.20.1-6ubuntu2.10_arm64.deb ...
+Unpacking libgssapi-krb5-2:arm64 (1.20.1-6ubuntu2.10) ...
+Selecting previously unselected package readline-common.
+Preparing to unpack .../07-readline-common_8.2-4build1_all.deb ...
+Unpacking readline-common (8.2-4build1) ...
+Selecting previously unselected package libreadline8t64:arm64.
+Preparing to unpack .../08-libreadline8t64_8.2-4build1_arm64.deb ...
+Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8 to /lib/aarch64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8.2 to /lib/aarch64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8 to /lib/aarch64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8.2 to /lib/aarch64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'
+Unpacking libreadline8t64:arm64 (8.2-4build1) ...
+Selecting previously unselected package libsqlite3-0:arm64.
+Preparing to unpack .../09-libsqlite3-0_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-0:arm64 (3.45.1-1ubuntu2.8) ...
+Selecting previously unselected package libnghttp2-14:arm64.
+Preparing to unpack .../10-libnghttp2-14_1.59.0-1ubuntu0.4_arm64.deb ...
+Unpacking libnghttp2-14:arm64 (1.59.0-1ubuntu0.4) ...
+Selecting previously unselected package libpsl5t64:arm64.
+Preparing to unpack .../11-libpsl5t64_0.21.2-1.1build1_arm64.deb ...
+Unpacking libpsl5t64:arm64 (0.21.2-1.1build1) ...
+Selecting previously unselected package libbrotli1:arm64.
+Preparing to unpack .../12-libbrotli1_1.1.0-2ubuntu0.1_arm64.deb ...
+Unpacking libbrotli1:arm64 (1.1.0-2ubuntu0.1) ...
+Selecting previously unselected package libsasl2-modules-db:arm64.
+Preparing to unpack .../13-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...
+Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Selecting previously unselected package libsasl2-2:arm64.
+Preparing to unpack .../14-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...
+Unpacking libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Selecting previously unselected package libldap2:arm64.
+Preparing to unpack .../15-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_arm64.deb ...
+Unpacking libldap2:arm64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+Selecting previously unselected package librtmp1:arm64.
+Preparing to unpack .../16-librtmp1_2.4+20151223.gitfa8646d.1-2build7_arm64.deb ...
+Unpacking librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2build7) ...
+Selecting previously unselected package libssh-4:arm64.
+Preparing to unpack .../17-libssh-4_0.10.6-2ubuntu0.5_arm64.deb ...
+Unpacking libssh-4:arm64 (0.10.6-2ubuntu0.5) ...
+Selecting previously unselected package libcurl4t64:arm64.
+Preparing to unpack .../18-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../19-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) ...
+Selecting previously unselected package gpgconf.
+Preparing to unpack .../20-gpgconf_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgconf (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package libksba8:arm64.
+Preparing to unpack .../21-libksba8_1.6.6-1build1_arm64.deb ...
+Unpacking libksba8:arm64 (1.6.6-1build1) ...
+Selecting previously unselected package dirmngr.
+Preparing to unpack .../22-dirmngr_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking dirmngr (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg-utils.
+Preparing to unpack .../23-gnupg-utils_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gnupg-utils (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpg.
+Preparing to unpack .../24-gpg_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package pinentry-curses.
+Preparing to unpack .../25-pinentry-curses_1.2.1-3ubuntu5_arm64.deb ...
+Unpacking pinentry-curses (1.2.1-3ubuntu5) ...
+Selecting previously unselected package gpg-agent.
+Preparing to unpack .../26-gpg-agent_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg-agent (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpgsm.
+Preparing to unpack .../27-gpgsm_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgsm (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package keyboxd.
+Preparing to unpack .../28-keyboxd_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking keyboxd (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg.
+Preparing to unpack .../29-gnupg_2.4.4-2ubuntu17.6_all.deb ...
+Unpacking gnupg (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../30-gnupg2_2.4.4-2ubuntu17.6_all.deb ...
+Unpacking gnupg2 (2.4.4-2ubuntu17.6) ...
+Setting up libksba8:arm64 (1.6.6-1build1) ...
+Setting up pinentry-curses (1.2.1-3ubuntu5) ...
+Setting up libkeyutils1:arm64 (1.6.3-3build1) ...
+Setting up libbrotli1:arm64 (1.1.0-2ubuntu0.1) ...
+Setting up libsqlite3-0:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up libpsl5t64:arm64 (0.21.2-1.1build1) ...
+Setting up libnghttp2-14:arm64 (1.59.0-1ubuntu0.4) ...
+Setting up libkrb5support0:arm64 (1.20.1-6ubuntu2.10) ...
+Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Setting up librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2build7) ...
+Setting up libk5crypto3:arm64 (1.20.1-6ubuntu2.10) ...
+Setting up libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...
+Setting up libkrb5-3:arm64 (1.20.1-6ubuntu2.10) ...
+Setting up openssl (3.0.13-0ubuntu3.16) ...
+Setting up readline-common (8.2-4build1) ...
+Setting up libldap2:arm64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+Setting up gnupg-utils (2.4.4-2ubuntu17.6) ...
+Setting up ca-certificates (20260816ubuntu0.24.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+120 added, 0 removed; done.
+Setting up libgssapi-krb5-2:arm64 (1.20.1-6ubuntu2.10) ...
+Setting up libssh-4:arm64 (0.10.6-2ubuntu0.5) ...
+Setting up libreadline8t64:arm64 (8.2-4build1) ...
+Setting up gpgconf (2.4.4-2ubuntu17.6) ...
+Setting up gpg (2.4.4-2ubuntu17.6) ...
+Setting up gpg-agent (2.4.4-2ubuntu17.6) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up gpgsm (2.4.4-2ubuntu17.6) ...
+Setting up dirmngr (2.4.4-2ubuntu17.6) ...
+Setting up keyboxd (2.4.4-2ubuntu17.6) ...
+Setting up gnupg (2.4.4-2ubuntu17.6) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up gnupg2 (2.4.4-2ubuntu17.6) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Processing triggers for ca-certificates (20260816ubuntu0.24.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH) /
+#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/experimental/deb/$(ARCH) /
+Get:1 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  InRelease [1477 B]
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Get:6 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  Packages [28.0 kB]
+Fetched 29.5 kB in 0s (143 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit
+  nvidia-container-toolkit-base
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7521 kB of archives.
+After this operation, 35.1 MB of additional disk space will be used.
+Get:1 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  libnvidia-container1 1.20.1-1 [1057 kB]
+Get:2 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  libnvidia-container-tools 1.20.1-1 [18.9 kB]
+Get:3 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  nvidia-container-toolkit-base 1.20.1-1 [5163 kB]
+Get:4 https://nvidia.github.io/libnvidia-container/stable/deb/arm64  nvidia-container-toolkit 1.20.1-1 [1282 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 7521 kB in 1s (5931 kB/s)
+Selecting previously unselected package libnvidia-container1:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5257 files and directories currently installed.)
+Preparing to unpack .../libnvidia-container1_1.20.1-1_arm64.deb ...
+Unpacking libnvidia-container1:arm64 (1.20.1-1) ...
+Selecting previously unselected package libnvidia-container-tools.
+Preparing to unpack .../libnvidia-container-tools_1.20.1-1_arm64.deb ...
+Unpacking libnvidia-container-tools (1.20.1-1) ...
+Selecting previously unselected package nvidia-container-toolkit-base.
+Preparing to unpack .../nvidia-container-toolkit-base_1.20.1-1_arm64.deb ...
+Unpacking nvidia-container-toolkit-base (1.20.1-1) ...
+Selecting previously unselected package nvidia-container-toolkit.
+Preparing to unpack .../nvidia-container-toolkit_1.20.1-1_arm64.deb ...
+Unpacking nvidia-container-toolkit (1.20.1-1) ...
+Setting up nvidia-container-toolkit-base (1.20.1-1) ...
+Setting up libnvidia-container1:arm64 (1.20.1-1) ...
+Setting up libnvidia-container-tools (1.20.1-1) ...
+Setting up nvidia-container-toolkit (1.20.1-1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+time="2026-11-02T00:03:00Z" level=info msg="Config file does not exist; using empty config"
+time="2026-11-02T00:03:00Z" level=info msg="Wrote updated config to /etc/docker/daemon.json"
+time="2026-11-02T00:03:00Z" level=info msg="It is recommended that docker daemon be restarted."
+sudo: systemctl: command not found
+NVIDIA Container Toolkit CLI version 1.20.1
+commit: dffc40b4f820ce5c512633bac9e0418d0e05a2ee
+{
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}
+[exit 0]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker run --rm --gpus all nvidia/cuda:13.4.3-base-ubuntu24.04 nvidia-smi
+Unable to find image 'nvidia/cuda:13.4.3-base-ubuntu24.04' locally
+13.4.3-base-ubuntu24.04: Pulling from nvidia/cuda
+90812e242c93: Pulling fs layer
+7f1235ab8719: Pulling fs layer
+c05fbdf9a5c4: Pulling fs layer
+3a158be081b1: Pulling fs layer
+58daa58f99be: Pulling fs layer
+4ebbc0824625: Pulling fs layer
+8befa31acf70: Pulling fs layer
+8befa31acf70: Download complete
+c05fbdf9a5c4: Download complete
+3a158be081b1: Download complete
+7f1235ab8719: Download complete
+90812e242c93: Download complete
+90812e242c93: Pull complete
+3a158be081b1: Pull complete
+7f1235ab8719: Pull complete
+58daa58f99be: Download complete
+4ebbc0824625: Download complete
+4ebbc0824625: Pull complete
+8befa31acf70: Pull complete
+c05fbdf9a5c4: Pull complete
+58daa58f99be: Pull complete
+Digest: sha256:07adb6792c59025f2c45bfb1a3f1d1148bf6d48bf2326d604a6b2e24c4f04d6f
+Status: Downloaded newer image for nvidia/cuda:13.4.3-base-ubuntu24.04
+docker: Error response from daemon: failed to discover GPU vendor from CDI: no known GPU vendor found
+
+Run 'docker run --help' for more information
+[exit 125]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker run --rm --device nvidia.com/gpu=all nvidia/cuda:13.4.3-base-ubuntu24.04 nvidia-smi
+docker: Error response from daemon: CDI device injection failed: unresolvable CDI devices nvidia.com/gpu=all
+
+Run 'docker run --help' for more information
+[exit 125]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker run --rm nvidia/cuda:13.4.3-base-ubuntu24.04 nvidia-smi
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "nvidia-smi": executable file not found in $PATH
+
+Run 'docker run --help' for more information
+[exit 127]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker inspect nvidia/cuda:13.4.3-base-ubuntu24.04 --format "{{range .Config.Env}}{{println .}}{{end}}"
+PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+NVARCH=sbsa
+NVIDIA_REQUIRE_CUDA=cuda>=13.4 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=580,driver<581 brand=grid,driver>=580,driver<581 brand=tesla,driver>=580,driver<581 brand=nvidia,driver>=580,driver<581 brand=quadro,driver>=580,driver<581 brand=quadrortx,driver>=580,driver<581 brand=nvidiartx,driver>=580,driver<581 brand=vapps,driver>=580,driver<581 brand=vpc,driver>=580,driver<581 brand=vcs,driver>=580,driver<581 brand=vws,driver>=580,driver<581 brand=cloudgaming,driver>=580,driver<581 brand=unknown,driver>=590,driver<591 brand=grid,driver>=590,driver<591 brand=tesla,driver>=590,driver<591 brand=nvidia,driver>=590,driver<591 brand=quadro,driver>=590,driver<591 brand=quadrortx,driver>=590,driver<591 brand=nvidiartx,driver>=590,driver<591 brand=vapps,driver>=590,driver<591 brand=vpc,driver>=590,driver<591 brand=vcs,driver>=590,driver<591 brand=vws,driver>=590,driver<591 brand=cloudgaming,driver>=590,driver<591 brand=unknown,driver>=595,driver<596 brand=grid,driver>=595,driver<596 brand=tesla,driver>=595,driver<596 brand=nvidia,driver>=595,driver<596 brand=quadro,driver>=595,driver<596 brand=quadrortx,driver>=595,driver<596 brand=nvidiartx,driver>=595,driver<596 brand=vapps,driver>=595,driver<596 brand=vpc,driver>=595,driver<596 brand=vcs,driver>=595,driver<596 brand=vws,driver>=595,driver<596 brand=cloudgaming,driver>=595,driver<596 brand=unknown,driver>=610,driver<611 brand=grid,driver>=610,driver<611 brand=tesla,driver>=610,driver<611 brand=nvidia,driver>=610,driver<611 brand=quadro,driver>=610,driver<611 brand=quadrortx,driver>=610,driver<611 brand=nvidiartx,driver>=610,driver<611 brand=vapps,driver>=610,driver<611 brand=vpc,driver>=610,driver<611 brand=vcs,driver>=610,driver<611 brand=vws,driver>=610,driver<611 brand=cloudgaming,driver>=610,driver<611
+NV_CUDA_CUDART_VERSION=13.4.92-1
+CUDA_VERSION=13.4.3
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64
+NVIDIA_VISIBLE_DEVICES=all
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+[exit 0]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker compose up
+ Network compose_default Creating 
+ Network compose_default Creating 
+ Network compose_default Created 
+ Network compose_default Created 
+ Container compose-check-1 Creating 
+ Container compose-check-1 Created 
+Attaching to check-1
+ Container compose-check-1 Starting 
+Error response from daemon: could not select device driver "nvidia" with capabilities: [[gpu]]
+[exit 1]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/compose
+$ docker compose down
+ Container compose-check-1 Stopping 
+ Container compose-check-1 Stopped 
+ Container compose-check-1 Removing 
+ Container compose-check-1 Removed 
+ Network compose_default Removing 
+ Network compose_default Removed 
+[exit 0]
+
+### 2026-11-02 02:03 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker build --platform linux/amd64 -t torch-check:cuda .
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.14-slim
+#2 DONE 1.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 346B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 0B / 12.41MB 0.2s
+#5 sha256:40a79f5805ed632260bcefb9f20f1db1f62ba605ded5fe5b350795e17d6f9704 250B / 250B 0.3s done
+#5 sha256:646d37df0c533921d82512bef9ce6a5d2948e4e98c8c61689e9961e269c30282 0B / 1.29MB 0.2s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 0B / 29.86MB 0.2s
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 2.10MB / 12.41MB 0.6s
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 5.24MB / 12.41MB 0.8s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 2.10MB / 29.86MB 0.6s
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 7.34MB / 12.41MB 0.9s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 4.19MB / 29.86MB 0.8s
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 9.92MB / 12.41MB 1.1s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 6.29MB / 29.86MB 0.9s
+#5 sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 12.41MB / 12.41MB 1.2s done
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 8.39MB / 29.86MB 1.1s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 14.68MB / 29.86MB 1.4s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 18.87MB / 29.86MB 1.5s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 23.07MB / 29.86MB 1.7s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 28.31MB / 29.86MB 1.8s
+#5 sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 29.86MB / 29.86MB 1.9s done
+#5 extracting sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5
+#5 extracting sha256:6fc242d221a673263eabd14a9ad9584d3177c96e5cb504c891497338e2f912f5 0.8s done
+#5 DONE 2.7s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 extracting sha256:646d37df0c533921d82512bef9ce6a5d2948e4e98c8c61689e9961e269c30282 0.1s done
+#5 extracting sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403
+#5 extracting sha256:57257d6d8137dab325b25390b3711f8dd1a2a3a45fef1686d0177e058fc68403 0.4s done
+#5 DONE 3.2s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 extracting sha256:40a79f5805ed632260bcefb9f20f1db1f62ba605ded5fe5b350795e17d6f9704 done
+#5 DONE 3.2s
+
+#6 [2/4] RUN pip install --no-cache-dir --index-url https://pypi.org/simple torch==2.15.0
+#6 8.102 Collecting torch==2.15.0
+#6 8.252   Downloading torch-2.15.0-cp314-cp314-manylinux_2_28_x86_64.whl.metadata (36 kB)
+#6 8.383 Collecting filelock (from torch==2.15.0)
+#6 8.398   Downloading filelock-4.2.6-py3-none-any.whl.metadata (2.0 kB)
+#6 8.440 Collecting typing-extensions>=4.13.0 (from torch==2.15.0)
+#6 8.455   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#6 8.719 Collecting setuptools>=77.0.3 (from torch==2.15.0)
+#6 8.730   Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+#6 8.790 Collecting sympy>=1.13.3 (from torch==2.15.0)
+#6 8.801   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+#6 8.866 Collecting networkx>=2.5.1 (from torch==2.15.0)
+#6 8.878   Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+#6 8.932 Collecting jinja2 (from torch==2.15.0)
+#6 8.946   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#6 9.006 Collecting fsspec>=0.8.5 (from torch==2.15.0)
+#6 9.020   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#6 9.806 Collecting cuda-toolkit==13.2.2 (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 9.840   Downloading cuda_toolkit-13.2.2-py2.py3-none-any.whl.metadata (20 kB)
+#6 10.06 Collecting cuda-bindings<14,>=13.0.3 (from torch==2.15.0)
+#6 10.07   Downloading cuda_bindings-13.4.4-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#6 10.12 Collecting nvidia-cudnn-cu13==9.26.0.51 (from torch==2.15.0)
+#6 10.13   Downloading nvidia_cudnn_cu13-9.26.0.51-py3-none-manylinux_2_27_x86_64.whl.metadata (1.9 kB)
+#6 10.16 Collecting nvidia-cusparselt-cu13==0.8.1 (from torch==2.15.0)
+#6 10.17   Downloading nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl.metadata (12 kB)
+#6 10.20 Collecting nvidia-nccl-cu13==2.30.7 (from torch==2.15.0)
+#6 10.21   Downloading nvidia_nccl_cu13-2.30.7-py3-none-manylinux_2_18_x86_64.whl.metadata (2.1 kB)
+#6 10.23 Collecting nvidia-nvshmem-cu13==3.7.2 (from torch==2.15.0)
+#6 10.25   Downloading nvidia_nvshmem_cu13-3.7.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.2 kB)
+#6 10.40 Collecting triton~=3.9.0 (from torch==2.15.0)
+#6 10.41   Downloading triton-3.9.0-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (978 bytes)
+#6 10.47 Collecting nvidia-cublas==13.4.1.3.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.48   Downloading nvidia_cublas-13.4.1.3-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+#6 10.51 Collecting nvidia-cuda-nvrtc==13.2.86.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.52   Downloading nvidia_cuda_nvrtc-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.8 kB)
+#6 10.55 Collecting nvidia-cuda-runtime==13.2.86.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.56   Downloading nvidia_cuda_runtime-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+#6 10.60 Collecting nvidia-cufft==12.2.0.57.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.61   Downloading nvidia_cufft-12.2.0.57-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+#6 10.64 Collecting nvidia-nvjitlink<14,>=13.2.86 (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.66   Downloading nvidia_nvjitlink-13.4.92-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.8 kB)
+#6 10.68 Collecting nvidia-cufile==1.17.1.22.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.69   Downloading nvidia_cufile-1.17.1.22-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+#6 10.72 Collecting nvidia-cuda-cupti==13.2.86.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.74   Downloading nvidia_cuda_cupti-13.2.86-py3-none-manylinux_2_25_x86_64.whl.metadata (1.8 kB)
+#6 10.77 Collecting nvidia-cusolver==12.2.0.11.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.78   Downloading nvidia_cusolver-12.2.0.11-py3-none-manylinux_2_27_x86_64.whl.metadata (1.9 kB)
+#6 10.82 Collecting nvidia-cusparse==12.7.10.12.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.83   Downloading nvidia_cusparse-12.7.10.12-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+#6 10.87 Collecting nvidia-nvtx==13.2.86.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.2.2; platform_system == "Linux"->torch==2.15.0)
+#6 10.88   Downloading nvidia_nvtx-13.2.86-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl.metadata (1.9 kB)
+#6 10.92 Collecting nvidia-cuda-cccl (from nvidia-nvshmem-cu13==3.7.2->torch==2.15.0)
+#6 10.93   Downloading nvidia_cuda_cccl-13.3.4.3.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+#6 10.96 Collecting cuda-pathfinder>=1.4.2 (from cuda-bindings<14,>=13.0.3->torch==2.15.0)
+#6 10.97   Downloading cuda_pathfinder-1.8.5-py3-none-any.whl.metadata (1.9 kB)
+#6 11.04 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.15.0)
+#6 11.05   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#6 11.25 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.15.0)
+#6 11.26   Downloading markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#6 11.28 Downloading torch-2.15.0-cp314-cp314-manylinux_2_28_x86_64.whl (539.2 MB)
+#6 29.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 539.2/539.2 MB 28.6 MB/s  0:00:18
+#6 29.39 Downloading cuda_toolkit-13.2.2-py2.py3-none-any.whl (2.6 kB)
+#6 29.41 Downloading nvidia_cudnn_cu13-9.26.0.51-py3-none-manylinux_2_27_x86_64.whl (519.2 MB)
+#6 46.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 519.2/519.2 MB 32.4 MB/s  0:00:17
+#6 46.55 Downloading nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl (170.1 MB)
+#6 51.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 34.4 MB/s  0:00:04
+#6 51.52 Downloading nvidia_nccl_cu13-2.30.7-py3-none-manylinux_2_18_x86_64.whl (216.0 MB)
+#6 57.82    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.0/216.0 MB 34.4 MB/s  0:00:06
+#6 57.84 Downloading nvidia_nvshmem_cu13-3.7.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (135.4 MB)
+#6 62.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.4/135.4 MB 30.3 MB/s  0:00:04
+#6 62.39 Downloading cuda_bindings-13.4.4-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+#6 63.13    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 10.0 MB/s  0:00:00
+#6 63.19 Downloading nvidia_cublas-13.4.1.3-py3-none-manylinux_2_27_x86_64.whl (404.9 MB)
+#6 77.48    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 404.9/404.9 MB 26.6 MB/s  0:00:14
+#6 77.53 Downloading nvidia_cuda_cupti-13.2.86-py3-none-manylinux_2_25_x86_64.whl (12.0 MB)
+#6 78.18    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 18.6 MB/s  0:00:00
+#6 78.21 Downloading nvidia_cuda_nvrtc-13.2.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (47.0 MB)
+#6 80.02    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.0/47.0 MB 26.2 MB/s  0:00:01
+#6 80.03 Downloading nvidia_cuda_runtime-13.2.86-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+#6 80.11    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 35.5 MB/s  0:00:00
+#6 80.13 Downloading nvidia_cufft-12.2.0.57-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (218.3 MB)
+#6 113.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 218.3/218.3 MB 4.5 MB/s  0:00:33
+#6 114.3 Downloading nvidia_cufile-1.17.1.22-py3-none-manylinux_2_27_x86_64.whl (1.4 MB)
+#6 114.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 9.7 MB/s  0:00:00
+#6 114.7 Downloading nvidia_cusolver-12.2.0.11-py3-none-manylinux_2_27_x86_64.whl (227.9 MB)
+#6 132.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 227.9/227.9 MB 12.7 MB/s  0:00:17
+#6 132.7 Downloading nvidia_cusparse-12.7.10.12-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (151.0 MB)
+#6 140.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 151.0/151.0 MB 20.7 MB/s  0:00:07
+#6 140.1 Downloading nvidia_nvjitlink-13.4.92-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (42.5 MB)
+#6 141.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.5/42.5 MB 24.7 MB/s  0:00:01
+#6 142.0 Downloading nvidia_nvtx-13.2.86-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl (153 kB)
+#6 142.0 Downloading triton-3.9.0-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (285.7 MB)
+#6 168.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 285.7/285.7 MB 10.4 MB/s  0:00:26
+#6 168.1 Downloading cuda_pathfinder-1.8.5-py3-none-any.whl (62 kB)
+#6 168.1 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#6 168.2 Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+#6 168.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 22.9 MB/s  0:00:00
+#6 168.4 Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
+#6 168.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 53.5 MB/s  0:00:00
+#6 168.6 Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+#6 168.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 61.3 MB/s  0:00:00
+#6 168.7 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#6 168.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 32.5 MB/s  0:00:00
+#6 168.8 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#6 168.8 Downloading filelock-4.2.6-py3-none-any.whl (164 kB)
+#6 168.9 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#6 168.9 Downloading markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (23 kB)
+#6 168.9 Downloading nvidia_cuda_cccl-13.3.4.3.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.9 MB)
+#6 169.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 38.0 MB/s  0:00:00
+#6 273.7 Installing collected packages: nvidia-cusparselt-cu13, mpmath, cuda-toolkit, typing-extensions, triton, sympy, setuptools, nvidia-nvtx, nvidia-nvjitlink, nvidia-nccl-cu13, nvidia-cufile, nvidia-cuda-runtime, nvidia-cuda-nvrtc, nvidia-cuda-cupti, nvidia-cuda-cccl, networkx, MarkupSafe, fsspec, filelock, cuda-pathfinder, nvidia-nvshmem-cu13, nvidia-cusparse, nvidia-cufft, nvidia-cublas, jinja2, cuda-bindings, nvidia-cusolver, nvidia-cudnn-cu13, torch
+#6 401.7 
+#6 401.7 Successfully installed MarkupSafe-3.0.4 cuda-bindings-13.4.4 cuda-pathfinder-1.8.5 cuda-toolkit-13.2.2 filelock-4.2.6 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.7 nvidia-cublas-13.4.1.3 nvidia-cuda-cccl-13.3.4.3.1 nvidia-cuda-cupti-13.2.86 nvidia-cuda-nvrtc-13.2.86 nvidia-cuda-runtime-13.2.86 nvidia-cudnn-cu13-9.26.0.51 nvidia-cufft-12.2.0.57 nvidia-cufile-1.17.1.22 nvidia-cusolver-12.2.0.11 nvidia-cusparse-12.7.10.12 nvidia-cusparselt-cu13-0.8.1 nvidia-nccl-cu13-2.30.7 nvidia-nvjitlink-13.4.92 nvidia-nvshmem-cu13-3.7.2 nvidia-nvtx-13.2.86 setuptools-84.2.1 sympy-1.14.0 torch-2.15.0 triton-3.9.0 typing-extensions-4.16.0
+#6 401.7 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#6 DONE 402.3s
+
+#7 [3/4] WORKDIR /app
+#7 DONE 0.2s
+
+#8 [4/4] COPY check_gpu.py .
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 104.1s done
+#9 exporting manifest sha256:241f11400960b271b827bb27edcec8cc1b1df1ac1638e294ad8704e7ee1167ab 0.0s done
+#9 exporting config sha256:ce8f2120756f008c1df1851db27bbcf2956366b407d9e61c989f8986b6c1b260 0.0s done
+#9 exporting attestation manifest sha256:b793d229b186b1d2e2311a7e94c0bb096c57787cdfce31d98ba018e7658bfc1d 0.0s done
+#9 exporting manifest list sha256:1bd55bc8544f71caddb0950d8ee9483530e4972a30408fd662823ff8626c8e29 done
+#9 naming to docker.io/library/torch-check:cuda done
+#9 DONE 104.3s
+[exit 0]
+
+### 2026-11-02 02:12 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker run --rm torch-check:cuda
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+/usr/local/lib/python3.14/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+PyTorch: 2.15.0+cu132
+Built for CUDA: 13.2
+NVIDIA GPU available: False
+Apple GPU (MPS) available: False
+[exit 0]
+
+### 2026-11-02 02:13 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker build --platform linux/amd64 --build-arg TORCH_INDEX=https://download.pytorch.org/whl/cpu -t torch-check:cpu .
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.14-slim
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 34B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#5 CACHED
+
+#6 [2/4] RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+#6 7.937 Looking in indexes: https://download.pytorch.org/whl/cpu
+#6 8.500 Collecting torch==2.15.0
+#6 8.683   Downloading torch-2.15.0%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl.metadata (35 kB)
+#6 8.819 Collecting filelock (from torch==2.15.0)
+#6 9.034   Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+#6 9.099 Collecting typing-extensions>=4.13.0 (from torch==2.15.0)
+#6 9.112   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#6 9.138 Collecting setuptools>=77.0.3 (from torch==2.15.0)
+#6 9.153   Downloading setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
+#6 9.230 Collecting sympy>=1.13.3 (from torch==2.15.0)
+#6 9.240   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+#6 9.342 Collecting networkx>=2.5.1 (from torch==2.15.0)
+#6 9.358   Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+#6 9.412 Collecting jinja2 (from torch==2.15.0)
+#6 9.425   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#6 9.503 Collecting fsspec>=0.8.5 (from torch==2.15.0)
+#6 9.514   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#6 9.630 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.15.0)
+#6 9.640   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#6 9.708 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.15.0)
+#6 9.724   Downloading markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#6 9.754 Downloading torch-2.15.0%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl (209.5 MB)
+#6 16.92    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 209.5/209.5 MB 29.4 MB/s  0:00:07
+#6 16.93 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#6 16.96 Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+#6 17.06    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 22.1 MB/s  0:00:00
+#6 17.07 Downloading setuptools-78.1.0-py3-none-any.whl (1.3 MB)
+#6 17.12    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 29.7 MB/s  0:00:00
+#6 17.14 Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+#6 17.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 28.7 MB/s  0:00:00
+#6 17.38 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#6 17.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 32.1 MB/s  0:00:00
+#6 17.42 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#6 17.43 Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+#6 17.45 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#6 17.47 Downloading markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (23 kB)
+#6 24.03 Installing collected packages: mpmath, typing-extensions, sympy, setuptools, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+#6 109.3 
+#6 109.3 Successfully installed MarkupSafe-3.0.3 filelock-4.2.4 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.7 setuptools-78.1.0 sympy-1.14.0 torch-2.15.0+cpu typing-extensions-4.16.0
+#6 109.3 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#6 DONE 109.6s
+
+#7 [3/4] WORKDIR /app
+#7 DONE 0.1s
+
+#8 [4/4] COPY check_gpu.py .
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 16.7s done
+#9 exporting manifest sha256:8087b787193bb7184db6f50c762dc39a78444dab672b2500fb5b7c8d2f59f4e9 done
+#9 exporting config sha256:06774e083c6ca7800ca6665a4a62e380f852c56e67c36c2933623b4ba5b46795 done
+#9 exporting attestation manifest sha256:c4768033d5e2259b410e05986b8c44fee32342ee22bb8c7ae83559ae87738a87 done
+#9 exporting manifest list sha256:dd6e3633b83a70baae4b325915a7d20c6a0d43459b33162fe7ad9734e5092dcc done
+#9 naming to docker.io/library/torch-check:cpu done
+#9 DONE 16.7s
+[exit 0]
+
+### 2026-11-02 02:15 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker run --rm torch-check:cpu
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+/usr/local/lib/python3.14/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+PyTorch: 2.15.0+cpu
+Built for CUDA: None
+NVIDIA GPU available: False
+Apple GPU (MPS) available: False
+[exit 0]
+
+### 2026-11-02 02:15 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker images torch-check
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+torch-check:cpu    dd6e3633b83a       1.44GB          309MB        
+torch-check:cuda   1bd55bc8544f       8.88GB          3.1GB        
+[exit 0]
+
+### 2026-11-02 02:15 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker run --rm --entrypoint sh torch-check:cuda -c "cd /usr/local/lib/python3.14/site-packages && du -sh nvidia torch"
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+3.0G	nvidia
+1.2G	torch
+[exit 0]
+
+### 2026-11-02 02:15 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ curl -s https://download.pytorch.org/whl/torch/ | grep -o 'torch-2.15.0+[a-z0-9.]*-cp314-cp314-manylinux_2_28_x86_64' | sort -u
+torch-2.15.0+cpu-cp314-cp314-manylinux_2_28_x86_64
+torch-2.15.0+cu132-cp314-cp314-manylinux_2_28_x86_64
+torch-2.15.0+cu134-cp314-cp314-manylinux_2_28_x86_64
+torch-2.15.0+rocm10.0-cp314-cp314-manylinux_2_28_x86_64
+torch-2.15.0+rocm7.14-cp314-cp314-manylinux_2_28_x86_64
+torch-2.15.0+xpu-cp314-cp314-manylinux_2_28_x86_64
+[exit 0]
+
+### 2026-11-02 02:15 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ uv run --no-project --python 3.14 --with torch==2.15.0 python check_gpu.py
+Downloading sympy (6.0MiB)
+Downloading networkx (2.0MiB)
+Downloading torch (132.2MiB)
+ Downloading networkx
+ Downloading sympy
+ Downloading torch
+Installed 10 packages in 155ms
+/private/tmp/claude-502/-Users-hosniy1-To-Data-Beyond-Management-Books-Improving-Docker-for-AI---Data-Science/1a6a648b-d630-48be-9b25-4e9de5afe709/scratchpad/uvcache/archive-v0/rhrwcG6ofUqQzdYMNBxaM/lib/python3.14/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+PyTorch: 2.15.0
+Built for CUDA: None
+NVIDIA GPU available: False
+Apple GPU (MPS) available: True
+[exit 0]
+
+### 2026-11-02 02:16 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker build -t torch-check:arm64 --build-arg TORCH_INDEX=https://download.pytorch.org/whl/cpu .
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.14-slim
+#2 DONE 1.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 346B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 0B / 12.33MB 0.2s
+#5 sha256:05d726e892c357623852382eaaedeff5a8daadf9db020a95bc15f3baf9b92566 0B / 251B 0.2s
+#5 sha256:05d726e892c357623852382eaaedeff5a8daadf9db020a95bc15f3baf9b92566 251B / 251B 0.3s done
+#5 sha256:fd71dd7cec997a212e8fec2184b13aa5b2f7d2214deee72a1f72d77ba84dfeb5 0B / 1.27MB 0.2s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 0B / 30.21MB 0.2s
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 1.05MB / 12.33MB 0.8s
+#5 sha256:fd71dd7cec997a212e8fec2184b13aa5b2f7d2214deee72a1f72d77ba84dfeb5 1.27MB / 1.27MB 0.6s done
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 4.19MB / 30.21MB 0.6s
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 2.10MB / 12.33MB 0.9s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 8.39MB / 30.21MB 0.8s
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 3.15MB / 12.33MB 1.1s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 13.63MB / 30.21MB 0.9s
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 4.19MB / 12.33MB 1.2s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 17.83MB / 30.21MB 1.1s
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 5.24MB / 12.33MB 1.4s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 22.02MB / 30.21MB 1.2s
+#5 sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 30.21MB / 30.21MB 1.5s done
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 7.34MB / 12.33MB 1.7s
+#5 extracting sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 9.44MB / 12.33MB 1.8s
+#5 extracting sha256:2b70e040f7d132c8d366ee0223462552686510fb372ea5a83822973c30f19e36 0.4s done
+#5 extracting sha256:fd71dd7cec997a212e8fec2184b13aa5b2f7d2214deee72a1f72d77ba84dfeb5 0.0s done
+#5 sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 12.33MB / 12.33MB 1.9s done
+#5 extracting sha256:e232ddaa6e0a0a5a10b926f127d51b67808609aae0cc160e61ae61ed96373170 0.1s done
+#5 DONE 2.1s
+
+#5 [1/4] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#5 extracting sha256:05d726e892c357623852382eaaedeff5a8daadf9db020a95bc15f3baf9b92566 done
+#5 DONE 2.1s
+
+#6 [2/4] RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+#6 1.277 Looking in indexes: https://download.pytorch.org/whl/cpu
+#6 1.365 Collecting torch==2.15.0
+#6 1.531   Downloading torch-2.15.0%2Bcpu-cp314-cp314-manylinux_2_28_aarch64.whl.metadata (35 kB)
+#6 1.556 Collecting filelock (from torch==2.15.0)
+#6 1.598   Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+#6 1.611 Collecting typing-extensions>=4.13.0 (from torch==2.15.0)
+#6 1.617   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#6 1.629 Collecting setuptools>=77.0.3 (from torch==2.15.0)
+#6 1.638   Downloading setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
+#6 1.653 Collecting sympy>=1.13.3 (from torch==2.15.0)
+#6 1.659   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+#6 1.680 Collecting networkx>=2.5.1 (from torch==2.15.0)
+#6 1.686   Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+#6 1.699 Collecting jinja2 (from torch==2.15.0)
+#6 1.708   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#6 1.732 Collecting fsspec>=0.8.5 (from torch==2.15.0)
+#6 1.742   Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+#6 1.763 Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.15.0)
+#6 1.779   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+#6 1.795 Collecting MarkupSafe>=2.0 (from jinja2->torch==2.15.0)
+#6 1.803   Downloading markupsafe-3.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+#6 1.940 Downloading torch-2.15.0%2Bcpu-cp314-cp314-manylinux_2_28_aarch64.whl (170.8 MB)
+#6 6.577    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.8/170.8 MB 36.9 MB/s  0:00:04
+#6 6.584 Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+#6 6.612 Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+#6 6.672    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 37.2 MB/s  0:00:00
+#6 6.683 Downloading setuptools-78.1.0-py3-none-any.whl (1.3 MB)
+#6 6.717    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 35.5 MB/s  0:00:00
+#6 6.725 Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+#6 6.893    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 37.6 MB/s  0:00:00
+#6 6.901 Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+#6 6.920    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 29.7 MB/s  0:00:00
+#6 6.929 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#6 6.936 Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+#6 6.951 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#6 6.966 Downloading markupsafe-3.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+#6 7.164 Installing collected packages: mpmath, typing-extensions, sympy, setuptools, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+#6 17.62 
+#6 17.63 Successfully installed MarkupSafe-3.0.3 filelock-4.2.4 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.7 setuptools-78.1.0 sympy-1.14.0 torch-2.15.0+cpu typing-extensions-4.16.0
+#6 17.63 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#6 DONE 17.8s
+
+#7 [3/4] WORKDIR /app
+#7 DONE 0.1s
+
+#8 [4/4] COPY check_gpu.py .
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 12.6s done
+#9 exporting manifest sha256:7a3b30febfe8467d064eef6638c379a12274aa96612e5c0813ace49f2e77d145 done
+#9 exporting config sha256:d2f8e97b57bebcf097d0ebadf8e6852c9165d3e392b2bf81f32d5ee59cd2ee9b done
+#9 exporting attestation manifest sha256:a2da730c70db4133b70e6a7ee7cebc9ac731af4572e6b0a44017544a7703762f done
+#9 exporting manifest list sha256:77cc98380b7004d8c4c8c2ba8c53050619a99b4eb0334932a37a74d196a3ef89 done
+#9 naming to docker.io/library/torch-check:arm64 done
+#9 unpacking to docker.io/library/torch-check:arm64
+#9 unpacking to docker.io/library/torch-check:arm64 3.0s done
+#9 DONE 15.7s
+[exit 0]
+
+### 2026-11-02 02:16 | arm64 | docker 29.5.2 | in ch09/pytorch
+$ docker run --rm torch-check:arm64
+/usr/local/lib/python3.14/site-packages/torch/_subclasses/functional_tensor.py:377: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:82.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+PyTorch: 2.15.0+cpu
+Built for CUDA: None
+NVIDIA GPU available: False
+Apple GPU (MPS) available: False
+[exit 0]
+

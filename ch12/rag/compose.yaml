@@ -1,0 +1,71 @@
+name: rag
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant:/qdrant/storage
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo > /dev/tcp/localhost/6333"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Reads the documents, embeds them and stores them in Qdrant, then exits
+  ingest:
+    build: ./app
+    command: ["python", "ingest.py"]
+    volumes:
+      - ./docs:/docs:ro
+    models:
+      embedding:
+        endpoint_var: EMBEDDING_URL
+        model_var: EMBEDDING_MODEL
+    depends_on:
+      qdrant:
+        condition: service_healthy
+
+  api:
+    build: ./app
+    ports:
+      - "8000:8000"
+    models:
+      llm:
+        endpoint_var: LLM_URL
+        model_var: LLM_MODEL
+      embedding:
+        endpoint_var: EMBEDDING_URL
+        model_var: EMBEDDING_MODEL
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    depends_on:
+      ingest:
+        condition: service_completed_successfully
+
+  ui:
+    build: ./ui
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+
+models:
+  llm:
+    # The chat model; try another one with MODEL=<name> docker compose up -d
+    model: ${MODEL:-ai/gemma3:4B-Q4_K_M}
+    context_size: 4096
+  embedding:
+    model: ai/embeddinggemma:300M-Q8_0
+    runtime_flags:
+      - "--embeddings"
+
+volumes:
+  qdrant:

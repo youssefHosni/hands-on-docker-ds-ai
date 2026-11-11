@@ -1,0 +1,11 @@
+### 2026-11-01 17:20 | PowerShell 7.5.0 (mcr.microsoft.com/powershell:7.5-ubuntu-24.04, linux/amd64) | docker 29.5.2
+# No Windows machine here. The book's PowerShell line was run in the PowerShell container, on a Docker
+# network shared with the ml-app container, so the URL is http://ml-api:8000 instead of localhost:8000.
+$ Invoke-RestMethod -Method Post -Uri http://ml-api:8000/predict -ContentType "application/json" -Body '{"input": [6, 7, 8]}'
+
+prediction
+----------
+{12, 14, 16}
+
+[exit 0]
+

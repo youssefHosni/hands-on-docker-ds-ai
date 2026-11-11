@@ -1,0 +1,5 @@
+# Keep these out of the image: they are big, private, or rebuilt inside it
+.git/
+.venv/
+__pycache__/
+*.pkl

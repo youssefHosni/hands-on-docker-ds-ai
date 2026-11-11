@@ -1,0 +1,45 @@
+### 2026-11-02 11:48 | arm64 | docker 29.5.2 | in ch10/ollama
+$ docker compose exec -T ollama ollama run gemma3:270m --verbose --nowordwrap "Explain what a Docker container is in three sentences." 2>&1 | grep -E "load duration|eval rate"; docker compose exec ollama ollama ps
+load duration:        1.811351529s
+prompt eval rate:     1387.87 tokens/s
+eval rate:            183.71 tokens/s
+NAME           ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               
+gemma3:270m    e7d36fb2c3b3    504 MB    100% CPU     4096       llamacpp    29 minutes from now    
+[exit 0]
+
+### 2026-11-02 11:48 | arm64 | docker 29.5.2 | in ch10/ollama
+$ docker compose exec -T ollama ollama run gemma3:1b --verbose --nowordwrap "Explain what a Docker container is in three sentences." 2>&1 | grep -E "load duration|eval rate"; docker compose exec ollama ollama ps
+load duration:        1.288485547s
+prompt eval rate:     204.39 tokens/s
+eval rate:            69.60 tokens/s
+NAME         ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               
+gemma3:1b    97558784bdc9    1.2 GB    100% CPU     4096       llamacpp    29 minutes from now    
+[exit 0]
+
+### 2026-11-02 11:49 | arm64 | docker 29.5.2 | in ch10/ollama
+$ docker compose exec -T ollama ollama run gemma3:1b-it-q8_0 --verbose --nowordwrap "Explain what a Docker container is in three sentences." 2>&1 | grep -E "load duration|eval rate"; docker compose exec ollama ollama ps
+load duration:        2.047478536s
+prompt eval rate:     310.11 tokens/s
+eval rate:            61.41 tokens/s
+NAME                 ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               
+gemma3:1b-it-q8_0    e3acf9b8e078    1.5 GB    100% CPU     4096       llamacpp    29 minutes from now    
+[exit 0]
+
+### 2026-11-02 11:49 | arm64 | docker 29.5.2 | in ch10/ollama
+$ docker compose exec -T ollama ollama run gemma3:1b-it-fp16 --verbose --nowordwrap "Explain what a Docker container is in three sentences." 2>&1 | grep -E "load duration|eval rate"; docker compose exec ollama ollama ps
+load duration:        2.038382216s
+prompt eval rate:     194.77 tokens/s
+eval rate:            34.30 tokens/s
+NAME                 ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               
+gemma3:1b-it-fp16    d685bd623bd3    2.1 GB    100% CPU     4096       llamacpp    29 minutes from now    
+[exit 0]
+
+### 2026-11-02 11:49 | arm64 | docker 29.5.2 | in ch10/ollama
+$ docker compose exec -T ollama ollama run gemma3:4b --verbose --nowordwrap "Explain what a Docker container is in three sentences." 2>&1 | grep -E "load duration|eval rate"; docker compose exec ollama ollama ps
+load duration:        5.361205827s
+prompt eval rate:     111.00 tokens/s
+eval rate:            26.38 tokens/s
+NAME         ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               
+gemma3:4b    68ceab7e468a    2.9 GB    100% CPU     4096       llamacpp    29 minutes from now    
+[exit 0]
+

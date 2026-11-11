@@ -1,0 +1,23 @@
+# One Dockerfile, two builds: pick the one that fits the machine with a profile.
+#   docker compose --profile cpu up --build    (any machine, including a Mac)
+#   docker compose --profile gpu up --build    (Linux with an NVIDIA GPU and the Container Toolkit)
+services:
+  check-cpu:
+    profiles: ["cpu"]
+    build:
+      context: .
+      args:
+        TORCH_INDEX: https://download.pytorch.org/whl/cpu
+    image: torch-check:cpu
+
+  check-gpu:
+    profiles: ["gpu"]
+    build: .
+    image: torch-check:cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

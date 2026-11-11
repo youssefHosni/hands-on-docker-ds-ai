@@ -1,0 +1,44 @@
+# Ollama instead of Docker Model Runner:
+#   docker compose -f compose.yaml -f compose.ollama.yaml up -d
+services:
+  ollama:
+    image: ollama/ollama:0.40.13
+    volumes:
+      - ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Downloads both models once Ollama is up, then exits
+  ollama-pull:
+    image: ollama/ollama:0.40.13
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["sh", "-c", "ollama pull gemma3:4b && ollama pull embeddinggemma"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+  ingest:
+    models: !reset {}
+    environment:
+      EMBEDDING_URL: http://ollama:11434/v1
+      EMBEDDING_MODEL: embeddinggemma
+    depends_on:
+      ollama-pull:
+        condition: service_completed_successfully
+
+  api:
+    models: !reset {}
+    environment:
+      LLM_URL: http://ollama:11434/v1
+      LLM_MODEL: gemma3:4b
+      EMBEDDING_URL: http://ollama:11434/v1
+      EMBEDDING_MODEL: embeddinggemma
+
+models: !reset {}
+
+volumes:
+  ollama:

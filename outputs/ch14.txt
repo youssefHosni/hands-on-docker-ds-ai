@@ -1,0 +1,123 @@
+### 2026-11-05 00:56 | arm64 | docker 29.5.2 | in ch14
+$ docker build -q -t ml-app:ci . | cut -c1-19
+sha256:5a73a7f7ef1c
+[exit 0]
+
+### 2026-11-05 00:56 | arm64 | docker 29.5.2 | in ch14
+$ ci/test.sh ml-app:ci
+Answer: {"prediction":[12.000000000000002]}
+PASSED
+[exit 0]
+
+### 2026-11-05 00:56 | arm64 | docker 29.5.2 | in ch14
+$ ci/scan.sh ml-app:ci; echo "exit code: $?"
+exit code: 0
+[exit 0]
+
+### 2026-11-05 00:57 | arm64 | docker 29.5.2 | in ch14
+$ ci/scan.sh python:3.8-slim | grep Total; ci/scan.sh python:3.8-slim >/dev/null; echo "exit code: $?"
+Total: 7 (CRITICAL: 7)
+exit code: 1
+[exit 0]
+
+### 2026-11-05 00:57 | arm64 | docker 29.5.2 | in ch14
+$ docker run -d --name registry -p 127.0.0.1:5001:5000 registry:3.1.2 | cut -c1-12
+Unable to find image 'registry:3.1.2' locally
+3.1.2: Pulling from library/registry
+d3531b7a4f21: Pulling fs layer
+953411d61b30: Pulling fs layer
+eff607904e38: Pulling fs layer
+03d1c2a161c8: Pulling fs layer
+8cb1e6653015: Pulling fs layer
+d3531b7a4f21: Download complete
+953411d61b30: Download complete
+8cb1e6653015: Download complete
+03d1c2a161c8: Download complete
+eff607904e38: Download complete
+d3531b7a4f21: Pull complete
+03d1c2a161c8: Pull complete
+f19b670b49c3: Download complete
+953411d61b30: Pull complete
+8cb1e6653015: Pull complete
+eff607904e38: Pull complete
+ca5c35b40283: Download complete
+Digest: sha256:d4032d4cc323c1731c707931ecada07a53076eac38e3b61ae57533f170f2c6c3
+Status: Downloaded newer image for registry:3.1.2
+a59ba87325b4
+[exit 0]
+
+### 2026-11-05 00:57 | arm64 | docker 29.5.2 | in ch14
+$ time docker buildx build --platform linux/amd64,linux/arm64 -t localhost:5001/ml-app:1.4.2 --push . 2>&1 | tail -3 | cut -c1-120
+#20 pushing manifest for localhost:5001/ml-app:1.4.2@sha256:bd03b07ba9de90595d41c12217d93a1a8f91d0f840e5378ef8d54d77d948
+#20 pushing manifest for localhost:5001/ml-app:1.4.2@sha256:bd03b07ba9de90595d41c12217d93a1a8f91d0f840e5378ef8d54d77d948
+#20 DONE 5.6s
+
+real	1m7.558s
+user	0m0.107s
+sys	0m0.122s
+[exit 0]
+
+### 2026-11-05 00:58 | arm64 | docker 29.5.2 | in ch14
+$ docker buildx imagetools inspect localhost:5001/ml-app:1.4.2 | grep -E "^(Name|Digest)|Platform"
+Name:      localhost:5001/ml-app:1.4.2
+Digest:    sha256:bd03b07ba9de90595d41c12217d93a1a8f91d0f840e5378ef8d54d77d94826cc
+  Platform:    linux/amd64
+  Platform:    linux/arm64
+  Platform:    unknown/unknown
+  Platform:    unknown/unknown
+[exit 0]
+
+### 2026-11-05 00:59 | arm64 | docker 29.5.2 | in ch14
+$ docker run --rm -v "$PWD:/repo:ro" -w /repo rhysd/actionlint:1.7.12 -color .github/workflows/docker.yml; echo "exit code: $?"
+exit code: 0
+[exit 0]
+
+### 2026-11-05 00:59 | arm64 | docker 29.5.2 | in ch14
+$ time docker buildx build --no-cache --platform linux/arm64 -t scratch-arm . -o type=image,push=false 2>&1 | tail -1 | cut -c1-60
+#12 DONE 5.2s
+
+real	0m15.585s
+user	0m0.088s
+sys	0m0.075s
+[exit 0]
+
+### 2026-11-05 00:59 | arm64 | docker 29.5.2 | in ch14
+$ time docker buildx build --no-cache --platform linux/amd64 -t scratch-amd . -o type=image,push=false 2>&1 | tail -1 | cut -c1-60
+#12 DONE 5.7s
+
+real	1m8.487s
+user	0m0.101s
+sys	0m0.097s
+[exit 0]
+
+### 2026-11-05 01:00 | arm64 | docker 29.5.2 | in ch14
+$ docker buildx imagetools create -t localhost:5001/ml-app:1.4 -t localhost:5001/ml-app:1 localhost:5001/ml-app:1.4.2 2>&1 | tail -1 | cut -c1-80
+#1 DONE 0.0s
+[exit 0]
+
+### 2026-11-05 01:00 | arm64 | docker 29.5.2 | in ch14
+$ for t in 1.4.2 1.4 1; do echo "$t $(docker buildx imagetools inspect localhost:5001/ml-app:$t --format "{{.Manifest.Digest}}" | cut -c1-19)"; done
+1.4.2 sha256:bd03b07ba9de
+1.4 sha256:bd03b07ba9de
+1 sha256:bd03b07ba9de
+[exit 0]
+
+### 2026-11-05 01:00 | arm64 | docker 29.5.2 | in ch14
+$ docker buildx build --platform linux/amd64,linux/arm64 --label version=1.4.3 -t localhost:5001/ml-app:1.4.3 --push . 2>&1 | tail -1 | cut -c1-60; docker buildx imagetools create -t localhost:5001/ml-app:1.4 -t localhost:5001/ml-app:1 localhost:5001/ml-app:1.4.3 2>&1 | tail -1 | cut -c1-80
+#20 DONE 0.4s
+#1 DONE 0.0s
+[exit 0]
+
+### 2026-11-05 01:00 | arm64 | docker 29.5.2 | in ch14
+$ for t in 1.4.2 1.4.3 1.4 1; do echo "$t $(docker buildx imagetools inspect localhost:5001/ml-app:$t --format "{{.Manifest.Digest}}" | cut -c1-19)"; done
+1.4.2 sha256:bd03b07ba9de
+1.4.3 sha256:920d112ee2fa
+1.4 sha256:920d112ee2fa
+1 sha256:920d112ee2fa
+[exit 0]
+
+### 2026-11-05 01:00 | arm64 | docker 29.5.2 | in ch14
+$ curl -s localhost:5001/v2/ml-app/tags/list
+{"name":"ml-app","tags":["1","1.4","1.4.2","1.4.3"]}
+[exit 0]
+

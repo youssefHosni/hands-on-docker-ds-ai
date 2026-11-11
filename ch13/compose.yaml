@@ -1,0 +1,53 @@
+name: agents
+
+services:
+  # All the agent's tools, behind one address
+  gateway:
+    image: docker/mcp-gateway:v0.44.3
+    volumes:
+      # The gateway starts each tool as a container
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Our own server, next to the ones in Docker's catalog
+      - ./catalog.yaml:/root/.docker/mcp/catalogs/tools.yaml:ro
+    environment:
+      MCP_GATEWAY_AUTH_TOKEN: ${MCP_GATEWAY_AUTH_TOKEN:?Set MCP_GATEWAY_AUTH_TOKEN in the .env file}
+    command:
+      - --transport=streaming
+      - --port=8811
+      - --additional-catalog=tools.yaml
+      - --servers=time,data-tools
+
+  # Runs when we ask a question: docker compose run --rm agent "..."
+  agent:
+    build: ./agent
+    profiles: ["agent"]
+    environment:
+      MCP_GATEWAY_AUTH_TOKEN: ${MCP_GATEWAY_AUTH_TOKEN:?Set MCP_GATEWAY_AUTH_TOKEN in the .env file}
+    models:
+      llm:
+        endpoint_var: LLM_URL
+        model_var: LLM_MODEL
+    depends_on:
+      - gateway
+
+  # The same tools and model, with Docker Agent instead of our loop
+  docker-agent:
+    image: docker/docker-agent:1.156.2
+    profiles: ["docker-agent"]
+    volumes:
+      - ./docker-agent.yaml:/agent.yaml:ro
+    environment:
+      TELEMETRY_ENABLED: "false"
+      MCP_GATEWAY_AUTH_TOKEN: ${MCP_GATEWAY_AUTH_TOKEN:?Set MCP_GATEWAY_AUTH_TOKEN in the .env file}
+    entrypoint: ["/docker-agent", "run", "--exec", "--yolo", "/agent.yaml"]
+    models:
+      llm:
+        endpoint_var: LLM_URL
+        model_var: LLM_MODEL
+    depends_on:
+      - gateway
+
+models:
+  llm:
+    model: ${MODEL:-ai/qwen3:4b-instruct-2507-q4_K_M}
+    context_size: 4096

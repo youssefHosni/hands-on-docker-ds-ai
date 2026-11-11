@@ -1,0 +1,28 @@
+### 2026-11-05 00:10 | arm64 | docker 29.5.2 | in ch13
+$ docker build -q -t data-tools:1.0 tools | cut -c1-19
+sha256:4b8442f3e4c0
+[exit 0]
+
+### 2026-11-05 00:10 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose restart gateway 2>&1 | tail -1; sleep 6; docker compose logs gateway | grep "tools listed" | tail -1
+ Container agents-gateway-1 Started 
+gateway-1  | > 6 tools listed in 698.133394ms
+[exit 0]
+
+### 2026-11-05 00:10 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch13'
+$ docker compose run --rm agent "Do bigger houses cost more? Use the correlation between size and price in houses.csv." 2>&1 | grep -vE "^ *(llm|Container|Network|Image)|^#|^\$"
+[tool] describe {'file': 'houses.csv'}
+[result] {
+  "columns": [
+    "size_m2",
+    "rooms",
+    "age_years",
+    "price_k"
+  ],
+  "rows": 20
+}
+[tool] column_correlation {'column_a': 'size_m2', 'column_b': 'price_k', 'file': 'houses.csv'}
+[result] 0.968
+There is a strong positive correlation (0.968) between the size of houses and their price, indicating that bigger houses tend to cost more.
+[exit 0]
+

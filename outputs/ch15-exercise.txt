@@ -1,0 +1,42 @@
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl apply -f deployment-no-probes.yaml; kubectl rollout status deployment/ml-api --timeout=60s | tail -1
+deployment.apps/ml-api configured
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl set image deployment/ml-api api=ml-api:1.1.0; kubectl rollout status deployment/ml-api --timeout=60s | tail -1; sleep 3; kubectl get pods
+deployment.apps/ml-api image updated
+deployment "ml-api" successfully rolled out
+NAME                      READY   STATUS    RESTARTS   AGE
+ml-api-5798bd6d46-8tb86   1/1     Running   0          3s
+ml-api-5798bd6d46-mm8wb   1/1     Running   0          4s
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl run client --rm -i --quiet --restart=Never --image=curlimages/curl:8.17.0 -- sh -c "for i in 1 2 3 4 5 6; do curl -s -o /dev/null -w \"%{http_code} \" http://ml-api/health; done; echo"
+503 503 503 503 503 
+[exit 0]
+
+### 2026-11-05 03:40 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl run client --rm -i --quiet --restart=Never --image=curlimages/curl:8.17.0 -- curl -s -X POST http://ml-api/predict -H "Content-Type: application/json" -d "{\"input\": [6]}"
+{"detail":"Model not loaded"}
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl apply -f deployment-no-probes.yaml; kubectl rollout status deployment/ml-api --timeout=60s | tail -1
+deployment.apps/ml-api configured
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl set image deployment/ml-api api=ml-api:1.1.0; kubectl rollout status deployment/ml-api --timeout=60s | tail -1
+deployment.apps/ml-api image updated
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in exercises/ch15
+$ kubectl run client --rm -i --quiet --restart=Never --image=curlimages/curl:8.17.0 -- sh -c "sleep 3; for i in 1 2 3 4 5 6 7 8 9 10; do curl -s -o /dev/null -w \"%{http_code} \" http://ml-api/health; done; echo"
+503 503 503 503 503 503 503 503 503 503 
+[exit 0]
+

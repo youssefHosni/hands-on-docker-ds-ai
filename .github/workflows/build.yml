@@ -1,0 +1,27 @@
+# Builds every Dockerfile in the repository on each push, on Linux (amd64),
+# so the examples are tested on the platform most readers use.
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build every Dockerfile
+        run: |
+          status=0
+          for f in $(find . -name Dockerfile -not -path './.git/*' | sort); do
+            dir=$(dirname "$f")
+            echo "::group::$dir"
+            docker build -t "test-$(echo "$dir" | tr '/.' '--' | sed 's/^-*//')" "$dir" || status=1
+            echo "::endgroup::"
+          done
+          exit $status
+      - name: Run chapter 1
+        run: |
+          docker run --rm test-ch01 | grep -x 'Accuracy: 1.0'

@@ -1,0 +1,549 @@
+### 2026-11-02 00:17 | arm64 | docker 29.5.2 | in ch07/project
+$ docker build -t ds-project:1.0 .
+[+] Building 22.5s (14/14) FINISHED                               docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 871B                                       0.0s
+ => [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6               0.5s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.5s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 65B                                           0.0s
+ => FROM ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405  0.0s
+ => => resolve ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e5515  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 64B                                           0.0s
+ => [stage-0 1/7] FROM docker.io/library/python:3.14-slim@sha256:cd89c30e  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => CACHED [stage-0 2/7] COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /bin  0.0s
+ => CACHED [stage-0 3/7] RUN useradd --create-home appuser                 0.0s
+ => [stage-0 4/7] RUN mkdir /datasets && chown appuser /datasets           0.1s
+ => [stage-0 5/7] WORKDIR /project                                         0.0s
+ => [stage-0 6/7] COPY pyproject.toml uv.lock ./                           0.0s
+ => [stage-0 7/7] RUN --mount=type=cache,target=/root/.cache/uv     uv sy  5.6s
+ => exporting to image                                                    16.2s
+ => => exporting layers                                                   12.1s
+ => => exporting manifest sha256:971924aa9beeb90cd389c0b38cfde1ff8cda14e0  0.0s
+ => => exporting config sha256:1a57d57f4525fc320b1aecd3ca8df1dbd3a899b7ff  0.0s
+ => => exporting attestation manifest sha256:319d5e581981fe5ea43495e2714e  0.0s
+ => => exporting manifest list sha256:665eb01a8fac105d98a9ec23cc9c4704201  0.0s
+ => => naming to docker.io/library/ds-project:1.0                          0.0s
+ => => unpacking to docker.io/library/ds-project:1.0                       4.0s
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm -v "$PWD":/project ds-project:1.0 python summarize.py data/houses.csv output/summary.csv
+       size_m2  rooms  age_years  price_k
+count     20.0   20.0       20.0     20.0
+mean      99.7    3.2       33.6    237.0
+std       29.4    1.3       15.0     70.7
+min       50.0    1.0        5.0    122.0
+25%       75.8    2.0       25.5    192.0
+50%       97.5    3.0       36.5    234.0
+75%      123.0    4.0       42.0    295.2
+max      147.0    5.0       59.0    342.0
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ ls -l output
+total 8
+-rw-r--r--  1 hosniy1  staff  228 Nov  2 00:18 summary.csv
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm -v "$PWD":/project -v "$PWD/data":/project/data:ro ds-project:1.0 python summarize.py data/houses.csv data/summary.csv
+Traceback (most recent call last):
+  File "/project/summarize.py", line 12, in <module>
+    summary.to_csv(target)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/opt/venv/lib/python3.14/site-packages/pandas/core/generic.py", line 4026, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path_or_buf,
+        ^^^^^^^^^^^^
+    ...<14 lines>...
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/venv/lib/python3.14/site-packages/pandas/io/formats/format.py", line 1027, in to_csv
+    csv_formatter.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/venv/lib/python3.14/site-packages/pandas/io/formats/csvs.py", line 251, in save
+    with get_handle(
+         ~~~~~~~~~~^
+        self.filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        storage_options=self.storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
+    ^
+  File "/opt/venv/lib/python3.14/site-packages/pandas/io/common.py", line 939, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+OSError: [Errno 30] Read-only file system: 'data/summary.csv'
+[exit 1]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch04/app
+$ docker run --rm -v "$PWD":/app ml-app:2.0
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "uvicorn": executable file not found in $PATH
+
+Run 'docker run --help' for more information
+[exit 127]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker volume create datasets
+datasets
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm -v datasets:/home/appuser/scikit_learn_data ds-project:1.0 python -c "from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/datasets/_california_housing.py", line 175, in fetch_california_housing
+    archive_path = _fetch_remote(
+        ARCHIVE,
+    ...<2 lines>...
+        delay=delay,
+    )
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/datasets/_base.py", line 1502, in _fetch_remote
+    temp_file = NamedTemporaryFile(
+        prefix=remote.filename + ".part_", dir=folder_path, delete=False
+    )
+  File "/usr/local/lib/python3.14/tempfile.py", line 657, in NamedTemporaryFile
+    file = _io.open(dir, mode, buffering=buffering,
+                    newline=newline, encoding=encoding, errors=errors,
+                    opener=opener)
+  File "/usr/local/lib/python3.14/tempfile.py", line 654, in opener
+    fd, name = _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/tempfile.py", line 256, in _mkstemp_inner
+    fd = _os.open(file, flags, 0o600)
+PermissionError: [Errno 13] Permission denied: '/home/appuser/scikit_learn_data/cal_housing.tgz.part_1udeuvho'
+[exit 1]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm -v datasets:/datasets -e SCIKIT_LEARN_DATA=/datasets ds-project:1.0 python -c "from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)"
+(20640, 8)
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm --network none -v datasets:/datasets -e SCIKIT_LEARN_DATA=/datasets ds-project:1.0 python -c "from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)"
+(20640, 8)
+[exit 0]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm --network none -e SCIKIT_LEARN_DATA=/datasets ds-project:1.0 python -c "from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)"
+/opt/venv/lib/python3.14/site-packages/sklearn/datasets/_base.py:1521: UserWarning: Retry downloading from url: https://ndownloader.figshare.com/files/5976036
+  warnings.warn(f"Retry downloading from url: {remote.url}")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1333, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1386, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1432, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1381, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1141, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1085, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1520, in connect
+    super().connect()
+    ~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1051, in connect
+    self.sock = self._create_connection(
+                ~~~~~~~~~~~~~~~~~~~~~~~^
+        (self.host,self.port), self.timeout, self.source_address)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/socket.py", line 850, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/socket.py", line 989, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from sklearn.datasets import fetch_california_housing; print(fetch_california_housing().data.shape)
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/datasets/_california_housing.py", line 175, in fetch_california_housing
+    archive_path = _fetch_remote(
+        ARCHIVE,
+    ...<2 lines>...
+        delay=delay,
+    )
+  File "/opt/venv/lib/python3.14/site-packages/sklearn/datasets/_base.py", line 1515, in _fetch_remote
+    urlretrieve(remote.url, temp_file_path)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 212, in urlretrieve
+    with contextlib.closing(urlopen(url, data)) as fp:
+                            ~~~~~~~^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1381, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1336, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>
+[exit 1]
+
+### 2026-11-02 00:18 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run --rm -v datasets:/datasets ds-project:1.0 ls -l /datasets
+total 360
+-rw-r--r-- 1 appuser appuser 366871 Nov  1 22:18 cal_housing_py3.pkz
+[exit 0]
+
+### 2026-11-02 00:20 | arm64 | docker 29.5.2 | in ch07/project
+$ docker run -d --name lab -p 127.0.0.1:8888:8888 -v "$PWD":/project ds-project:1.0
+cebe8c18f8d681b4f90cfb99eb7ca0df2824187545aa25aa978a0a4997af9d29
+[exit 0]
+
+### 2026-11-02 00:20 | arm64 | docker 29.5.2 | in ch07/project
+$ docker logs lab
+[I 2026-11-01 22:20:03.116 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-11-01 22:20:03.117 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-11-01 22:20:03.119 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-11-01 22:20:03.120 ServerApp] Writing Jupyter server cookie secret to /home/appuser/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2026-11-01 22:20:03.138 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-11-01 22:20:03.145 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-11-01 22:20:03.146 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2026-11-01 22:20:03.146 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-11-01 22:20:03.147 LabApp] JupyterLab extension loaded from /opt/venv/lib/python3.14/site-packages/jupyterlab
+[I 2026-11-01 22:20:03.147 LabApp] JupyterLab application directory is /opt/venv/share/jupyter/lab
+[I 2026-11-01 22:20:03.147 LabApp] Extension Manager is 'pypi'.
+[I 2026-11-01 22:20:03.160 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-11-01 22:20:03.161 ServerApp] Serving notebooks from local directory: /project
+[I 2026-11-01 22:20:03.161 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-11-01 22:20:03.161 ServerApp] http://0.0.0.0:8888/lab?token=6d4d11131e428057e1fa78b165493b1dd1aad163250fe1be
+[I 2026-11-01 22:20:03.161 ServerApp]     http://127.0.0.1:8888/lab?token=6d4d11131e428057e1fa78b165493b1dd1aad163250fe1be
+[I 2026-11-01 22:20:03.161 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2026-11-01 22:20:03.162 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:/home/appuser/.local/share/jupyter/runtime/jpserver-1-open.html
+    Or copy and paste one of these URLs:
+        http://cebe8c18f8d6:8888/lab?token=6d4d11131e428057e1fa78b165493b1dd1aad163250fe1be
+        http://127.0.0.1:8888/lab?token=6d4d11131e428057e1fa78b165493b1dd1aad163250fe1be
+    The server is listening on all interfaces, so any hostname or IP of this machine will work.
+[I 2026-11-01 22:20:03.168 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[exit 0]
+
+### 2026-11-02 00:20 | arm64 | docker 29.5.2 | in ch07/project
+$ docker exec lab jupyter nbconvert --to notebook --execute notebooks/explore.ipynb --output-dir output
+[NbConvertApp] Converting notebook notebooks/explore.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 25387 bytes to output/explore.ipynb
+[exit 0]
+
+### 2026-11-02 00:20 | arm64 | docker 29.5.2 | in ch07/project
+$ ls -l output
+total 64
+-rw-r--r--  1 hosniy1  staff  25387 Nov  2 00:20 explore.ipynb
+-rw-r--r--  1 hosniy1  staff    228 Nov  2 00:18 summary.csv
+[exit 0]
+
+### 2026-11-02 00:22 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer --version
+0.90.0
+[exit 0]
+
+### 2026-11-02 00:22 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer up --workspace-folder .
+[2026-11-01T22:22:11.336Z] @devcontainers/cli 0.90.0. Node.js v25.6.1. darwin 25.6.0 arm64.
+[2026-11-01T22:22:11.754Z] Start: Run: docker buildx build --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /var/folders/nb/08hcpckx43j89l0tdm3ll5kr0000gp/T/devcontainercli/container-features/0.90.0-1793571731753/Dockerfile-with-features -t vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12 --target dev_containers_target_stage --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project
+[2026-11-01T22:22:12.208Z] #0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile-with-features
+
+[2026-11-01T22:22:12.208Z] #1 transferring dockerfile: 1.29kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.14-slim
+#2 DONE 0.0s
+
+#3 [internal] load metadata for ghcr.io/astral-sh/uv:0.13.6
+
+[2026-11-01T22:22:12.558Z] #3 DONE 0.5s
+
+[2026-11-01T22:22:12.667Z] 
+#4 [internal] load .dockerignore
+#4 transferring context: 65B done
+#4 DONE 0.0s
+
+#5 FROM ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405c02df61919d18028f0cea8eda93bc9986d0
+
+[2026-11-01T22:22:12.667Z] #5 resolve ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405c02df61919d18028f0cea8eda93bc9986d0 done
+#5 DONE 0.0s
+
+#6 [dev_container_auto_added_stage_label 1/7] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#6 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 64B done
+#7 DONE 0.0s
+
+#8 [dev_container_auto_added_stage_label 3/7] RUN useradd --create-home appuser
+#8 CACHED
+
+#9 [dev_container_auto_added_stage_label 2/7] COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /bin/uv
+#9 CACHED
+
+#10 [dev_container_auto_added_stage_label 4/7] RUN mkdir /datasets && chown appuser /datasets
+#10 CACHED
+
+#11 [dev_container_auto_added_stage_label 6/7] COPY pyproject.toml uv.lock ./
+#11 CACHED
+
+#12 [dev_container_auto_added_stage_label 5/7] WORKDIR /project
+#12 CACHED
+
+#13 [dev_container_auto_added_stage_label 7/7] RUN --mount=type=cache,target=/root/.cache/uv     uv sync --locked --no-install-project
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 preparing layers for inline cache 0.0s done
+#14 exporting manifest sha256:f32c038e1fe8ae002605300cb6eac0a96dba088de718539455111a355aa91208 done
+#14 exporting config sha256:a09792afc1d2b5515362f8680ed1b0c5385fe415e7cd4a4538cfaa983dc0aa7a done
+#14 exporting attestation manifest sha256:1fc46d65ddcf083c6faf1403debbb0df8964b16d7fb3394f9a58f9f3c7eed8ec done
+#14 exporting manifest list sha256:c117ae738cb6745b7109ae930ccc08fab6fae0fb9e72a03332be2ab5146cf3bd done
+#14 naming to docker.io/library/vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12:latest done
+#14 unpacking to docker.io/library/vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12:latest done
+#14 DONE 0.1s
+
+[2026-11-01T22:22:12.676Z] Start: Run: docker run --sig-proxy=false -a STDOUT -a STDERR --mount source=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project,target=/project,type=bind -l devcontainer.local_folder=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project -l devcontainer.config_file=/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch07/project/.devcontainer/devcontainer.json --entrypoint /bin/sh vsc-project-394c46fcf8fe66c76f24cbb326716ff3c029d3fb8f273becd917efe14094be12 -c echo Container started
+[2026-11-01T22:22:12.820Z] Container started
+{"outcome":"success","containerId":"d7c8e34f79725deb746c240f5af79bca5597529ccfb179ad94231202f95bbfa9","remoteUser":"appuser","remoteWorkspaceFolder":"/project","ociAuthDiagnostics":{"authLookupWouldBeBlocked":false,"registryRedirectWouldPreventCredentialForwarding":false,"authServerRedirect":false}}
+[exit 0]
+
+### 2026-11-02 00:22 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer exec --workspace-folder . python summarize.py data/houses.csv output/summary.csv
+       size_m2  rooms  age_years  price_k
+count     20.0   20.0       20.0     20.0
+mean      99.7    3.2       33.6    237.0
+std       29.4    1.3       15.0     70.7
+min       50.0    1.0        5.0    122.0
+25%       75.8    2.0       25.5    192.0
+50%       97.5    3.0       36.5    234.0
+75%      123.0    4.0       42.0    295.2
+max      147.0    5.0       59.0    342.0
+[exit 0]
+
+### 2026-11-02 00:22 | arm64 | docker 29.5.2 | in ch07/project
+$ devcontainer exec --workspace-folder . sh -c "whoami; pwd; which python"
+appuser
+/project
+/opt/venv/bin/python
+[exit 0]
+### 2026-11-02 00:26 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ docker build -t sentiment:1.0 .
+[+] Building 4.2s (11/11) FINISHED                                docker:colima
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 529B                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.14-slim        0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/6] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => => resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee91  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 29B                                           0.0s
+ => CACHED [2/6] RUN pip install --no-cache-dir torch==2.15.0 --index-url  0.0s
+ => CACHED [3/6] RUN useradd --create-home appuser                         0.0s
+ => CACHED [4/6] RUN mkdir -p /home/appuser/.cache/huggingface             0.0s
+ => CACHED [5/6] WORKDIR /app                                              0.0s
+ => CACHED [6/6] COPY main.py .                                            0.0s
+ => exporting to image                                                     4.1s
+ => => exporting layers                                                    0.0s
+ => => exporting manifest sha256:accca491e239c358f474e2e750785c3c3e45f91d  0.0s
+ => => exporting config sha256:ae1fb5fcdf8cbf93aa03fd43ab363f81d90cc669f2  0.0s
+ => => exporting attestation manifest sha256:678451e3be88b5f610d4153867ae  0.0s
+ => => exporting manifest list sha256:b3f189ac466799fa019fabd7c4aae11d51f  0.0s
+ => => naming to docker.io/library/sentiment:1.0                           0.0s
+ => => unpacking to docker.io/library/sentiment:1.0                        4.1s
+[exit 0]
+
+### 2026-11-02 00:26 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ time docker run --rm sentiment:1.0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 18166.23it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+
+real	0m18.484s
+user	0m0.008s
+sys	0m0.006s
+[exit 0]
+
+### 2026-11-02 00:26 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ time docker run --rm sentiment:1.0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 37542.61it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+
+real	0m16.387s
+user	0m0.009s
+sys	0m0.008s
+[exit 0]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ docker volume create hf-models
+hf-models
+[exit 0]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ time docker run --rm -v hf-models:/home/appuser/.cache/huggingface sentiment:1.0
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 54601.03it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+
+real	0m16.733s
+user	0m0.008s
+sys	0m0.007s
+[exit 0]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ time docker run --rm -v hf-models:/home/appuser/.cache/huggingface sentiment:1.0
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 24228.37it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+
+real	0m3.049s
+user	0m0.009s
+sys	0m0.007s
+[exit 0]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ docker run --rm --network none -e HF_HUB_OFFLINE=1 -v hf-models:/home/appuser/.cache/huggingface sentiment:1.0
+Loading weights:   0%|          | 0/104 [00:00<?, ?it/s]Loading weights: 100%|██████████| 104/104 [00:00<00:00, 62137.84it/s]
+POSITIVE (1.000)  This movie was a wonderful surprise.
+NEGATIVE (1.000)  The build failed again and nobody knows why.
+NEGATIVE (0.994)  Docker made our model deployment painless.
+[exit 0]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ docker run --rm --network none sentiment:1.0
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 2s [Retry 2/5].
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 4s [Retry 3/5].
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 8s [Retry 4/5].
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+Retrying in 8s [Retry 5/5].
+'[Errno -3] Temporary failure in name resolution' thrown while requesting HEAD https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/config.json
+httpcore2.ConnectError: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+httpx2.ConnectError: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/transformers/utils/hub.py", line 537, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/usr/local/lib/python3.14/site-packages/huggingface_hub/utils/_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+  File "/usr/local/lib/python3.14/site-packages/huggingface_hub/file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/usr/local/lib/python3.14/site-packages/huggingface_hub/file_download.py", line 1194, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/huggingface_hub/file_download.py", line 1962, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+    ...<3 lines>...
+    ) from head_call_error
+huggingface_hub.errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/main.py", line 4, in <module>
+    classifier = pipeline(
+        "sentiment-analysis",
+        model="distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+    )
+  File "/usr/local/lib/python3.14/site-packages/transformers/pipelines/__init__.py", line 972, in pipeline
+    config = AutoConfig.from_pretrained(model, _from_pipeline=task, **hub_kwargs, **model_kwargs)
+  File "/usr/local/lib/python3.14/site-packages/transformers/models/auto/configuration_auto.py", line 405, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/transformers/configuration_utils.py", line 933, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/transformers/configuration_utils.py", line 985, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<8 lines>...
+        subfolder=subfolder,
+    )
+  File "/usr/local/lib/python3.14/site-packages/transformers/utils/hub.py", line 370, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/usr/local/lib/python3.14/site-packages/transformers/utils/hub.py", line 620, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+[exit 1]
+
+### 2026-11-02 00:27 | arm64 | docker 29.5.2 | in ch07/hf-cache
+$ docker run --rm -v hf-models:/cache python:3.14-slim du -sh /cache/hub
+256M	/cache/hub
+[exit 0]
+

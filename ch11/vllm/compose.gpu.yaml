@@ -1,0 +1,14 @@
+# For a Linux machine with an NVIDIA GPU (Chapter 9). Not run for this book: it follows vLLM's
+# and Docker's documentation. Start with:
+#   docker compose -f compose.yaml -f compose.gpu.yaml up -d --wait
+services:
+  vllm:
+    image: vllm/vllm-openai:v0.33.0
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

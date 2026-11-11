@@ -1,0 +1,79 @@
+### 2026-11-02 14:53 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose up -d 2>&1 | tail -1
+ Container vllm-vllm-1 Started 
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose ps --format "table {{.Name}}\t{{.Status}}"
+NAME          STATUS
+vllm-vllm-1   Up About a minute (healthy)
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose logs vllm | grep -E "downloading weights|init engine"
+vllm-1  | (Worker pid=99) INFO 11-02 12:54:09 [weight_utils.py:537] Time spent downloading weights for HuggingFaceTB/SmolLM2-135M-Instruct: 16.612221 seconds
+vllm-1  | (EngineCore pid=74) INFO 11-02 12:54:34 [core.py:412] init engine (profile, create kv cache, warmup model) took 24.18 s
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ curl -s http://localhost:8000/v1/models
+{"error":"Unauthorized"}
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ curl -s http://localhost:8000/v1/models -H "Authorization: Bearer $(grep VLLM_API_KEY .env | cut -d= -f2)" | python3 -c "import json,sys; print([m[\"id\"] for m in json.load(sys.stdin)[\"data\"]])"
+['smollm2']
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ curl -s http://localhost:8000/v1/chat/completions -H "Authorization: Bearer $(grep VLLM_API_KEY .env | cut -d= -f2)" -H "Content-Type: application/json" -d '{"model": "smollm2", "messages": [{"role": "user", "content": "In one sentence, what is Docker?"}], "max_tokens": 60, "temperature": 0}' | python3 -c "import json,sys; print(json.load(sys.stdin)[\"choices\"][0][\"message\"][\"content\"])"
+Docker is a container-based software platform that allows developers to create, deploy, and manage applications on a single, isolated environment.
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ curl -s http://localhost:8000/metrics | grep -E "^vllm:(num_requests_running|num_requests_waiting|kv_cache_usage_perc|generation_tokens_total)"
+vllm:num_requests_running{engine="0",model_name="smollm2"} 0.0
+vllm:num_requests_waiting{engine="0",model_name="smollm2"} 0.0
+vllm:num_requests_waiting_by_reason{engine="0",model_name="smollm2",reason="capacity"} 0.0
+vllm:num_requests_waiting_by_reason{engine="0",model_name="smollm2",reason="deferred"} 0.0
+vllm:kv_cache_usage_perc{engine="0",model_name="smollm2"} 0.0
+vllm:generation_tokens_total{engine="0",model_name="smollm2"} 28.0
+[exit 0]
+
+### 2026-11-02 14:54 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose down 2>&1 | tail -1 && time (docker compose up -d --wait 2>&1 | tail -1)
+ Network vllm_default Removed 
+ Container vllm-vllm-1 Healthy 
+
+real	0m40.694s
+user	0m0.063s
+sys	0m0.038s
+[exit 0]
+
+### 2026-11-02 14:55 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose logs vllm | grep -E "downloading weights|init engine"
+vllm-1  | (EngineCore pid=40) INFO 11-02 12:55:30 [core.py:412] init engine (profile, create kv cache, warmup model) took 20.33 s
+[exit 0]
+
+### 2026-11-02 14:55 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose down -v 2>&1 | tail -1 && time (docker compose up -d --wait 2>&1 | tail -1)
+ Network vllm_default Removed 
+ Container vllm-vllm-1 Healthy 
+
+real	1m6.237s
+user	0m0.087s
+sys	0m0.059s
+[exit 0]
+
+### 2026-11-02 14:56 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose -f compose.yaml -f compose.gpu.yaml config | grep -E "image:|ipc:|driver: nvidia"
+              driver: nvidia
+    image: vllm/vllm-openai:v0.33.0
+    ipc: host
+[exit 0]
+
+### 2026-11-02 14:56 | arm64 | docker 29.5.2 | in ch11/vllm
+$ docker compose down -v 2>&1 | tail -1
+ Network vllm_default Removed 
+[exit 0]
+

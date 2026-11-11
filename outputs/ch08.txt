@@ -1,0 +1,2912 @@
+### 2026-11-02 01:09 | arm64 | docker 29.5.2 | in ch08/tracking
+$ cp .env.example .env
+[exit 0]
+
+### 2026-11-02 01:09 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose up -d
+ Image postgres:18.6 Pulling 
+ d1a3067f9c98 Pulling fs layer 0B
+ 2b70e040f7d1 Pulling fs layer 0B
+ 3a714400795f Pulling fs layer 0B
+ 3c3225ba1025 Pulling fs layer 0B
+ 6ff057780a44 Pulling fs layer 0B
+ 8648fbfa17a8 Pulling fs layer 0B
+ de23c21b57f2 Pulling fs layer 0B
+ acba8632a2fc Pulling fs layer 0B
+ 54ddeb74882a Pulling fs layer 0B
+ 22aa5aa83b7d Pulling fs layer 0B
+ 7672a6ce4d85 Pulling fs layer 0B
+ 24b05182f7a5 Pulling fs layer 0B
+ 97f720713f77 Pulling fs layer 0B
+ de23c21b57f2 Download complete 0B
+ 54ddeb74882a Download complete 0B
+ d1a3067f9c98 Download complete 0B
+ acba8632a2fc Download complete 0B
+ 22aa5aa83b7d Downloading 2.097MB
+ 7672a6ce4d85 Download complete 0B
+ 24b05182f7a5 Download complete 0B
+ 3a714400795f Download complete 0B
+ 97f720713f77 Download complete 0B
+ 2b70e040f7d1 Downloading 1.049MB
+ 22aa5aa83b7d Downloading 4.194MB
+ 3c3225ba1025 Downloading 1.049MB
+ 2b70e040f7d1 Downloading 1.049MB
+ 22aa5aa83b7d Downloading 5.243MB
+ 3c3225ba1025 Downloading 1.049MB
+ 2b70e040f7d1 Downloading 2.097MB
+ 6ff057780a44 Download complete 0B
+ 8648fbfa17a8 Downloading 1.049MB
+ 22aa5aa83b7d Downloading 6.291MB
+ 3c3225ba1025 Downloading 2.097MB
+ 2b70e040f7d1 Downloading 3.146MB
+ 8648fbfa17a8 Downloading 1.049MB
+ 22aa5aa83b7d Downloading 8.389MB
+ 3c3225ba1025 Downloading 3.146MB
+ 8648fbfa17a8 Downloading 2.097MB
+ 22aa5aa83b7d Downloading 9.437MB
+ 3c3225ba1025 Downloading 4.194MB
+ 2b70e040f7d1 Downloading 4.194MB
+ 2b70e040f7d1 Downloading 4.194MB
+ 8648fbfa17a8 Downloading 2.097MB
+ 22aa5aa83b7d Downloading 10.49MB
+ 3c3225ba1025 Downloading 5.243MB
+ 2b70e040f7d1 Downloading 5.243MB
+ 8648fbfa17a8 Downloading 3.146MB
+ 22aa5aa83b7d Downloading 11.53MB
+ 3c3225ba1025 Download complete 0B
+ 2b70e040f7d1 Downloading 6.291MB
+ 8648fbfa17a8 Downloading 3.146MB
+ 22aa5aa83b7d Downloading 12.58MB
+ 2b70e040f7d1 Downloading 7.34MB
+ 8648fbfa17a8 Downloading 4.194MB
+ 22aa5aa83b7d Downloading 13.63MB
+ 2b70e040f7d1 Downloading 8.389MB
+ 8648fbfa17a8 Downloading 5.243MB
+ 22aa5aa83b7d Downloading 15.73MB
+ 4ce1db563fcd Download complete 0B
+ 2b70e040f7d1 Downloading 9.437MB
+ 8648fbfa17a8 Downloading 6.291MB
+ 22aa5aa83b7d Downloading 16.78MB
+ 2b70e040f7d1 Downloading 10.49MB
+ 8648fbfa17a8 Downloading 6.291MB
+ 22aa5aa83b7d Downloading 17.83MB
+ cd43b3a0e922 Downloading 1.049MB
+ cd43b3a0e922 Downloading 2.097MB
+ 2b70e040f7d1 Downloading 11.53MB
+ 8648fbfa17a8 Downloading 7.34MB
+ 22aa5aa83b7d Downloading 18.87MB
+ 2b70e040f7d1 Downloading 12.58MB
+ 8648fbfa17a8 Download complete 0B
+ 22aa5aa83b7d Downloading 19.92MB
+ cd43b3a0e922 Downloading 3.146MB
+ 2b70e040f7d1 Downloading 12.58MB
+ 22aa5aa83b7d Downloading 20.97MB
+ cd43b3a0e922 Downloading 5.243MB
+ 2b70e040f7d1 Downloading 14.68MB
+ 22aa5aa83b7d Downloading 22.02MB
+ cd43b3a0e922 Download complete 0B
+ 2b70e040f7d1 Downloading 15.73MB
+ 22aa5aa83b7d Downloading 24.12MB
+ 2b70e040f7d1 Downloading 17.83MB
+ 22aa5aa83b7d Downloading 26.21MB
+ 2b70e040f7d1 Downloading 19.92MB
+ 22aa5aa83b7d Downloading 27.26MB
+ 2b70e040f7d1 Downloading 20.97MB
+ 22aa5aa83b7d Downloading 29.36MB
+ 2b70e040f7d1 Downloading 23.07MB
+ 22aa5aa83b7d Downloading 30.41MB
+ 2b70e040f7d1 Downloading 25.17MB
+ 22aa5aa83b7d Downloading 31.46MB
+ 2b70e040f7d1 Downloading 27.26MB
+ 22aa5aa83b7d Downloading 33.55MB
+ 22aa5aa83b7d Downloading 34.6MB
+ 2b70e040f7d1 Downloading 29.36MB
+ 22aa5aa83b7d Downloading 36.7MB
+ 2b70e040f7d1 Download complete 0B
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 38.51MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 40.89MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 42.99MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 46.14MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 48.23MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 51.38MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 54.53MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 57.67MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 60.15MB
+ 2b70e040f7d1 Extracting 1B
+ 22aa5aa83b7d Downloading 62.91MB
+ 3a714400795f Pull complete 0B
+ 3c3225ba1025 Extracting 1B
+ 2b70e040f7d1 Pull complete 0B
+ 22aa5aa83b7d Downloading 66.06MB
+ 3c3225ba1025 Extracting 1B
+ 22aa5aa83b7d Downloading 69.46MB
+ 6ff057780a44 Pull complete 0B
+ 3c3225ba1025 Pull complete 0B
+ 8648fbfa17a8 Extracting 1B
+ 22aa5aa83b7d Downloading 73.4MB
+ 8648fbfa17a8 Extracting 1B
+ 22aa5aa83b7d Downloading 76.55MB
+ 8648fbfa17a8 Extracting 1B
+ 22aa5aa83b7d Downloading 79.69MB
+ de23c21b57f2 Pull complete 0B
+ 54ddeb74882a Pull complete 0B
+ acba8632a2fc Pull complete 0B
+ 8648fbfa17a8 Pull complete 0B
+ 22aa5aa83b7d Downloading 82.84MB
+ 22aa5aa83b7d Downloading 87.03MB
+ 22aa5aa83b7d Downloading 90.18MB
+ 22aa5aa83b7d Downloading 91.23MB
+ 22aa5aa83b7d Downloading 95.42MB
+ 22aa5aa83b7d Downloading 98.57MB
+ 22aa5aa83b7d Downloading 100.7MB
+ 22aa5aa83b7d Downloading 101.7MB
+ 22aa5aa83b7d Downloading 108.4MB
+ 22aa5aa83b7d Downloading 111.1MB
+ 22aa5aa83b7d Downloading 114MB
+ 22aa5aa83b7d Download complete 0B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 1B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 2B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 22aa5aa83b7d Extracting 3B
+ 7672a6ce4d85 Extracting 1B
+ 22aa5aa83b7d Pull complete 0B
+ d1a3067f9c98 Pull complete 0B
+ 7672a6ce4d85 Pull complete 0B
+ 24b05182f7a5 Pull complete 0B
+ 97f720713f77 Pull complete 0B
+ Image postgres:18.6 Pulled 
+ Image tracking-mlflow Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 758B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 182B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for ghcr.io/mlflow/mlflow:v3.17.2
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/2] FROM ghcr.io/mlflow/mlflow:v3.17.2@sha256:2cc40b3208991940d824d04f339833a0b69507569012aa5ec545690608602fc0
+#5 resolve ghcr.io/mlflow/mlflow:v3.17.2@sha256:2cc40b3208991940d824d04f339833a0b69507569012aa5ec545690608602fc0 done
+#5 DONE 0.0s
+
+#6 [2/2] RUN pip install --no-cache-dir psycopg2-binary==2.9.13
+#6 0.904 Collecting psycopg2-binary==2.9.13
+#6 0.932   Downloading psycopg2_binary-2.9.13-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (4.9 kB)
+#6 0.943 Downloading psycopg2_binary-2.9.13-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (5.9 MB)
+#6 1.159    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 27.6 MB/s eta 0:00:00
+#6 1.397 Installing collected packages: psycopg2-binary
+#6 1.512 Successfully installed psycopg2-binary-2.9.13
+#6 1.513 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#6 1.570 
+#6 1.570 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#6 1.570 [notice] To update, run: pip install --upgrade pip
+#6 DONE 2.1s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 0.6s done
+#7 exporting manifest sha256:6836b8cc8f1afb80fa5ba78327f076ce7383f4bcf0cef5ed4ea58204c572e703 0.0s done
+#7 exporting config sha256:fe1a89cd77a0a90d98a15ae618534d68f7bc8a68e92ab039a4a232d63e2c9072 0.0s done
+#7 exporting attestation manifest sha256:4b061d947a5f35d878d6990a8acdf43b1797a03b018533155b7b28f8ebab2df9 0.0s done
+#7 exporting manifest list sha256:8530151b3251465769a11b1bfd13046b3772d6d0e51cdc8dcd27280d72cbfa33 done
+#7 naming to docker.io/library/tracking-mlflow:latest done
+#7 unpacking to docker.io/library/tracking-mlflow:latest 0.1s done
+#7 DONE 0.8s
+
+#8 resolving provenance for metadata file
+#8 DONE 0.0s
+ Image tracking-mlflow Built 
+ Volume tracking_db-data Creating 
+ Volume tracking_mlflow-artifacts Creating 
+ Volume tracking_mlflow-artifacts Creating 
+ Network tracking_default Creating 
+ Network tracking_default Creating 
+ Volume tracking_db-data Creating 
+ Volume tracking_mlflow-artifacts Created 
+ Volume tracking_mlflow-artifacts Created 
+ Volume tracking_db-data Created 
+ Volume tracking_db-data Created 
+ Network tracking_default Created 
+ Network tracking_default Created 
+ Container tracking-db-1 Creating 
+ Container tracking-db-1 Created 
+ Container tracking-mlflow-1 Creating 
+ Container tracking-mlflow-1 Created 
+ Container tracking-db-1 Starting 
+ Container tracking-db-1 Started 
+ Container tracking-db-1 Waiting 
+ Container tracking-db-1 Healthy 
+ Container tracking-mlflow-1 Starting 
+ Container tracking-mlflow-1 Started 
+[exit 0]
+
+### 2026-11-02 01:09 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose ps --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
+NAME            IMAGE           STATUS
+tracking-db-1   postgres:18.6   Up 20 seconds (healthy)
+[exit 0]
+
+### 2026-11-02 01:09 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose logs mlflow
+mlflow-1  | Registry store URI not provided. Using backend store URI.
+mlflow-1  | 2026/11/01 23:09:26 ERROR mlflow.cli: Error initializing backend store
+mlflow-1  | 2026/11/01 23:09:26 ERROR mlflow.cli: No module named 'psycopg'
+mlflow-1  | Traceback (most recent call last):
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/cli/__init__.py", line 709, in server
+mlflow-1  |     initialize_backend_stores(
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/server/handlers.py", line 835, in initialize_backend_stores
+mlflow-1  |     tracking_store = _get_tracking_store(backend_store_uri, default_artifact_root)
+mlflow-1  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/server/handlers.py", line 760, in _get_tracking_store
+mlflow-1  |     _tracking_store = _tracking_store_registry.get_store(store_uri, artifact_root)
+mlflow-1  |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/tracking/_tracking_service/registry.py", line 45, in get_store
+mlflow-1  |     return self._get_store_with_resolved_uri(resolved_store_uri, artifact_uri)
+mlflow-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/tracking/_tracking_service/registry.py", line 56, in _get_store_with_resolved_uri
+mlflow-1  |     return builder(store_uri=resolved_store_uri, artifact_uri=artifact_uri)
+mlflow-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/server/handlers.py", line 537, in _get_sqlalchemy_store
+mlflow-1  |     return store_cls(store_uri, artifact_uri, read_db_uri=read_db_uri)
+mlflow-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/store/tracking/sqlalchemy_store.py", line 404, in __init__
+mlflow-1  |     self.engine = self._get_or_create_engine(db_uri)
+mlflow-1  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/store/tracking/sqlalchemy_store.py", line 379, in _get_or_create_engine
+mlflow-1  |     mlflow.store.db.utils.create_sqlalchemy_engine_with_retry(db_uri)
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/store/db/utils.py", line 365, in create_sqlalchemy_engine_with_retry
+mlflow-1  |     engine = create_sqlalchemy_engine(db_uri)
+mlflow-1  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/mlflow/store/db/utils.py", line 442, in create_sqlalchemy_engine
+mlflow-1  |     engine = sqlalchemy.create_engine(db_uri, pool_pre_ping=True, **kwargs)
+mlflow-1  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "<sqlalchemy generated warned() wrapper for sqlalchemy.engine.create.create_engine>", line 2, in create_engine
+mlflow-1  |     return target(fn, url, **kwargs)
+mlflow-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+mlflow-1  |     return fn(*args, **kwargs)  # type: ignore[no-any-return]
+mlflow-1  |            ^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 602, in create_engine
+mlflow-1  |     dbapi = dbapi_meth(**dbapi_args)
+mlflow-1  |             ^^^^^^^^^^^^^^^^^^^^^^^^
+mlflow-1  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 497, in import_dbapi
+mlflow-1  |     import psycopg
+mlflow-1  | ModuleNotFoundError: No module named 'psycopg'
+[exit 0]
+
+### 2026-11-02 01:13 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose up -d --build
+[+] up 3/3
+
+
+ ✔ Container tracking-mlflow-1 Started                                      0.9s
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose ps --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
+NAME                IMAGE             STATUS
+tracking-db-1       postgres:18.6     Up 4 minutes (healthy)
+tracking-mlflow-1   tracking-mlflow   Up 10 seconds
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ curl -s http://localhost:5001/health
+OK
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose exec mlflow getent hosts db mlflow
+172.18.0.2      db
+172.18.0.3      mlflow
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker network ls --filter name=tracking
+NETWORK ID     NAME               DRIVER    SCOPE
+243066ee0b3f   tracking_default   bridge    local
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose run --rm -v "$PWD":/work -w /work -e GIT_PYTHON_REFRESH=quiet mlflow python log_run.py
+ Container tracking-db-1 Running 
+ Container tracking-db-1 Waiting 
+ Container tracking-db-1 Healthy 
+ Container tracking-mlflow-run-a424c2126280 Creating 
+ Container tracking-mlflow-run-a424c2126280 Created 
+2026/11/01 23:14:26 INFO mlflow.tracking.fluent: Experiment with name 'iris' does not exist. Creating a new experiment.
+🏃 View run bustling-mole-875 at: http://mlflow:5000/#/experiments/1/runs/9964585fb8864019a20f1851376af379
+🧪 View experiment at: http://mlflow:5000/#/experiments/1
+  params.C  metrics.accuracy    status
+0      1.0            0.9733  FINISHED
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose exec mlflow find /mlartifacts -type f
+/mlartifacts/1/9964585fb8864019a20f1851376af379/artifacts/notes.txt
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose config
+name: tracking
+services:
+  db:
+    environment:
+      POSTGRES_DB: mlflow
+      POSTGRES_PASSWORD: change-me
+      POSTGRES_USER: mlflow
+    image: postgres:18.6
+    networks:
+      default: null
+    volumes:
+      - type: volume
+        source: db-data
+        target: /var/lib/postgresql
+        volume: {}
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+        - -U
+        - mlflow
+        - -d
+        - mlflow
+      timeout: 3s
+      interval: 5s
+      retries: 10
+  mlflow:
+    command:
+      - mlflow
+      - server
+      - --host
+      - 0.0.0.0
+      - --port
+      - "5000"
+      - --backend-store-uri
+      - postgresql://mlflow:change-me@db:5432/mlflow
+      - --artifacts-destination
+      - /mlartifacts
+      - --allowed-hosts
+      - mlflow:5000,localhost:5001
+    networks:
+      default: null
+    volumes:
+      - type: volume
+        source: mlflow-artifacts
+        target: /mlartifacts
+        volume: {}
+    build:
+      context: /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for
+        AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch08/tracking/mlflow
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+        required: true
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5001"
+        protocol: tcp
+networks:
+  default:
+    name: tracking_default
+volumes:
+  db-data:
+    name: tracking_db-data
+  mlflow-artifacts:
+    name: tracking_mlflow-artifacts
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose down
+[+] down 3/3
+
+ ✔ Container tracking-db-1     Removed                                      0.1s
+ ✔ Network tracking_default    Removed                                      0.1s
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose up -d
+[+] up 3/3
+
+ ✔ Container tracking-db-1     Healthy                                      5.6s
+ ✔ Container tracking-mlflow-1 Started                                      5.7s
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose run --rm -v "$PWD":/work -w /work -e GIT_PYTHON_REFRESH=quiet mlflow python log_run.py
+ Container tracking-db-1 Running 
+ Container tracking-db-1 Waiting 
+ Container tracking-db-1 Healthy 
+ Container tracking-mlflow-run-aef36ca9266f Creating 
+ Container tracking-mlflow-run-aef36ca9266f Created 
+🏃 View run marvelous-auk-850 at: http://mlflow:5000/#/experiments/1/runs/18d76f6b1bf14f079ef355663be433a2
+🧪 View experiment at: http://mlflow:5000/#/experiments/1
+  params.C  metrics.accuracy    status
+0      1.0            0.9733  FINISHED
+1      1.0            0.9733  FINISHED
+[exit 0]
+
+### 2026-11-02 01:14 | arm64 | docker 29.5.2 | in ch08/tracking
+$ docker compose down -v
+[+] down 5/5
+ ✔ Container tracking-mlflow-1      Removed                                 0.9s
+ ✔ Container tracking-db-1          Removed                                 0.1s
+ ✔ Volume tracking_mlflow-artifacts Removed                                 0.0s
+ ✔ Volume tracking_db-data          Removed                                 0.0s
+ ✔ Network tracking_default         Removed                                 0.1s
+[exit 0]
+
+### 2026-11-02 01:15 | arm64 | docker 29.5.2 | in ch08/project
+$ mkdir -p secrets && openssl rand -hex 16 > secrets/db_password.txt
+[exit 0]
+
+### 2026-11-02 01:18 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose up -d --build
+ Image project-mlflow Building 
+ Image project-trainer Building 
+ Image project-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.08kB done
+#1 DONE 0.0s
+
+#2 [mlflow internal] load build definition from Dockerfile
+#2 transferring dockerfile: 272B done
+#2 DONE 0.0s
+
+#3 [trainer internal] load build definition from Dockerfile
+#3 transferring dockerfile: 265B done
+#3 DONE 0.0s
+
+#4 [api internal] load build definition from Dockerfile
+#4 transferring dockerfile: 347B done
+#4 DONE 0.0s
+
+#5 [mlflow internal] load metadata for ghcr.io/mlflow/mlflow:v3.17.2
+#5 DONE 0.0s
+
+#6 [mlflow internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [mlflow internal] load build context
+#7 transferring context: 544B done
+#7 DONE 0.0s
+
+#8 [mlflow 1/3] FROM ghcr.io/mlflow/mlflow:v3.17.2@sha256:2cc40b3208991940d824d04f339833a0b69507569012aa5ec545690608602fc0
+#8 resolve ghcr.io/mlflow/mlflow:v3.17.2@sha256:2cc40b3208991940d824d04f339833a0b69507569012aa5ec545690608602fc0 done
+#8 DONE 0.0s
+
+#9 [mlflow 2/3] RUN pip install --no-cache-dir "psycopg[binary]==3.3.6"
+#9 CACHED
+
+#10 [mlflow 3/3] COPY start.sh /start.sh
+#10 DONE 0.0s
+
+#11 [mlflow] exporting to image
+#11 exporting layers 0.0s done
+#11 exporting manifest sha256:4d49267d96d56f0602a76bd436c127130c8c21620de386d153d030d42978d805 done
+#11 exporting config sha256:94c45df05ea6b8996ceab963adada1d288e4fed524c414cb2527cb82486eec69 done
+#11 exporting attestation manifest sha256:c1336efa6d7010198a37ed9f6cac04ad0c91884438dcf50827816a697a2be029 done
+#11 exporting manifest list sha256:ed67201fb1f1255b3aeb316d225dc1983447018322ed8b04023d8e228a820620 done
+#11 naming to docker.io/library/project-mlflow:latest done
+#11 unpacking to docker.io/library/project-mlflow:latest done
+#11 DONE 0.0s
+
+#12 [mlflow] resolving provenance for metadata file
+#12 DONE 0.0s
+
+#13 [api internal] load metadata for docker.io/library/python:3.14-slim
+#13 DONE 0.4s
+
+#14 [trainer internal] load .dockerignore
+#14 transferring context: 2B done
+#14 DONE 0.0s
+
+#15 [api internal] load .dockerignore
+#15 transferring context: 2B done
+#15 DONE 0.0s
+
+#16 [trainer internal] load build context
+#16 transferring context: 30B done
+#16 DONE 0.0s
+
+#17 [api internal] load build context
+#17 transferring context: 28B done
+#17 DONE 0.0s
+
+#18 [trainer 1/5] FROM docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8
+#18 resolve docker.io/library/python:3.14-slim@sha256:cd89c30eda26ee911a4611b18680086e0ea42e6f5f8cbe653d07fa7958c9cec8 done
+#18 DONE 0.0s
+
+#19 [api 4/5] WORKDIR /app
+#19 CACHED
+
+#20 [api 3/5] RUN useradd --create-home appuser
+#20 CACHED
+
+#21 [api 2/5] RUN pip install --no-cache-dir fastapi==0.162.0 uvicorn==0.54.0 mlflow-skinny==3.17.2 scikit-learn==1.9.1 pandas==3.1.0 skops==0.16.0
+#21 CACHED
+
+#22 [trainer 3/5] RUN useradd --create-home appuser
+#22 CACHED
+
+#23 [trainer 4/5] WORKDIR /app
+#23 CACHED
+
+#24 [trainer 2/5] RUN pip install --no-cache-dir mlflow-skinny==3.17.2 scikit-learn==1.9.1 pandas==3.1.0 skops==0.16.0
+#24 CACHED
+
+#25 [trainer 5/5] COPY train.py .
+#25 CACHED
+
+#26 [api 5/5] COPY app.py .
+#26 CACHED
+
+#27 [trainer] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [api] resolving provenance for metadata file
+#28 DONE 0.0s
+
+#29 [trainer] exporting to image
+#29 exporting layers done
+#29 exporting manifest sha256:f3743519eab5c154be4689d2ea82b769aea20a0877a528a90e6f8324914a82c4 done
+#29 exporting config sha256:c6b671c5f16749125c6ba85cc8f91b5033bbc973d776074b15ef5d698a27cd76 done
+#29 exporting attestation manifest sha256:2573b4da9a2454dfe1eb81302628327f17592a92c460c5d794604109f511be5f done
+#29 exporting manifest list sha256:efd1d6fc1270735f246b570b671cac267b2f657c5d14c1273ccd80c0ff1578c8 done
+#29 naming to docker.io/library/project-trainer:latest done
+#29 unpacking to docker.io/library/project-trainer:latest done
+#29 DONE 0.0s
+
+#30 [api] exporting to image
+#30 exporting layers done
+#30 exporting manifest sha256:60ad5fc4715dbda62e0029476e2a0b4ab4317feb673b1d9a1e70c114436b20ee done
+#30 exporting config sha256:587bb837925440b3418519919df5d33551074d60657b12b2a01e03802d536331 done
+#30 exporting attestation manifest sha256:e55ca165b90ef9fed216f49226362bba0cabe685af14f8791833915032cf44e1 done
+#30 exporting manifest list sha256:78cb01d4952814b9b39c7e660505d552f288fcd62a474f70b11c7a770d679d00 done
+#30 naming to docker.io/library/project-api:latest done
+#30 unpacking to docker.io/library/project-api:latest done
+#30 DONE 0.0s
+ Image project-mlflow Built 
+ Image project-trainer Built 
+ Image project-api Built 
+ Network project_default Creating 
+ Volume project_mlflow-artifacts Creating 
+ Volume project_db-data Creating 
+ Volume project_db-data Creating 
+ Network project_default Creating 
+ Volume project_mlflow-artifacts Creating 
+ Volume project_db-data Created 
+ Volume project_db-data Created 
+ Volume project_mlflow-artifacts Created 
+ Volume project_mlflow-artifacts Created 
+ Network project_default Created 
+ Network project_default Created 
+ Container project-db-1 Creating 
+ Container project-db-1 Created 
+ Container project-mlflow-1 Creating 
+ Container project-mlflow-1 Created 
+ Container project-trainer-1 Creating 
+ Container project-trainer-1 Created 
+ Container project-api-1 Creating 
+ Container project-api-1 Created 
+ Container project-db-1 Starting 
+ Container project-db-1 Started 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Starting 
+ Container project-mlflow-1 Started 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-1 Starting 
+ Container project-trainer-1 Started 
+ Container project-trainer-1 Waiting 
+ Container project-trainer-1 Exited 
+ Container project-api-1 Starting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose ps -a --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
+NAME                IMAGE             STATUS
+project-api-1       project-api       Up 12 seconds (healthy)
+project-db-1        postgres:18.6     Up 29 seconds (healthy)
+project-mlflow-1    project-mlflow    Up 24 seconds (healthy)
+project-trainer-1   project-trainer   Exited (0) 12 seconds ago
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose logs trainer
+trainer-1  | 2026/11/01 23:18:58 INFO mlflow.tracking.fluent: Experiment with name 'iris' does not exist. Creating a new experiment.
+trainer-1  | 2026/11/01 23:18:58 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Bad git executable.
+trainer-1  | The git executable must be specified in one of the following ways:
+trainer-1  |     - be included in your $PATH
+trainer-1  |     - be set via $GIT_PYTHON_GIT_EXECUTABLE
+trainer-1  |     - explicitly set via git.refresh(<full-path-to-git-executable>)
+trainer-1  | 
+trainer-1  | All git commands will error until this is rectified.
+trainer-1  | 
+trainer-1  | This initial message can be silenced or aggravated in the future by setting the
+trainer-1  | $GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+trainer-1  |     - quiet|q|silence|s|silent|none|n|0: for no message or exception
+trainer-1  |     - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+trainer-1  |     - error|e|exception|raise|r|2: for a raised exception
+trainer-1  | 
+trainer-1  | Example:
+trainer-1  |     export GIT_PYTHON_REFRESH=quiet
+trainer-1  | 
+trainer-1  | 2026/11/01 23:18:58 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Bad git executable.
+trainer-1  | The git executable must be specified in one of the following ways:
+trainer-1  |     - be included in your $PATH
+trainer-1  |     - be set via $GIT_PYTHON_GIT_EXECUTABLE
+trainer-1  |     - explicitly set via git.refresh(<full-path-to-git-executable>)
+trainer-1  | 
+trainer-1  | All git commands will error until this is rectified.
+trainer-1  | 
+trainer-1  | This initial message can be silenced or aggravated in the future by setting the
+trainer-1  | $GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+trainer-1  |     - quiet|q|silence|s|silent|none|n|0: for no message or exception
+trainer-1  |     - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+trainer-1  |     - error|e|exception|raise|r|2: for a raised exception
+trainer-1  | 
+trainer-1  | Example:
+trainer-1  |     export GIT_PYTHON_REFRESH=quiet
+trainer-1  | 
+trainer-1  | 2026/11/01 23:18:58 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Bad git executable.
+trainer-1  | The git executable must be specified in one of the following ways:
+trainer-1  |     - be included in your $PATH
+trainer-1  |     - be set via $GIT_PYTHON_GIT_EXECUTABLE
+trainer-1  |     - explicitly set via git.refresh(<full-path-to-git-executable>)
+trainer-1  | 
+trainer-1  | All git commands will error until this is rectified.
+trainer-1  | 
+trainer-1  | This initial message can be silenced or aggravated in the future by setting the
+trainer-1  | $GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+trainer-1  |     - quiet|q|silence|s|silent|none|n|0: for no message or exception
+trainer-1  |     - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+trainer-1  |     - error|e|exception|raise|r|2: for a raised exception
+trainer-1  | 
+trainer-1  | Example:
+trainer-1  |     export GIT_PYTHON_REFRESH=quiet
+trainer-1  | 
+trainer-1  | Successfully registered model 'iris'.
+trainer-1  | 2026/11/01 23:19:01 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: iris, version 1
+trainer-1  | Created version '1' of model 'iris'.
+trainer-1  | 🏃 View run brawny-kit-642 at: http://mlflow:5000/#/experiments/1/runs/6b8cd876a9834f3f8fdb5c979320d1a9
+trainer-1  | 🧪 View experiment at: http://mlflow:5000/#/experiments/1
+trainer-1  | C=1.0, accuracy=1.0000: iris version 1 is now the champion
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s http://localhost:8000/health
+{"status":"ok","model_version":"1"}
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d "{\"sepal_length\": 6.3, \"sepal_width\": 3.3, \"petal_length\": 6.0, \"petal_width\": 2.5}"
+{"species":"virginica","model_version":"1"}
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose run --rm -e C=0.01 trainer
+ Container project-db-1 Running 
+ Container project-mlflow-1 Running 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-run-13fbe8a0ca60 Creating 
+ Container project-trainer-run-13fbe8a0ca60 Created 
+2026/11/01 23:19:17 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+2026/11/01 23:19:17 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+2026/11/01 23:19:17 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Bad git executable.
+The git executable must be specified in one of the following ways:
+    - be included in your $PATH
+    - be set via $GIT_PYTHON_GIT_EXECUTABLE
+    - explicitly set via git.refresh(<full-path-to-git-executable>)
+
+All git commands will error until this is rectified.
+
+This initial message can be silenced or aggravated in the future by setting the
+$GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+    - quiet|q|silence|s|silent|none|n|0: for no message or exception
+    - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+    - error|e|exception|raise|r|2: for a raised exception
+
+Example:
+    export GIT_PYTHON_REFRESH=quiet
+
+Registered model 'iris' already exists. Creating a new version of this model...
+2026/11/01 23:19:19 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: iris, version 2
+Created version '2' of model 'iris'.
+🏃 View run amazing-auk-455 at: http://mlflow:5000/#/experiments/1/runs/3fce0e4d761548dc8f3ff5f0ed9e6a0a
+🧪 View experiment at: http://mlflow:5000/#/experiments/1
+C=0.01, accuracy=0.8222: iris version 2 is now the champion
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose restart api
+ Container project-api-1 Restarting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s http://localhost:8000/health
+{"status":"ok","model_version":"2"}
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose exec db ls -l /run/secrets
+total 4
+-rw-r--r-- 1 root root 33 Nov  1 23:15 db_password
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker inspect project-db-1 --format "{{json .Config.Env}}"
+["POSTGRES_USER=mlflow","POSTGRES_DB=mlflow","POSTGRES_PASSWORD_FILE=/run/secrets/db_password","PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/18/bin","GOSU_VERSION=1.19","LANG=en_US.utf8","PG_MAJOR=18","PG_VERSION=18.6-1.pgdg13+2","PGDATA=/var/lib/postgresql/18/docker"]
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker top project-mlflow-1 -o pid,args
+PID                 COMMAND
+18631               /usr/local/bin/python3.11 /usr/local/bin/mlflow server --host 0.0.0.0 --port 5000 --artifacts-destination /mlartifacts --allowed-hosts mlflow:5000,localhost:5001
+18697               /usr/local/bin/python3.11 -m uvicorn --log-config /usr/local/lib/python3.11/site-packages/mlflow/server/uvicorn_log_config.yaml --host 0.0.0.0 --port 5000 --workers 4 mlflow.server.fastapi_app:app
+18698               /usr/local/bin/python3.11 -m mlflow.server.jobs._job_runner
+18699               /usr/local/bin/python3.11 -c from multiprocessing.resource_tracker import main;main(6)
+18700               /usr/local/bin/python3.11 -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=9) --multiprocessing-fork
+18701               /usr/local/bin/python3.11 -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=13) --multiprocessing-fork
+18702               /usr/local/bin/python3.11 -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=17) --multiprocessing-fork
+18703               /usr/local/bin/python3.11 -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=21) --multiprocessing-fork
+18731               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 10 -q
+18733               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 5 -q
+18735               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 5 -q
+18737               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 10 -q
+18739               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 10 -q
+18741               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._huey_consumer.huey_instance -w 2 -q
+18742               /usr/local/bin/python3.11 -m huey.bin.huey_consumer mlflow.server.jobs._periodic_tasks_consumer.huey_instance -w 5 -q -f
+[exit 0]
+
+### 2026-11-02 01:19 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose -f compose.yaml -f compose.dev.yaml up -d
+ Container project-db-1 Running 
+ Container project-mlflow-1 Running 
+ Container project-api-1 Recreate 
+ Container project-api-1 Recreated 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-1 Starting 
+ Container project-trainer-1 Started 
+ Container project-trainer-1 Waiting 
+ Container project-trainer-1 Exited 
+ Container project-api-1 Starting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:20 | arm64 | docker 29.5.2 | in ch08/project
+$ touch api/app.py
+[exit 0]
+
+### 2026-11-02 01:20 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose logs api
+api-1  | INFO:     Will watch for changes in these directories: ['/app']
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+api-1  | INFO:     Started reloader process [1] using StatReload
+api-1  | INFO:     Started server process [8]
+api-1  | INFO:     Waiting for application startup.
+api-1  | INFO:     Application startup complete.
+api-1  | WARNING:  StatReload detected changes in 'app.py'. Reloading...
+api-1  | INFO:     Shutting down
+api-1  | INFO:     Waiting for application shutdown.
+api-1  | INFO:     Application shutdown complete.
+api-1  | INFO:     Finished server process [8]
+api-1  | INFO:     Started server process [21]
+api-1  | INFO:     Waiting for application startup.
+api-1  | INFO:     Application startup complete.
+api-1  | INFO:     127.0.0.1:54674 - "GET /health HTTP/1.1" 200 OK
+[exit 0]
+
+### 2026-11-02 01:20 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose --profile debug up -d adminer
+ Image adminer:5.5.1-standalone Pulling 
+ 44cb1204d003 Pulling fs layer 0B
+ 99ae65778fa1 Pulling fs layer 0B
+ ff5275d47099 Pulling fs layer 0B
+ 4f4fb700ef54 Pulling fs layer 0B
+ d3531b7a4f21 Pulling fs layer 0B
+ 82ee5c8dd6ba Pulling fs layer 0B
+ ec99621a7f7b Pulling fs layer 0B
+ f06474568deb Pulling fs layer 0B
+ d63326243b02 Pulling fs layer 0B
+ 20af67f2fc84 Pulling fs layer 0B
+ f18bfddf829b Pulling fs layer 0B
+ 460687344e9d Pulling fs layer 0B
+ 402c43ec1377 Pulling fs layer 0B
+ 422aa1d420cf Pulling fs layer 0B
+ a5dc30c97430 Pulling fs layer 0B
+ 4e244fdfe8e8 Pulling fs layer 0B
+ 460e0bbc5a54 Pulling fs layer 0B
+ 460e0bbc5a54 Download complete 0B
+ 7dad63a8979b Download complete 0B
+ 4f4fb700ef54 Download complete 0B
+ f06474568deb Download complete 0B
+ 20af67f2fc84 Download complete 0B
+ 99ae65778fa1 Download complete 0B
+ ff5275d47099 Download complete 0B
+ 460687344e9d Download complete 0B
+ 422aa1d420cf Download complete 0B
+ 44cb1204d003 Download complete 0B
+ a5dc30c97430 Download complete 0B
+ d63326243b02 Download complete 0B
+ f18bfddf829b Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ 82ee5c8dd6ba Download complete 0B
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 1.049MB
+ 4e244fdfe8e8 Download complete 0B
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 2.097MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 2.097MB
+ 402c43ec1377 Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 2.097MB
+ 402c43ec1377 Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 2.097MB
+ 402c43ec1377 Downloading 2.097MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 3.146MB
+ 402c43ec1377 Downloading 2.097MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 1.049MB
+ f18bfddf829b Downloading 3.146MB
+ 402c43ec1377 Downloading 3.146MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 3.146MB
+ 402c43ec1377 Downloading 3.146MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 4.194MB
+ 402c43ec1377 Downloading 4.194MB
+ d3531b7a4f21 Downloading 1.049MB
+ d3531b7a4f21 Downloading 1.049MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 4.194MB
+ 402c43ec1377 Downloading 5.243MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 5.243MB
+ 402c43ec1377 Downloading 6.291MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 5.243MB
+ 402c43ec1377 Downloading 7.34MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 5.243MB
+ 402c43ec1377 Downloading 8.389MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 2.097MB
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 8.389MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 3.146MB
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 8.389MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 3.146MB
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 8.389MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 3.146MB
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 8.389MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Downloading 3.146MB
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 9.437MB
+ d3531b7a4f21 Downloading 2.097MB
+ ec99621a7f7b Download complete 0B
+ f18bfddf829b Downloading 6.291MB
+ 402c43ec1377 Downloading 9.437MB
+ d3531b7a4f21 Downloading 2.097MB
+ f18bfddf829b Downloading 7.34MB
+ 402c43ec1377 Downloading 10.49MB
+ f18bfddf829b Downloading 7.34MB
+ 402c43ec1377 Downloading 10.49MB
+ d3531b7a4f21 Downloading 2.097MB
+ d3531b7a4f21 Downloading 2.097MB
+ f18bfddf829b Downloading 7.34MB
+ 402c43ec1377 Downloading 11.53MB
+ f18bfddf829b Downloading 7.34MB
+ 402c43ec1377 Downloading 11.53MB
+ d3531b7a4f21 Downloading 2.097MB
+ d3531b7a4f21 Downloading 2.097MB
+ f18bfddf829b Downloading 7.34MB
+ 402c43ec1377 Downloading 11.53MB
+ d3531b7a4f21 Downloading 2.097MB
+ f18bfddf829b Downloading 8.389MB
+ 402c43ec1377 Downloading 12.58MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 8.389MB
+ 402c43ec1377 Downloading 12.58MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 8.389MB
+ 402c43ec1377 Downloading 12.58MB
+ f18bfddf829b Downloading 8.389MB
+ 402c43ec1377 Downloading 13.23MB
+ d3531b7a4f21 Downloading 3.146MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 8.389MB
+ 402c43ec1377 Downloading 13.63MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 13.63MB
+ d3531b7a4f21 Downloading 3.146MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 13.63MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 13.63MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 13.63MB
+ d3531b7a4f21 Downloading 3.146MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 14.68MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Downloading 3.146MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 9.437MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Downloading 3.146MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 14.68MB
+ d3531b7a4f21 Download complete 0B
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ d3531b7a4f21 Pull complete 0B
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ 20af67f2fc84 Pull complete 0B
+ d63326243b02 Pull complete 0B
+ ec99621a7f7b Pull complete 0B
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 10.49MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 11.53MB
+ 402c43ec1377 Downloading 15.73MB
+ f18bfddf829b Downloading 11.53MB
+ 402c43ec1377 Downloading 16.78MB
+ f18bfddf829b Downloading 11.53MB
+ 402c43ec1377 Downloading 16.78MB
+ f18bfddf829b Downloading 11.53MB
+ 402c43ec1377 Downloading 16.78MB
+ f18bfddf829b Downloading 12.58MB
+ 402c43ec1377 Downloading 16.78MB
+ f18bfddf829b Downloading 12.58MB
+ 402c43ec1377 Downloading 16.78MB
+ f18bfddf829b Downloading 12.58MB
+ 402c43ec1377 Downloading 17.83MB
+ f18bfddf829b Downloading 12.58MB
+ 402c43ec1377 Downloading 17.83MB
+ f18bfddf829b Downloading 12.58MB
+ 402c43ec1377 Downloading 17.83MB
+ f18bfddf829b Downloading 13.63MB
+ 402c43ec1377 Downloading 17.83MB
+ f18bfddf829b Downloading 13.63MB
+ 402c43ec1377 Downloading 17.83MB
+ f18bfddf829b Download complete 0B
+ 402c43ec1377 Downloading 17.83MB
+ 460687344e9d Pull complete 0B
+ f18bfddf829b Pull complete 0B
+ 402c43ec1377 Downloading 17.83MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Downloading 18.87MB
+ 402c43ec1377 Download complete 0B
+ 402c43ec1377 Extracting 1B
+ 402c43ec1377 Extracting 1B
+ 460e0bbc5a54 Pull complete 0B
+ 4f4fb700ef54 Pull complete 0B
+ f06474568deb Pull complete 0B
+ ff5275d47099 Pull complete 0B
+ 422aa1d420cf Pull complete 0B
+ 44cb1204d003 Pull complete 0B
+ a5dc30c97430 Pull complete 0B
+ 82ee5c8dd6ba Pull complete 0B
+ 402c43ec1377 Pull complete 0B
+ 99ae65778fa1 Pull complete 0B
+ 4e244fdfe8e8 Pull complete 0B
+ Image adminer:5.5.1-standalone Pulled 
+ Container project-db-1 Running 
+ Container project-adminer-1 Creating 
+ Container project-adminer-1 Created 
+ Container project-adminer-1 Starting 
+ Container project-adminer-1 Started 
+[exit 0]
+
+### 2026-11-02 01:20 | arm64 | docker 29.5.2 | in ch08/project
+$ curl -s http://localhost:8080 | grep -o "<title>.*</title>"
+<title>Login - Adminer</title>
+[exit 0]
+
+### 2026-11-02 01:20 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose up -d
+ Container project-mlflow-1 Running 
+ Container project-db-1 Running 
+ Container project-api-1 Recreate 
+ Container project-api-1 Recreated 
+ Container project-db-1 Waiting 
+ Container project-db-1 Healthy 
+ Container project-mlflow-1 Waiting 
+ Container project-mlflow-1 Healthy 
+ Container project-trainer-1 Starting 
+ Container project-trainer-1 Started 
+ Container project-trainer-1 Waiting 
+ Container project-trainer-1 Exited 
+ Container project-api-1 Starting 
+ Container project-api-1 Started 
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose down -v
+ Container project-api-1 Stopping 
+ Container project-api-1 Stopped 
+ Container project-api-1 Removing 
+ Container project-api-1 Removed 
+ Container project-trainer-1 Stopping 
+ Container project-trainer-1 Stopped 
+ Container project-trainer-1 Removing 
+ Container project-trainer-1 Removed 
+ Container project-mlflow-1 Stopping 
+ Container project-mlflow-1 Stopped 
+ Container project-mlflow-1 Removing 
+ Container project-mlflow-1 Removed 
+ Container project-db-1 Stopping 
+ Container project-db-1 Stopped 
+ Container project-db-1 Removing 
+ Container project-db-1 Removed 
+ Volume project_db-data Removing 
+ Volume project_mlflow-artifacts Removing 
+ Network project_default Removing 
+ Network project_default Resource is still in use 
+ Volume project_db-data Removed 
+ Volume project_mlflow-artifacts Removed 
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose ps -a --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
+NAME                IMAGE                      STATUS
+project-adminer-1   adminer:5.5.1-standalone   Up 21 seconds
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/project
+$ docker compose --profile debug down
+ Container project-adminer-1 Stopping 
+ Container project-adminer-1 Stopped 
+ Container project-adminer-1 Removing 
+ Container project-adminer-1 Removed 
+ Network project_default Removing 
+ Network project_default Removed 
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/airflow
+$ curl -LfO https://airflow.apache.org/docs/apache-airflow/3.3.2/docker-compose.yaml
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose config --services
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"AIRFLOW_UID\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:27+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+postgres
+redis
+airflow-init
+airflow-apiserver
+airflow-dag-processor
+airflow-scheduler
+airflow-triggerer
+airflow-worker
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose --profile flower config --services
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"AIRFLOW_UID\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:28+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+postgres
+redis
+airflow-init
+airflow-apiserver
+airflow-dag-processor
+airflow-scheduler
+airflow-triggerer
+airflow-worker
+flower
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/airflow
+$ mkdir -p dags logs plugins config && echo "AIRFLOW_UID=$(id -u)" > .env
+[exit 0]
+
+### 2026-11-02 01:21 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose up airflow-init
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:21:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+ Image redis:7.2-bookworm Pulling 
+ Image apache/airflow:3.3.2 Pulling 
+ Image postgres:16 Pulling 
+ 1666717a30cc Pulling fs layer 0B
+ 0c662641eb4e Pulling fs layer 0B
+ cf2bffa63afa Pulling fs layer 0B
+ cfd0730e8b44 Pulling fs layer 0B
+ 284c79db9f3e Pulling fs layer 0B
+ 50dc702eaf05 Pulling fs layer 0B
+ e8d8b84da68a Pulling fs layer 0B
+ 799ec0c29631 Pulling fs layer 0B
+ 8efed7921649 Pulling fs layer 0B
+ d24ad6406b14 Pulling fs layer 0B
+ 97f9b0a89f6b Pulling fs layer 0B
+ d056b4173d10 Pulling fs layer 0B
+ b432fb757bf0 Pulling fs layer 0B
+ 799ec0c29631 Download complete 0B
+ 1666717a30cc Download complete 0B
+ 1666717a30cc Extracting 1B
+ 8efed7921649 Download complete 0B
+ d056b4173d10 Download complete 0B
+ b432fb757bf0 Download complete 0B
+ e8d8b84da68a Download complete 0B
+ d24ad6406b14 Download complete 0B
+ 97f9b0a89f6b Download complete 0B
+ 1666717a30cc Extracting 1B
+ 0c662641eb4e Downloading 1.049MB
+ 1666717a30cc Extracting 1B
+ 284c79db9f3e Downloading 1.049MB
+ cf2bffa63afa Download complete 0B
+ 0c662641eb4e Downloading 2.769MB
+ cfd0730e8b44 Downloading 1.049MB
+ 1666717a30cc Extracting 1B
+ cfd0730e8b44 Downloading 2.097MB
+ 284c79db9f3e Download complete 0B
+ 50dc702eaf05 Downloading 1.049MB
+ 0c662641eb4e Downloading 4.194MB
+ 1666717a30cc Extracting 1B
+ 0c662641eb4e Downloading 5.243MB
+ cfd0730e8b44 Downloading 3.146MB
+ 50dc702eaf05 Downloading 2.097MB
+ 1666717a30cc Extracting 1B
+ cfd0730e8b44 Downloading 5.243MB
+ 50dc702eaf05 Downloading 4.194MB
+ 0c662641eb4e Download complete 0B
+ 1666717a30cc Extracting 1B
+ 057c8235ae89 Pulling fs layer 0B
+ 72ce848c7650 Pulling fs layer 0B
+ f791e47cf52a Pulling fs layer 0B
+ 119f146f2227 Pulling fs layer 0B
+ 3820d2820a80 Pulling fs layer 0B
+ 06503c30fb67 Pulling fs layer 0B
+ 4f4fb700ef54 Pulling fs layer 0B
+ 4f4fb700ef54 Already exists 0B
+ cfd0730e8b44 Downloading 6.291MB
+ 50dc702eaf05 Downloading 6.291MB
+ 1666717a30cc Extracting 1B
+ cfd0730e8b44 Download complete 0B
+ 50dc702eaf05 Downloading 8.389MB
+ 1666717a30cc Extracting 1B
+ 72ce848c7650 Download complete 0B
+ 50dc702eaf05 Downloading 11.53MB
+ 1666717a30cc Pull complete 0B
+ 0c662641eb4e Extracting 1B
+ f791e47cf52a Downloading 1.049MB
+ 50dc702eaf05 Downloading 13.63MB
+ 284c79db9f3e Extracting 1B
+ 0c662641eb4e Pull complete 0B
+ 50dc702eaf05 Downloading 15.73MB
+ f791e47cf52a Downloading 2.097MB
+ 119f146f2227 Download complete 0B
+ ab7891223b6e Download complete 0B
+ 3820d2820a80 Download complete 0B
+ 284c79db9f3e Pull complete 0B
+ cfd0730e8b44 Extracting 1B
+ f791e47cf52a Downloading 3.146MB
+ 057c8235ae89 Download complete 0B
+ 50dc702eaf05 Downloading 17.83MB
+ 799ec0c29631 Pull complete 0B
+ b432fb757bf0 Pull complete 0B
+ cf2bffa63afa Pull complete 0B
+ cfd0730e8b44 Pull complete 0B
+ d507e0b00c3b Download complete 0B
+ f791e47cf52a Downloading 4.194MB
+ 50dc702eaf05 Downloading 19.92MB
+ f791e47cf52a Downloading 5.243MB
+ 81416a431855 Downloading 1.049MB
+ 50dc702eaf05 Downloading 22.02MB
+ f791e47cf52a Downloading 6.291MB
+ 06503c30fb67 Downloading 1.049MB
+ 81416a431855 Downloading 1.049MB
+ 50dc702eaf05 Downloading 23.07MB
+ 81416a431855 Downloading 1.049MB
+ 50dc702eaf05 Downloading 24.12MB
+ aae928f0e436 Downloading 61.44kB
+ f791e47cf52a Downloading 6.291MB
+ 06503c30fb67 Downloading 1.929MB
+ aae928f0e436 Downloading 1.049MB
+ f791e47cf52a Downloading 7.311MB
+ 06503c30fb67 Downloading 2.097MB
+ 81416a431855 Downloading 1.049MB
+ 50dc702eaf05 Downloading 25.17MB
+ 06503c30fb67 Downloading 3.146MB
+ aae928f0e436 Download complete 0B
+ f791e47cf52a Downloading 7.34MB
+ 81416a431855 Downloading 2.097MB
+ 50dc702eaf05 Downloading 27.26MB
+ 50dc702eaf05 Downloading 28.31MB
+ 81416a431855 Downloading 2.097MB
+ f791e47cf52a Downloading 8.389MB
+ 06503c30fb67 Downloading 5.243MB
+ 50dc702eaf05 Downloading 29.36MB
+ 81416a431855 Downloading 2.097MB
+ f791e47cf52a Downloading 8.389MB
+ 06503c30fb67 Downloading 7.34MB
+ f791e47cf52a Downloading 8.389MB
+ 06503c30fb67 Downloading 8.389MB
+ 81416a431855 Downloading 3.146MB
+ 50dc702eaf05 Downloading 30.41MB
+ f791e47cf52a Downloading 9.437MB
+ 06503c30fb67 Downloading 11.53MB
+ 81416a431855 Downloading 3.146MB
+ 50dc702eaf05 Downloading 31.46MB
+ f791e47cf52a Downloading 9.437MB
+ 06503c30fb67 Downloading 13.63MB
+ 50dc702eaf05 Downloading 32.51MB
+ 81416a431855 Downloading 3.146MB
+ f791e47cf52a Downloading 10.49MB
+ 06503c30fb67 Download complete 0B
+ 81416a431855 Downloading 4.194MB
+ 50dc702eaf05 Downloading 33.55MB
+ f791e47cf52a Downloading 10.49MB
+ 81416a431855 Downloading 4.194MB
+ 50dc702eaf05 Downloading 34.6MB
+ f791e47cf52a Downloading 11.53MB
+ 81416a431855 Download complete 0B
+ 50dc702eaf05 Downloading 36.7MB
+ f791e47cf52a Downloading 12.58MB
+ 50dc702eaf05 Downloading 38.8MB
+ f791e47cf52a Downloading 13.63MB
+ 50dc702eaf05 Downloading 41.94MB
+ f791e47cf52a Downloading 14.68MB
+ 50dc702eaf05 Downloading 44.04MB
+ f791e47cf52a Downloading 15.73MB
+ 50dc702eaf05 Downloading 47.19MB
+ f791e47cf52a Downloading 16.78MB
+ 50dc702eaf05 Downloading 50.33MB
+ f791e47cf52a Downloading 17.83MB
+ 50dc702eaf05 Downloading 52.43MB
+ 4f4fb700ef54 Pulling fs layer 0B
+ bbd4b9a9d14e Pulling fs layer 0B
+ db52fb5c5837 Pulling fs layer 0B
+ 9965495e455e Pulling fs layer 0B
+ 75782e20ea1f Pulling fs layer 0B
+ 4fad8593bdf8 Pulling fs layer 0B
+ 2b9ebc1548a3 Pulling fs layer 0B
+ f1f0fc7faa71 Pulling fs layer 0B
+ 971891d71284 Pulling fs layer 0B
+ 7b82d6505922 Pulling fs layer 0B
+ f85fa341cc9f Pulling fs layer 0B
+ 40b3d8bb3e83 Pulling fs layer 0B
+ 2868842323fd Pulling fs layer 0B
+ d43ed53c42c9 Pulling fs layer 0B
+ e01c2cd5024c Pulling fs layer 0B
+ a359f131256f Pulling fs layer 0B
+ 6e7b765071ff Pulling fs layer 0B
+ bc09f1307e62 Pulling fs layer 0B
+ 1c91fa30391c Pulling fs layer 0B
+ 060cf95144cf Pulling fs layer 0B
+ f791e47cf52a Downloading 18.87MB
+ 44136fa355b3 Already exists 0B
+ 4f4fb700ef54 Already exists 0B
+ 50dc702eaf05 Downloading 55.57MB
+ f791e47cf52a Downloading 19.92MB
+ 1c91fa30391c Download complete 0B
+ 50dc702eaf05 Downloading 57.67MB
+ f791e47cf52a Downloading 20.97MB
+ 50dc702eaf05 Downloading 60.82MB
+ 3abb023254ad Download complete 0B
+ f791e47cf52a Downloading 22.02MB
+ bbd4b9a9d14e Download complete 0B
+ 50dc702eaf05 Downloading 62.91MB
+ 50dc702eaf05 Downloading 66.06MB
+ f791e47cf52a Downloading 22.02MB
+ f791e47cf52a Downloading 23.07MB
+ f1f0fc7faa71 Download complete 0B
+ 7b82d6505922 Download complete 0B
+ 50dc702eaf05 Downloading 68.16MB
+ f85fa341cc9f Download complete 0B
+ 060cf95144cf Download complete 0B
+ f791e47cf52a Downloading 24.12MB
+ bc09f1307e62 Download complete 0B
+ 50dc702eaf05 Downloading 70.25MB
+ 2b9ebc1548a3 Download complete 0B
+ 40b3d8bb3e83 Download complete 0B
+ d43ed53c42c9 Download complete 0B
+ 971891d71284 Downloading 1.049MB
+ f791e47cf52a Downloading 24.12MB
+ 50dc702eaf05 Downloading 71.3MB
+ f791e47cf52a Downloading 25.17MB
+ 50dc702eaf05 Downloading 71.3MB
+ 971891d71284 Downloading 1.049MB
+ a359f131256f Download complete 0B
+ 6e7b765071ff Download complete 0B
+ 75782e20ea1f Downloading 1.049MB
+ 75782e20ea1f Downloading 1.049MB
+ 971891d71284 Downloading 1.049MB
+ 4fad8593bdf8 Downloading 1.049MB
+ f791e47cf52a Downloading 25.17MB
+ 2868842323fd Download complete 0B
+ db52fb5c5837 Downloading 1.049MB
+ 50dc702eaf05 Downloading 71.3MB
+ f791e47cf52a Downloading 25.17MB
+ db52fb5c5837 Downloading 1.049MB
+ 75782e20ea1f Downloading 1.049MB
+ 971891d71284 Downloading 1.049MB
+ 4fad8593bdf8 Downloading 1.049MB
+ 50dc702eaf05 Downloading 72.35MB
+ db52fb5c5837 Downloading 3.146MB
+ 75782e20ea1f Downloading 3.146MB
+ f791e47cf52a Downloading 26.21MB
+ 971891d71284 Downloading 2.097MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 3.146MB
+ 50dc702eaf05 Downloading 74.45MB
+ 971891d71284 Downloading 2.097MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 3.146MB
+ 50dc702eaf05 Downloading 74.45MB
+ db52fb5c5837 Downloading 3.146MB
+ 75782e20ea1f Downloading 4.194MB
+ f791e47cf52a Downloading 26.21MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 4.194MB
+ db52fb5c5837 Downloading 4.194MB
+ 75782e20ea1f Downloading 5.243MB
+ 971891d71284 Downloading 2.097MB
+ 50dc702eaf05 Downloading 75.5MB
+ f791e47cf52a Downloading 26.21MB
+ 971891d71284 Downloading 2.097MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 4.194MB
+ db52fb5c5837 Downloading 4.194MB
+ 75782e20ea1f Downloading 5.243MB
+ f791e47cf52a Downloading 26.21MB
+ 50dc702eaf05 Downloading 75.5MB
+ db52fb5c5837 Downloading 6.291MB
+ 75782e20ea1f Downloading 7.34MB
+ 971891d71284 Downloading 3.146MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 6.291MB
+ e01c2cd5024c Download complete 0B
+ 50dc702eaf05 Downloading 76.55MB
+ f791e47cf52a Downloading 26.21MB
+ f791e47cf52a Downloading 26.21MB
+ db52fb5c5837 Downloading 7.34MB
+ 75782e20ea1f Downloading 7.34MB
+ 971891d71284 Downloading 3.146MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 6.291MB
+ 50dc702eaf05 Downloading 77.59MB
+ db52fb5c5837 Downloading 7.34MB
+ 75782e20ea1f Downloading 8.389MB
+ f791e47cf52a Downloading 27.26MB
+ 971891d71284 Downloading 3.146MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 7.34MB
+ 50dc702eaf05 Downloading 77.59MB
+ 50dc702eaf05 Downloading 77.59MB
+ db52fb5c5837 Downloading 8.389MB
+ 75782e20ea1f Downloading 9.437MB
+ 971891d71284 Downloading 4.194MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 8.389MB
+ f791e47cf52a Downloading 27.26MB
+ db52fb5c5837 Downloading 9.437MB
+ 75782e20ea1f Downloading 10.49MB
+ 971891d71284 Downloading 4.194MB
+ f791e47cf52a Downloading 27.26MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 9.437MB
+ 50dc702eaf05 Downloading 78.64MB
+ f791e47cf52a Downloading 27.26MB
+ db52fb5c5837 Downloading 9.437MB
+ 75782e20ea1f Downloading 11.53MB
+ 971891d71284 Downloading 4.194MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 9.437MB
+ 50dc702eaf05 Downloading 78.64MB
+ 4fad8593bdf8 Downloading 10.49MB
+ db52fb5c5837 Downloading 11.53MB
+ 75782e20ea1f Downloading 12.58MB
+ 971891d71284 Downloading 5.243MB
+ 9965495e455e Downloading 1.049MB
+ f791e47cf52a Downloading 27.26MB
+ 50dc702eaf05 Downloading 78.64MB
+ db52fb5c5837 Downloading 12.58MB
+ 75782e20ea1f Downloading 13.63MB
+ 971891d71284 Downloading 5.243MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 11.53MB
+ f791e47cf52a Download complete 0B
+ 50dc702eaf05 Downloading 79.69MB
+ f791e47cf52a Extracting 1B
+ 971891d71284 Downloading 5.243MB
+ 9965495e455e Downloading 1.049MB
+ 4fad8593bdf8 Downloading 12.58MB
+ db52fb5c5837 Downloading 12.58MB
+ 75782e20ea1f Downloading 14.68MB
+ 50dc702eaf05 Downloading 79.69MB
+ f791e47cf52a Extracting 1B
+ db52fb5c5837 Downloading 13.63MB
+ 75782e20ea1f Downloading 15.73MB
+ 971891d71284 Downloading 6.291MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 12.58MB
+ 50dc702eaf05 Downloading 79.69MB
+ f791e47cf52a Extracting 1B
+ 50dc702eaf05 Downloading 80.74MB
+ db52fb5c5837 Downloading 14.68MB
+ 75782e20ea1f Downloading 15.73MB
+ 971891d71284 Downloading 6.291MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 13.63MB
+ f791e47cf52a Extracting 1B
+ 971891d71284 Downloading 7.34MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 14.68MB
+ db52fb5c5837 Downloading 15.73MB
+ 75782e20ea1f Downloading 16.78MB
+ 50dc702eaf05 Downloading 80.74MB
+ f791e47cf52a Extracting 1B
+ db52fb5c5837 Downloading 17.83MB
+ 75782e20ea1f Downloading 17.83MB
+ 971891d71284 Downloading 7.34MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 15.73MB
+ 50dc702eaf05 Downloading 80.74MB
+ f791e47cf52a Extracting 1B
+ db52fb5c5837 Downloading 17.83MB
+ 75782e20ea1f Downloading 18.87MB
+ 971891d71284 Downloading 7.34MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 16.78MB
+ 50dc702eaf05 Downloading 81.79MB
+ 72ce848c7650 Pull complete 0B
+ 3820d2820a80 Pull complete 0B
+ 06503c30fb67 Extracting 1B
+ f791e47cf52a Pull complete 0B
+ 50dc702eaf05 Downloading 81.79MB
+ db52fb5c5837 Downloading 18.87MB
+ 75782e20ea1f Downloading 19.92MB
+ 971891d71284 Downloading 8.389MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 16.78MB
+ 06503c30fb67 Extracting 1B
+ 4f4fb700ef54 Pull complete 0B
+ 119f146f2227 Pull complete 0B
+ 057c8235ae89 Pull complete 0B
+ 06503c30fb67 Pull complete 0B
+ Image redis:7.2-bookworm Pulled 
+ db52fb5c5837 Downloading 19.92MB
+ 75782e20ea1f Downloading 20.97MB
+ 971891d71284 Downloading 8.389MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 17.83MB
+ 50dc702eaf05 Downloading 82.84MB
+ db52fb5c5837 Downloading 20.97MB
+ 75782e20ea1f Downloading 22.02MB
+ 971891d71284 Downloading 8.389MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 17.83MB
+ 50dc702eaf05 Downloading 82.84MB
+ db52fb5c5837 Downloading 20.97MB
+ 75782e20ea1f Downloading 22.02MB
+ 971891d71284 Downloading 9.437MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 18.87MB
+ 50dc702eaf05 Downloading 82.84MB
+ db52fb5c5837 Downloading 23.07MB
+ 75782e20ea1f Downloading 24.12MB
+ 971891d71284 Downloading 9.437MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 20.97MB
+ 50dc702eaf05 Downloading 82.84MB
+ db52fb5c5837 Downloading 24.12MB
+ 50dc702eaf05 Downloading 82.84MB
+ 75782e20ea1f Downloading 25.17MB
+ 971891d71284 Downloading 10.49MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 20.97MB
+ db52fb5c5837 Downloading 25.17MB
+ 75782e20ea1f Downloading 26.21MB
+ 971891d71284 Downloading 10.49MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 22.02MB
+ 50dc702eaf05 Downloading 83.89MB
+ 75782e20ea1f Downloading 27.26MB
+ 971891d71284 Downloading 11.53MB
+ 9965495e455e Downloading 2.097MB
+ 4fad8593bdf8 Downloading 23.07MB
+ db52fb5c5837 Downloading 26.21MB
+ 50dc702eaf05 Downloading 83.89MB
+ 971891d71284 Downloading 11.53MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Downloading 24.12MB
+ db52fb5c5837 Downloading 27.26MB
+ 50dc702eaf05 Downloading 83.89MB
+ 75782e20ea1f Download complete 0B
+ 75782e20ea1f Extracting 1B
+ 971891d71284 Downloading 12.58MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Downloading 25.17MB
+ 50dc702eaf05 Downloading 84.57MB
+ db52fb5c5837 Downloading 29.36MB
+ 75782e20ea1f Extracting 1B
+ db52fb5c5837 Downloading 30.41MB
+ 971891d71284 Downloading 12.58MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Downloading 26.21MB
+ 50dc702eaf05 Downloading 84.93MB
+ 75782e20ea1f Extracting 1B
+ db52fb5c5837 Downloading 32.51MB
+ 971891d71284 Downloading 13.63MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Downloading 27.26MB
+ 50dc702eaf05 Downloading 84.93MB
+ 75782e20ea1f Extracting 1B
+ 971891d71284 Downloading 13.63MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Downloading 28.31MB
+ db52fb5c5837 Downloading 33.55MB
+ 50dc702eaf05 Downloading 85.08MB
+ 75782e20ea1f Extracting 1B
+ db52fb5c5837 Downloading 35.65MB
+ 971891d71284 Downloading 14.68MB
+ 9965495e455e Downloading 3.146MB
+ 4fad8593bdf8 Download complete 0B
+ 50dc702eaf05 Downloading 85.98MB
+ 75782e20ea1f Pull complete 0B
+ 4fad8593bdf8 Extracting 1B
+ 9965495e455e Downloading 3.146MB
+ db52fb5c5837 Downloading 37.75MB
+ 971891d71284 Downloading 15.73MB
+ 50dc702eaf05 Downloading 85.98MB
+ 4fad8593bdf8 Extracting 1B
+ db52fb5c5837 Downloading 39.85MB
+ 971891d71284 Downloading 16.11MB
+ 9965495e455e Downloading 3.146MB
+ 50dc702eaf05 Downloading 87.03MB
+ 4fad8593bdf8 Extracting 1B
+ 9965495e455e Downloading 3.146MB
+ db52fb5c5837 Downloading 41.94MB
+ 971891d71284 Downloading 16.78MB
+ 50dc702eaf05 Downloading 87.03MB
+ 4fad8593bdf8 Extracting 1B
+ db52fb5c5837 Downloading 44.04MB
+ 971891d71284 Downloading 17.83MB
+ 9965495e455e Downloading 4.194MB
+ 50dc702eaf05 Downloading 88.08MB
+ 4fad8593bdf8 Extracting 1B
+ db52fb5c5837 Downloading 46.14MB
+ 971891d71284 Downloading 18.87MB
+ 9965495e455e Downloading 4.194MB
+ 50dc702eaf05 Downloading 88.08MB
+ 4fad8593bdf8 Extracting 1B
+ db52fb5c5837 Downloading 48.23MB
+ 971891d71284 Downloading 19.92MB
+ 9965495e455e Downloading 4.194MB
+ 50dc702eaf05 Downloading 89.13MB
+ 4fad8593bdf8 Extracting 1B
+ 971891d71284 Downloading 19.92MB
+ 9965495e455e Downloading 4.194MB
+ db52fb5c5837 Downloading 50.33MB
+ 50dc702eaf05 Downloading 89.13MB
+ 4fad8593bdf8 Extracting 1B
+ db52fb5c5837 Downloading 52.43MB
+ 971891d71284 Downloading 20.97MB
+ 9965495e455e Downloading 4.194MB
+ 50dc702eaf05 Downloading 90.18MB
+ f85fa341cc9f Pull complete 0B
+ 4fad8593bdf8 Pull complete 0B
+ 50dc702eaf05 Downloading 90.18MB
+ 9965495e455e Downloading 4.194MB
+ db52fb5c5837 Downloading 55.02MB
+ db52fb5c5837 Downloading 57.67MB
+ 971891d71284 Download complete 0B
+ 9965495e455e Downloading 4.194MB
+ 50dc702eaf05 Downloading 91.23MB
+ 50dc702eaf05 Downloading 91.23MB
+ db52fb5c5837 Downloading 60.82MB
+ 9965495e455e Downloading 5.243MB
+ db52fb5c5837 Downloading 63.96MB
+ 9965495e455e Downloading 5.243MB
+ 50dc702eaf05 Downloading 92.27MB
+ db52fb5c5837 Downloading 67.11MB
+ 9965495e455e Downloading 5.243MB
+ 50dc702eaf05 Downloading 92.27MB
+ 9965495e455e Downloading 5.243MB
+ db52fb5c5837 Downloading 70.25MB
+ 50dc702eaf05 Downloading 93.32MB
+ db52fb5c5837 Downloading 72.35MB
+ 9965495e455e Downloading 5.243MB
+ 50dc702eaf05 Downloading 94.17MB
+ 9965495e455e Downloading 5.243MB
+ db52fb5c5837 Downloading 75.5MB
+ 50dc702eaf05 Downloading 94.37MB
+ db52fb5c5837 Downloading 78.64MB
+ 9965495e455e Downloading 6.291MB
+ 50dc702eaf05 Downloading 95.42MB
+ 9965495e455e Downloading 6.291MB
+ db52fb5c5837 Downloading 80.74MB
+ 50dc702eaf05 Downloading 95.42MB
+ db52fb5c5837 Downloading 83.89MB
+ 9965495e455e Downloading 6.291MB
+ 50dc702eaf05 Downloading 96.47MB
+ db52fb5c5837 Downloading 87.03MB
+ 9965495e455e Downloading 6.291MB
+ 50dc702eaf05 Downloading 96.47MB
+ db52fb5c5837 Downloading 90.18MB
+ 9965495e455e Downloading 6.291MB
+ 50dc702eaf05 Downloading 97.52MB
+ db52fb5c5837 Downloading 93.32MB
+ 9965495e455e Downloading 6.291MB
+ 50dc702eaf05 Downloading 97.52MB
+ db52fb5c5837 Downloading 96.47MB
+ 9965495e455e Downloading 7.34MB
+ 50dc702eaf05 Downloading 98.57MB
+ 9965495e455e Downloading 7.34MB
+ db52fb5c5837 Downloading 99.61MB
+ 50dc702eaf05 Downloading 99.61MB
+ db52fb5c5837 Downloading 101.7MB
+ 9965495e455e Downloading 7.34MB
+ 50dc702eaf05 Downloading 99.61MB
+ db52fb5c5837 Downloading 104.9MB
+ 9965495e455e Downloading 7.34MB
+ 50dc702eaf05 Downloading 100.7MB
+ 50dc702eaf05 Downloading 100.7MB
+ 9965495e455e Downloading 7.34MB
+ db52fb5c5837 Downloading 108MB
+ 50dc702eaf05 Downloading 101.7MB
+ 9965495e455e Downloading 7.34MB
+ db52fb5c5837 Downloading 110.1MB
+ 9965495e455e Downloading 7.34MB
+ db52fb5c5837 Downloading 114.3MB
+ 50dc702eaf05 Downloading 101.7MB
+ 9965495e455e Downloading 7.34MB
+ db52fb5c5837 Downloading 117.4MB
+ 50dc702eaf05 Downloading 102.8MB
+ 9965495e455e Downloading 8.389MB
+ db52fb5c5837 Downloading 120.6MB
+ 50dc702eaf05 Downloading 103.8MB
+ db52fb5c5837 Downloading 122.7MB
+ 9965495e455e Downloading 8.389MB
+ 50dc702eaf05 Downloading 103.8MB
+ db52fb5c5837 Downloading 125.8MB
+ 9965495e455e Downloading 8.389MB
+ 50dc702eaf05 Downloading 104.9MB
+ 50dc702eaf05 Downloading 104.9MB
+ db52fb5c5837 Downloading 129MB
+ 9965495e455e Downloading 8.389MB
+ 9965495e455e Downloading 8.389MB
+ db52fb5c5837 Downloading 132.1MB
+ 50dc702eaf05 Downloading 105.9MB
+ 9965495e455e Downloading 8.389MB
+ db52fb5c5837 Downloading 134.2MB
+ 50dc702eaf05 Downloading 105.9MB
+ 9965495e455e Downloading 9.437MB
+ db52fb5c5837 Downloading 137.4MB
+ 50dc702eaf05 Downloading 107MB
+ db52fb5c5837 Downloading 140.5MB
+ 9965495e455e Downloading 9.437MB
+ 50dc702eaf05 Downloading 107MB
+ 50dc702eaf05 Downloading 108MB
+ db52fb5c5837 Downloading 143.7MB
+ 9965495e455e Downloading 9.437MB
+ db52fb5c5837 Downloading 146.8MB
+ 9965495e455e Downloading 9.437MB
+ 50dc702eaf05 Downloading 108MB
+ db52fb5c5837 Downloading 148.9MB
+ 9965495e455e Downloading 9.437MB
+ 50dc702eaf05 Downloading 109.1MB
+ 9965495e455e Downloading 10.49MB
+ db52fb5c5837 Downloading 152MB
+ 50dc702eaf05 Downloading 110.1MB
+ 9965495e455e Downloading 10.49MB
+ db52fb5c5837 Downloading 155.2MB
+ 50dc702eaf05 Downloading 110.1MB
+ 50dc702eaf05 Downloading 111.1MB
+ 9965495e455e Downloading 10.49MB
+ db52fb5c5837 Downloading 158.3MB
+ 50dc702eaf05 Downloading 111.8MB
+ db52fb5c5837 Downloading 160.4MB
+ 9965495e455e Downloading 10.49MB
+ db52fb5c5837 Downloading 164.6MB
+ 9965495e455e Downloading 10.49MB
+ 50dc702eaf05 Download complete 0B
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 167.8MB
+ 9965495e455e Downloading 11.53MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 171.3MB
+ 9965495e455e Downloading 11.53MB
+ 50dc702eaf05 Extracting 1B
+ 9965495e455e Downloading 11.53MB
+ db52fb5c5837 Downloading 175.1MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 178.3MB
+ 9965495e455e Downloading 11.53MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 182.4MB
+ 9965495e455e Downloading 12.58MB
+ 50dc702eaf05 Extracting 1B
+ 9965495e455e Downloading 12.58MB
+ db52fb5c5837 Downloading 185.6MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 188.7MB
+ 9965495e455e Downloading 12.58MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 191.9MB
+ 9965495e455e Downloading 12.58MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 194MB
+ 9965495e455e Downloading 13.63MB
+ 50dc702eaf05 Extracting 1B
+ db52fb5c5837 Downloading 195MB
+ 9965495e455e Downloading 13.63MB
+ 50dc702eaf05 Extracting 1B
+ 9965495e455e Downloading 13.63MB
+ db52fb5c5837 Downloading 197.1MB
+ 50dc702eaf05 Extracting 2B
+ db52fb5c5837 Downloading 199.2MB
+ 9965495e455e Downloading 13.63MB
+ 50dc702eaf05 Extracting 2B
+ db52fb5c5837 Downloading 201.3MB
+ 9965495e455e Downloading 13.63MB
+ 8efed7921649 Pull complete 0B
+ e8d8b84da68a Pull complete 0B
+ 97f9b0a89f6b Extracting 1B
+ 50dc702eaf05 Pull complete 0B
+ d056b4173d10 Pull complete 0B
+ d24ad6406b14 Pull complete 0B
+ 97f9b0a89f6b Pull complete 0B
+ Image postgres:16 Pulled 
+ db52fb5c5837 Downloading 203.4MB
+ 9965495e455e Downloading 13.63MB
+ 9965495e455e Downloading 14.68MB
+ db52fb5c5837 Downloading 205.5MB
+ db52fb5c5837 Downloading 207.6MB
+ 9965495e455e Downloading 14.68MB
+ db52fb5c5837 Downloading 209.7MB
+ 9965495e455e Downloading 14.68MB
+ db52fb5c5837 Downloading 211.8MB
+ 9965495e455e Downloading 14.68MB
+ 9965495e455e Downloading 15.73MB
+ db52fb5c5837 Downloading 214.7MB
+ db52fb5c5837 Downloading 217.1MB
+ 9965495e455e Downloading 15.73MB
+ 9965495e455e Downloading 15.73MB
+ db52fb5c5837 Downloading 219.2MB
+ db52fb5c5837 Downloading 222.3MB
+ 9965495e455e Downloading 16.78MB
+ 9965495e455e Downloading 16.78MB
+ db52fb5c5837 Downloading 226.5MB
+ db52fb5c5837 Downloading 229.6MB
+ 9965495e455e Downloading 16.78MB
+ db52fb5c5837 Downloading 232.8MB
+ 9965495e455e Downloading 17.83MB
+ 9965495e455e Downloading 17.83MB
+ db52fb5c5837 Downloading 235.9MB
+ db52fb5c5837 Downloading 239.1MB
+ 9965495e455e Downloading 18.87MB
+ 9965495e455e Downloading 18.87MB
+ db52fb5c5837 Downloading 242.2MB
+ db52fb5c5837 Downloading 245.4MB
+ 9965495e455e Downloading 19.92MB
+ db52fb5c5837 Downloading 248.5MB
+ 9965495e455e Downloading 19.92MB
+ db52fb5c5837 Downloading 251.7MB
+ 9965495e455e Downloading 20.97MB
+ 9965495e455e Downloading 20.97MB
+ db52fb5c5837 Downloading 254.8MB
+ db52fb5c5837 Downloading 257.9MB
+ 9965495e455e Downloading 22.02MB
+ db52fb5c5837 Downloading 261.1MB
+ 9965495e455e Downloading 22.02MB
+ 9965495e455e Downloading 23.07MB
+ db52fb5c5837 Downloading 264.2MB
+ 9965495e455e Downloading 23.07MB
+ db52fb5c5837 Downloading 268.4MB
+ db52fb5c5837 Downloading 271.6MB
+ 9965495e455e Downloading 24.12MB
+ 9965495e455e Downloading 24.12MB
+ db52fb5c5837 Downloading 274.7MB
+ 9965495e455e Downloading 25.17MB
+ db52fb5c5837 Downloading 277.9MB
+ 9965495e455e Downloading 25.17MB
+ db52fb5c5837 Downloading 281MB
+ 9965495e455e Downloading 26.21MB
+ db52fb5c5837 Downloading 283.7MB
+ db52fb5c5837 Downloading 286.3MB
+ 9965495e455e Downloading 26.21MB
+ 9965495e455e Downloading 27.26MB
+ db52fb5c5837 Downloading 289.4MB
+ db52fb5c5837 Downloading 292.6MB
+ 9965495e455e Downloading 27.26MB
+ db52fb5c5837 Downloading 295.7MB
+ 9965495e455e Downloading 28.31MB
+ 9965495e455e Downloading 28.31MB
+ db52fb5c5837 Downloading 298.8MB
+ db52fb5c5837 Downloading 302MB
+ 9965495e455e Downloading 29.36MB
+ db52fb5c5837 Downloading 305.1MB
+ 9965495e455e Downloading 29.36MB
+ 9965495e455e Downloading 30.41MB
+ db52fb5c5837 Downloading 308.3MB
+ db52fb5c5837 Downloading 311.4MB
+ 9965495e455e Downloading 31.46MB
+ db52fb5c5837 Downloading 313.7MB
+ 9965495e455e Downloading 31.46MB
+ db52fb5c5837 Downloading 316.7MB
+ 9965495e455e Downloading 32.51MB
+ 9965495e455e Downloading 32.51MB
+ db52fb5c5837 Downloading 319.8MB
+ 9965495e455e Downloading 33.55MB
+ db52fb5c5837 Downloading 323MB
+ db52fb5c5837 Downloading 326.1MB
+ 9965495e455e Downloading 34.6MB
+ 9965495e455e Downloading 34.6MB
+ db52fb5c5837 Downloading 329.3MB
+ db52fb5c5837 Downloading 332.4MB
+ 9965495e455e Downloading 35.65MB
+ 9965495e455e Downloading 36.7MB
+ db52fb5c5837 Downloading 334.5MB
+ 9965495e455e Downloading 36.7MB
+ db52fb5c5837 Downloading 337.6MB
+ 9965495e455e Downloading 37.75MB
+ db52fb5c5837 Downloading 340.8MB
+ 9965495e455e Downloading 38.8MB
+ db52fb5c5837 Downloading 343.9MB
+ 9965495e455e Downloading 39.85MB
+ db52fb5c5837 Downloading 347.1MB
+ 9965495e455e Downloading 39.85MB
+ db52fb5c5837 Downloading 350.2MB
+ db52fb5c5837 Downloading 352.3MB
+ 9965495e455e Downloading 40.89MB
+ 9965495e455e Downloading 41.94MB
+ db52fb5c5837 Downloading 355.5MB
+ db52fb5c5837 Downloading 358.6MB
+ 9965495e455e Downloading 41.94MB
+ db52fb5c5837 Downloading 360.7MB
+ 9965495e455e Downloading 42.99MB
+ 9965495e455e Downloading 44.04MB
+ db52fb5c5837 Downloading 363.9MB
+ 9965495e455e Downloading 45.09MB
+ db52fb5c5837 Downloading 367MB
+ db52fb5c5837 Downloading 370.1MB
+ 9965495e455e Downloading 45.09MB
+ 9965495e455e Downloading 46.14MB
+ db52fb5c5837 Downloading 373.3MB
+ db52fb5c5837 Downloading 375.4MB
+ 9965495e455e Downloading 47.19MB
+ db52fb5c5837 Downloading 378.5MB
+ 9965495e455e Downloading 48.23MB
+ db52fb5c5837 Downloading 381.7MB
+ 9965495e455e Downloading 49.28MB
+ db52fb5c5837 Downloading 383.8MB
+ 9965495e455e Downloading 49.28MB
+ db52fb5c5837 Downloading 386.9MB
+ 9965495e455e Downloading 50.33MB
+ 9965495e455e Downloading 51.38MB
+ db52fb5c5837 Downloading 390.1MB
+ 9965495e455e Downloading 52.43MB
+ db52fb5c5837 Downloading 393.2MB
+ db52fb5c5837 Downloading 395.3MB
+ 9965495e455e Downloading 53.48MB
+ db52fb5c5837 Downloading 398.5MB
+ 9965495e455e Downloading 54.53MB
+ db52fb5c5837 Downloading 400.6MB
+ 9965495e455e Downloading 54.53MB
+ 9965495e455e Downloading 55.57MB
+ db52fb5c5837 Downloading 403.7MB
+ db52fb5c5837 Downloading 406.8MB
+ 9965495e455e Downloading 56.62MB
+ 9965495e455e Downloading 57.67MB
+ db52fb5c5837 Downloading 410MB
+ db52fb5c5837 Downloading 412.1MB
+ 9965495e455e Downloading 58.72MB
+ db52fb5c5837 Downloading 415.2MB
+ 9965495e455e Downloading 59.77MB
+ db52fb5c5837 Downloading 418.4MB
+ 9965495e455e Downloading 60.82MB
+ 9965495e455e Downloading 61.87MB
+ db52fb5c5837 Downloading 420.5MB
+ db52fb5c5837 Downloading 423.6MB
+ 9965495e455e Downloading 62.91MB
+ db52fb5c5837 Downloading 426.8MB
+ 9965495e455e Downloading 63.96MB
+ db52fb5c5837 Downloading 428.9MB
+ 9965495e455e Downloading 65.01MB
+ 9965495e455e Downloading 66.06MB
+ db52fb5c5837 Downloading 432MB
+ db52fb5c5837 Downloading 435.2MB
+ 9965495e455e Downloading 66.06MB
+ 9965495e455e Downloading 67.11MB
+ db52fb5c5837 Downloading 437.3MB
+ db52fb5c5837 Downloading 440.4MB
+ 9965495e455e Downloading 68.16MB
+ db52fb5c5837 Downloading 443.5MB
+ 9965495e455e Downloading 69.21MB
+ 9965495e455e Downloading 70.25MB
+ db52fb5c5837 Downloading 446.7MB
+ 9965495e455e Downloading 71.3MB
+ db52fb5c5837 Downloading 448.8MB
+ 9965495e455e Downloading 72.35MB
+ db52fb5c5837 Downloading 451.9MB
+ 9965495e455e Downloading 73.4MB
+ db52fb5c5837 Downloading 454MB
+ db52fb5c5837 Downloading 454MB
+ 9965495e455e Downloading 75.5MB
+ db52fb5c5837 Downloading 454MB
+ 9965495e455e Downloading 77.59MB
+ db52fb5c5837 Downloading 456.1MB
+ 9965495e455e Downloading 79.69MB
+ db52fb5c5837 Downloading 457.2MB
+ 9965495e455e Downloading 80.74MB
+ db52fb5c5837 Downloading 459.3MB
+ 9965495e455e Downloading 82.84MB
+ 9965495e455e Downloading 84.93MB
+ db52fb5c5837 Downloading 461.4MB
+ 9965495e455e Download complete 0B
+ db52fb5c5837 Downloading 463.5MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 465.6MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 468.7MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 471.9MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 476.1MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 480.2MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 483.4MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Downloading 487.2MB
+ 9965495e455e Extracting 1B
+ db52fb5c5837 Download complete 0B
+ 9965495e455e Extracting 1B
+ 9965495e455e Extracting 1B
+ 9965495e455e Extracting 2B
+ f1f0fc7faa71 Pull complete 0B
+ 7b82d6505922 Pull complete 0B
+ 2b9ebc1548a3 Pull complete 0B
+ 971891d71284 Extracting 1B
+ 9965495e455e Pull complete 0B
+ 971891d71284 Extracting 1B
+ 971891d71284 Extracting 1B
+ 971891d71284 Extracting 1B
+ 971891d71284 Pull complete 0B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 1B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 2B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 3B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 4B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 5B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 6B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 7B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 8B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 9B
+ db52fb5c5837 Extracting 10B
+ db52fb5c5837 Extracting 10B
+ db52fb5c5837 Extracting 10B
+ db52fb5c5837 Extracting 10B
+ db52fb5c5837 Extracting 10B
+ bbd4b9a9d14e Pull complete 0B
+ 40b3d8bb3e83 Pull complete 0B
+ d43ed53c42c9 Pull complete 0B
+ a359f131256f Pull complete 0B
+ 2868842323fd Pull complete 0B
+ db52fb5c5837 Pull complete 0B
+ 4f4fb700ef54 Pull complete 0B
+ 1c91fa30391c Pull complete 0B
+ 060cf95144cf Pull complete 0B
+ bc09f1307e62 Pull complete 0B
+ 6e7b765071ff Pull complete 0B
+ e01c2cd5024c Pull complete 0B
+ Image apache/airflow:3.3.2 Pulled 
+ Network airflow_default Creating 
+ Volume airflow_postgres-db-volume Creating 
+ Volume airflow_postgres-db-volume Creating 
+ Network airflow_default Creating 
+ Volume airflow_postgres-db-volume Created 
+ Volume airflow_postgres-db-volume Created 
+ Network airflow_default Created 
+ Network airflow_default Created 
+ Container airflow-redis-1 Creating 
+ Container airflow-postgres-1 Creating 
+ Container airflow-postgres-1 Created 
+ Container airflow-redis-1 Created 
+ Container airflow-airflow-init-1 Creating 
+ Container airflow-airflow-init-1 Created 
+Attaching to airflow-init-1
+ Container airflow-redis-1 Starting 
+ Container airflow-postgres-1 Starting 
+ Container airflow-redis-1 Started 
+ Container airflow-postgres-1 Started 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-redis-1 Healthy 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-airflow-init-1 Starting 
+ Container airflow-airflow-init-1 Started 
+airflow-init-1  | 
+airflow-init-1  | Creating missing opt dirs if missing:
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | Airflow version:
+airflow-init-1  | The container is run as root user. For security, consider using a regular user account.
+airflow-init-1  | 2026-11-01T23:22:25.466668Z [info     ] Performing upgrade to the metadata database [airflow.cli.commands.db_command] loc=db_command.py:134 url=postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | 2026-11-01T23:22:25.628605Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-01T23:22:25.628689Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-01T23:22:26.562445Z [warning  ] starlette.middleware.wsgi is deprecated and will be removed in a future release. Please refer to https://github.com/abersheeran/a2wsgi as a replacement. [py.warnings] category=StarletteDeprecationWarning filename=/home/airflow/.local/lib/python3.13/site-packages/fastapi/middleware/wsgi.py lineno=1
+airflow-init-1  | 2026-11-01T23:22:26.596824Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-01T23:22:26.597259Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-01T23:22:26.597769Z [info     ] Creating Airflow database tables from the ORM [airflow.utils.db] loc=db.py:749
+airflow-init-1  | 2026-11-01T23:22:26.597841Z [info     ] Creating global lock context   [airflow.utils.db] loc=db.py:730
+airflow-init-1  | 2026-11-01T23:22:26.601792Z [info     ] Pool status: Pool size: 5  Connections in pool: 0 Current Overflow: -3 Current Checked out connections: 2 [airflow.utils.db] loc=db.py:733
+airflow-init-1  | 2026-11-01T23:22:26.601857Z [info     ] Creating metadata              [airflow.utils.db] loc=db.py:735
+airflow-init-1  | 2026-11-01T23:22:26.740144Z [info     ] Getting alembic config         [airflow.utils.db] loc=db.py:738
+airflow-init-1  | 2026-11-01T23:22:26.740841Z [info     ] Stamping migration head        [airflow.utils.db] loc=db.py:741
+airflow-init-1  | 2026-11-01T23:22:26.742901Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-01T23:22:26.742966Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-01T23:22:26.791945Z [info     ] Running stamp_revision  -> d2f4e1b3c5a7 [alembic.runtime.migration] loc=migration.py:611
+airflow-init-1  | 2026-11-01T23:22:26.793557Z [info     ] Airflow database tables created [airflow.utils.db] loc=db.py:744
+airflow-init-1  | 2026-11-01T23:22:26.793900Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-01T23:22:26.793953Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-01T23:22:26.794804Z [info     ] Creating FABDBManager tables from the ORM [airflow.providers.fab.auth_manager.models.db.FABDBManager] loc=db_manager.py:137
+airflow-init-1  | 2026-11-01T23:22:26.834665Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-01T23:22:26.834770Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-01T23:22:26.839625Z [info     ] Running stamp_revision  -> 02ca36b0235b [alembic.runtime.migration] loc=migration.py:611
+airflow-init-1  | 2026-11-01T23:22:26.840235Z [info     ] FABDBManager tables have been created from the ORM [airflow.providers.fab.auth_manager.models.db.FABDBManager] loc=db_manager.py:143
+airflow-init-1  | 2026-11-01T23:22:26.865508Z [info     ] Database migration done!       [airflow.cli.commands.db_command] loc=db_command.py:152
+airflow-init-1  | 2026-11-01T23:22:29.300813Z [warning  ] starlette.middleware.wsgi is deprecated and will be removed in a future release. Please refer to https://github.com/abersheeran/a2wsgi as a replacement. [py.warnings] category=StarletteDeprecationWarning filename=/home/airflow/.local/lib/python3.13/site-packages/fastapi/middleware/wsgi.py lineno=1
+airflow-init-1  | 2026-11-01T23:22:29.420557Z [warning  ] Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend. [py.warnings] category=UserWarning filename=/home/airflow/.local/lib/python3.13/site-packages/flask_limiter/_extension.py lineno=364
+airflow-init-1  | 2026-11-01T23:22:29.425707Z [info     ] Inserted Role: Admin           [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1363
+airflow-init-1  | 2026-11-01T23:22:29.426593Z [warning  ] No user yet created, use flask fab command to do it. [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1006
+airflow-init-1  | 2026-11-01T23:22:29.429642Z [info     ] Created Permission View: can read on DAGs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.431502Z [info     ] Created Permission View: can delete on DAGs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.433304Z [info     ] Created Permission View: can edit on DAGs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.437483Z [info     ] Inserted Role: Public          [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1363
+airflow-init-1  | 2026-11-01T23:22:29.438365Z [info     ] Inserted Role: Viewer          [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1363
+airflow-init-1  | 2026-11-01T23:22:29.440992Z [info     ] Added Permission can read on DAGs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.442549Z [info     ] Created Permission View: can read on DAG Dependencies [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.443223Z [info     ] Added Permission can read on DAG Dependencies to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.444649Z [info     ] Created Permission View: can read on DAG Code [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.445352Z [info     ] Added Permission can read on DAG Code to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.446716Z [info     ] Created Permission View: can read on DAG Runs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.447310Z [info     ] Added Permission can read on DAG Runs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.448555Z [info     ] Created Permission View: can read on DAG Versions [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.449145Z [info     ] Added Permission can read on DAG Versions to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.450352Z [info     ] Created Permission View: can read on DAG Warnings [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.451147Z [info     ] Added Permission can read on DAG Warnings to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.452325Z [info     ] Created Permission View: can read on Assets [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.452881Z [info     ] Added Permission can read on Assets to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.454060Z [info     ] Created Permission View: can read on Asset Aliases [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.454593Z [info     ] Added Permission can read on Asset Aliases to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.456040Z [info     ] Created Permission View: can read on Backfills [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.456592Z [info     ] Added Permission can read on Backfills to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.457741Z [info     ] Created Permission View: can read on Cluster Activity [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.458327Z [info     ] Added Permission can read on Cluster Activity to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.459605Z [info     ] Created Permission View: can read on Pools [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.460143Z [info     ] Added Permission can read on Pools to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.461314Z [info     ] Created Permission View: can read on ImportError [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.461839Z [info     ] Added Permission can read on ImportError to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.463001Z [info     ] Created Permission View: can read on Jobs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.463686Z [info     ] Added Permission can read on Jobs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.464869Z [info     ] Created Permission View: can read on My Password [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.465459Z [info     ] Added Permission can read on My Password to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.467483Z [info     ] Created Permission View: can edit on My Password [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.468082Z [info     ] Added Permission can edit on My Password to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.469391Z [info     ] Created Permission View: can read on My Profile [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.469992Z [info     ] Added Permission can read on My Profile to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.471215Z [info     ] Created Permission View: can edit on My Profile [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.471792Z [info     ] Added Permission can edit on My Profile to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.473135Z [info     ] Created Permission View: can read on SLA Misses [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.473735Z [info     ] Added Permission can read on SLA Misses to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.474957Z [info     ] Created Permission View: can read on Task Instances [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.475576Z [info     ] Added Permission can read on Task Instances to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.476998Z [info     ] Created Permission View: can read on Task Logs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.477609Z [info     ] Added Permission can read on Task Logs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.478877Z [info     ] Created Permission View: can read on XComs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.479470Z [info     ] Added Permission can read on XComs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.480786Z [info     ] Created Permission View: can read on HITL Detail [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.481366Z [info     ] Added Permission can read on HITL Detail to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.482621Z [info     ] Created Permission View: can read on Website [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.483208Z [info     ] Added Permission can read on Website to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.484752Z [info     ] Created Permission View: menu access on Browse [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.485654Z [info     ] Added Permission menu access on Browse to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.486960Z [info     ] Created Permission View: menu access on DAGs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.487539Z [info     ] Added Permission menu access on DAGs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.488760Z [info     ] Created Permission View: menu access on DAG Dependencies [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.489373Z [info     ] Added Permission menu access on DAG Dependencies to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.490716Z [info     ] Created Permission View: menu access on DAG Runs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.491341Z [info     ] Added Permission menu access on DAG Runs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.492594Z [info     ] Created Permission View: menu access on Assets [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.493217Z [info     ] Added Permission menu access on Assets to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.494473Z [info     ] Created Permission View: menu access on Cluster Activity [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.495122Z [info     ] Added Permission menu access on Cluster Activity to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.496543Z [info     ] Created Permission View: menu access on Documentation [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.497214Z [info     ] Added Permission menu access on Documentation to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.498645Z [info     ] Created Permission View: menu access on Docs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.499268Z [info     ] Added Permission menu access on Docs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.500575Z [info     ] Created Permission View: menu access on Jobs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.501179Z [info     ] Added Permission menu access on Jobs to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.502454Z [info     ] Created Permission View: menu access on SLA Misses [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.503054Z [info     ] Added Permission menu access on SLA Misses to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.504217Z [info     ] Created Permission View: menu access on Task Instances [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.504810Z [info     ] Added Permission menu access on Task Instances to role Viewer [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.505620Z [info     ] Inserted Role: User            [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1363
+airflow-init-1  | 2026-11-01T23:22:29.506571Z [info     ] Added Permission can read on DAGs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.507740Z [info     ] Added Permission can read on DAG Dependencies to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.509054Z [info     ] Added Permission can read on DAG Code to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.510423Z [info     ] Added Permission can read on DAG Runs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.511641Z [info     ] Added Permission can read on DAG Versions to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.512769Z [info     ] Added Permission can read on DAG Warnings to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.514055Z [info     ] Added Permission can read on Assets to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.515227Z [info     ] Added Permission can read on Asset Aliases to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.516535Z [info     ] Added Permission can read on Backfills to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.517719Z [info     ] Added Permission can read on Cluster Activity to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.518942Z [info     ] Added Permission can read on Pools to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.520144Z [info     ] Added Permission can read on ImportError to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.521340Z [info     ] Added Permission can read on Jobs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.522456Z [info     ] Added Permission can read on My Password to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.523842Z [info     ] Added Permission can edit on My Password to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.524952Z [info     ] Added Permission can read on My Profile to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.526079Z [info     ] Added Permission can edit on My Profile to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.527222Z [info     ] Added Permission can read on SLA Misses to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.528363Z [info     ] Added Permission can read on Task Instances to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.529719Z [info     ] Added Permission can read on Task Logs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.530887Z [info     ] Added Permission can read on XComs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.532075Z [info     ] Added Permission can read on HITL Detail to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.533315Z [info     ] Added Permission can read on Website to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.534514Z [info     ] Added Permission menu access on Browse to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.535623Z [info     ] Added Permission menu access on DAGs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.536804Z [info     ] Added Permission menu access on DAG Dependencies to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.537935Z [info     ] Added Permission menu access on DAG Runs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.539176Z [info     ] Added Permission menu access on Assets to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.540339Z [info     ] Added Permission menu access on Cluster Activity to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.541519Z [info     ] Added Permission menu access on Documentation to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.542725Z [info     ] Added Permission menu access on Docs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.543904Z [info     ] Added Permission menu access on Jobs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.545067Z [info     ] Added Permission menu access on SLA Misses to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.546182Z [info     ] Added Permission menu access on Task Instances to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.546767Z [info     ] Added Permission can edit on DAGs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.547347Z [info     ] Added Permission can delete on DAGs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.548653Z [info     ] Created Permission View: can create on Task Instances [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.549276Z [info     ] Added Permission can create on Task Instances to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.550521Z [info     ] Created Permission View: can edit on Task Instances [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.551110Z [info     ] Added Permission can edit on Task Instances to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.552325Z [info     ] Created Permission View: can delete on Task Instances [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.552894Z [info     ] Added Permission can delete on Task Instances to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.554054Z [info     ] Created Permission View: can create on DAG Runs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.554636Z [info     ] Added Permission can create on DAG Runs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.555784Z [info     ] Created Permission View: can edit on DAG Runs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.556339Z [info     ] Added Permission can edit on DAG Runs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.557537Z [info     ] Created Permission View: can delete on DAG Runs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.558131Z [info     ] Added Permission can delete on DAG Runs to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.559329Z [info     ] Created Permission View: can edit on HITL Detail [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.560070Z [info     ] Added Permission can edit on HITL Detail to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.561335Z [info     ] Created Permission View: can create on Assets [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.561929Z [info     ] Added Permission can create on Assets to role User [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.562701Z [info     ] Inserted Role: Op              [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1363
+airflow-init-1  | 2026-11-01T23:22:29.563667Z [info     ] Added Permission can read on DAGs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.564819Z [info     ] Added Permission can read on DAG Dependencies to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.566022Z [info     ] Added Permission can read on DAG Code to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.567168Z [info     ] Added Permission can read on DAG Runs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.568278Z [info     ] Added Permission can read on DAG Versions to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.569423Z [info     ] Added Permission can read on DAG Warnings to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.570556Z [info     ] Added Permission can read on Assets to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.571684Z [info     ] Added Permission can read on Asset Aliases to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.572821Z [info     ] Added Permission can read on Backfills to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.573937Z [info     ] Added Permission can read on Cluster Activity to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.575062Z [info     ] Added Permission can read on Pools to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.576228Z [info     ] Added Permission can read on ImportError to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.577548Z [info     ] Added Permission can read on Jobs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.578746Z [info     ] Added Permission can read on My Password to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.579871Z [info     ] Added Permission can edit on My Password to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.580999Z [info     ] Added Permission can read on My Profile to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.582100Z [info     ] Added Permission can edit on My Profile to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.583207Z [info     ] Added Permission can read on SLA Misses to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.584373Z [info     ] Added Permission can read on Task Instances to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.585476Z [info     ] Added Permission can read on Task Logs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.586585Z [info     ] Added Permission can read on XComs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.587677Z [info     ] Added Permission can read on HITL Detail to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.588780Z [info     ] Added Permission can read on Website to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.589850Z [info     ] Added Permission menu access on Browse to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.590923Z [info     ] Added Permission menu access on DAGs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.592078Z [info     ] Added Permission menu access on DAG Dependencies to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.593188Z [info     ] Added Permission menu access on DAG Runs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.594356Z [info     ] Added Permission menu access on Assets to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.595474Z [info     ] Added Permission menu access on Cluster Activity to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.596619Z [info     ] Added Permission menu access on Documentation to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.597902Z [info     ] Added Permission menu access on Docs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.599247Z [info     ] Added Permission menu access on Jobs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.600343Z [info     ] Added Permission menu access on SLA Misses to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.601447Z [info     ] Added Permission menu access on Task Instances to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.601981Z [info     ] Added Permission can edit on DAGs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.602523Z [info     ] Added Permission can delete on DAGs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.603677Z [info     ] Added Permission can create on Task Instances to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.604753Z [info     ] Added Permission can edit on Task Instances to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.605843Z [info     ] Added Permission can delete on Task Instances to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.606978Z [info     ] Added Permission can create on DAG Runs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.608145Z [info     ] Added Permission can edit on DAG Runs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.609234Z [info     ] Added Permission can delete on DAG Runs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.610390Z [info     ] Added Permission can edit on HITL Detail to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.611598Z [info     ] Added Permission can create on Assets to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.613015Z [info     ] Created Permission View: menu access on Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.613647Z [info     ] Added Permission menu access on Admin to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.614950Z [info     ] Created Permission View: menu access on Configurations [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.615545Z [info     ] Added Permission menu access on Configurations to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.616831Z [info     ] Created Permission View: menu access on Connections [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.617422Z [info     ] Added Permission menu access on Connections to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.618736Z [info     ] Created Permission View: menu access on Pools [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.619373Z [info     ] Added Permission menu access on Pools to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.620637Z [info     ] Created Permission View: menu access on Plugins [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.621201Z [info     ] Added Permission menu access on Plugins to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.622520Z [info     ] Created Permission View: menu access on Variables [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.623073Z [info     ] Added Permission menu access on Variables to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.624341Z [info     ] Created Permission View: menu access on Providers [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.624907Z [info     ] Added Permission menu access on Providers to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.626084Z [info     ] Created Permission View: menu access on XComs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.626644Z [info     ] Added Permission menu access on XComs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.627918Z [info     ] Created Permission View: menu access on HITL Detail [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.628547Z [info     ] Added Permission menu access on HITL Detail to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.629846Z [info     ] Created Permission View: can read on Configurations [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.630436Z [info     ] Added Permission can read on Configurations to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.631670Z [info     ] Created Permission View: can create on Connections [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.632569Z [info     ] Added Permission can create on Connections to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.633779Z [info     ] Created Permission View: can read on Connections [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.634333Z [info     ] Added Permission can read on Connections to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.635554Z [info     ] Created Permission View: can edit on Connections [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.636122Z [info     ] Added Permission can edit on Connections to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.637279Z [info     ] Created Permission View: can delete on Connections [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.637834Z [info     ] Added Permission can delete on Connections to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.638954Z [info     ] Created Permission View: can create on Pools [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.639563Z [info     ] Added Permission can create on Pools to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.640771Z [info     ] Created Permission View: can edit on Pools [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.641352Z [info     ] Added Permission can edit on Pools to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.642532Z [info     ] Created Permission View: can delete on Pools [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.643164Z [info     ] Added Permission can delete on Pools to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.644349Z [info     ] Created Permission View: can read on Plugins [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.644928Z [info     ] Added Permission can read on Plugins to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.646219Z [info     ] Created Permission View: can read on Providers [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.646797Z [info     ] Added Permission can read on Providers to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.648005Z [info     ] Created Permission View: can create on Variables [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.648615Z [info     ] Added Permission can create on Variables to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.649857Z [info     ] Created Permission View: can read on Variables [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.650448Z [info     ] Added Permission can read on Variables to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.651641Z [info     ] Created Permission View: can edit on Variables [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.652248Z [info     ] Added Permission can edit on Variables to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.653506Z [info     ] Created Permission View: can delete on Variables [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.654128Z [info     ] Added Permission can delete on Variables to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.655373Z [info     ] Created Permission View: can create on XComs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.655988Z [info     ] Added Permission can create on XComs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.657212Z [info     ] Created Permission View: can edit on XComs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.657824Z [info     ] Added Permission can edit on XComs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.659019Z [info     ] Created Permission View: can delete on XComs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.659596Z [info     ] Added Permission can delete on XComs to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.661366Z [info     ] Created Permission View: can edit on Assets [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.661966Z [info     ] Added Permission can edit on Assets to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.663207Z [info     ] Created Permission View: can delete on Assets [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.663848Z [info     ] Added Permission can delete on Assets to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.665238Z [info     ] Created Permission View: can create on Backfills [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.665896Z [info     ] Added Permission can create on Backfills to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.667202Z [info     ] Created Permission View: can edit on Backfills [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.668040Z [info     ] Added Permission can edit on Backfills to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.669247Z [info     ] Created Permission View: can delete on Backfills [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.669838Z [info     ] Added Permission can delete on Backfills to role Op [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.670479Z [info     ] Added Permission can read on DAGs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.671686Z [info     ] Added Permission can read on DAG Dependencies to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.672845Z [info     ] Added Permission can read on DAG Code to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.674017Z [info     ] Added Permission can read on DAG Runs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.675206Z [info     ] Added Permission can read on DAG Versions to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.676372Z [info     ] Added Permission can read on DAG Warnings to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.677494Z [info     ] Added Permission can read on Assets to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.678626Z [info     ] Added Permission can read on Asset Aliases to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.679799Z [info     ] Added Permission can read on Backfills to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.680990Z [info     ] Added Permission can read on Cluster Activity to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.682174Z [info     ] Added Permission can read on Pools to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.683338Z [info     ] Added Permission can read on ImportError to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.684454Z [info     ] Added Permission can read on Jobs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.685601Z [info     ] Added Permission can read on My Password to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.686829Z [info     ] Added Permission can edit on My Password to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.687966Z [info     ] Added Permission can read on My Profile to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.689096Z [info     ] Added Permission can edit on My Profile to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.690198Z [info     ] Added Permission can read on SLA Misses to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.691375Z [info     ] Added Permission can read on Task Instances to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.692537Z [info     ] Added Permission can read on Task Logs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.693729Z [info     ] Added Permission can read on XComs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.697190Z [info     ] Added Permission can read on HITL Detail to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.698410Z [info     ] Added Permission can read on Website to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.699573Z [info     ] Added Permission menu access on Browse to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.700771Z [info     ] Added Permission menu access on DAGs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.701952Z [info     ] Added Permission menu access on DAG Dependencies to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.703028Z [info     ] Added Permission menu access on DAG Runs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.704165Z [info     ] Added Permission menu access on Assets to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.705269Z [info     ] Added Permission menu access on Cluster Activity to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.706391Z [info     ] Added Permission menu access on Documentation to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.707541Z [info     ] Added Permission menu access on Docs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.708834Z [info     ] Added Permission menu access on Jobs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.710064Z [info     ] Added Permission menu access on SLA Misses to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.711170Z [info     ] Added Permission menu access on Task Instances to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.711734Z [info     ] Added Permission can edit on DAGs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.712304Z [info     ] Added Permission can delete on DAGs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.713379Z [info     ] Added Permission can create on Task Instances to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.714781Z [info     ] Added Permission can edit on Task Instances to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.716220Z [info     ] Added Permission can delete on Task Instances to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.717461Z [info     ] Added Permission can create on DAG Runs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.718642Z [info     ] Added Permission can edit on DAG Runs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.719878Z [info     ] Added Permission can delete on DAG Runs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.721032Z [info     ] Added Permission can edit on HITL Detail to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.722169Z [info     ] Added Permission can create on Assets to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.723370Z [info     ] Added Permission menu access on Admin to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.724581Z [info     ] Added Permission menu access on Configurations to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.725791Z [info     ] Added Permission menu access on Connections to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.727000Z [info     ] Added Permission menu access on Pools to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.728143Z [info     ] Added Permission menu access on Plugins to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.729339Z [info     ] Added Permission menu access on Variables to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.730470Z [info     ] Added Permission menu access on Providers to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.731602Z [info     ] Added Permission menu access on XComs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.732821Z [info     ] Added Permission menu access on HITL Detail to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.734008Z [info     ] Added Permission can read on Configurations to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.735212Z [info     ] Added Permission can create on Connections to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.736400Z [info     ] Added Permission can read on Connections to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.737587Z [info     ] Added Permission can edit on Connections to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.738776Z [info     ] Added Permission can delete on Connections to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.739988Z [info     ] Added Permission can create on Pools to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.741178Z [info     ] Added Permission can edit on Pools to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.742329Z [info     ] Added Permission can delete on Pools to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.743485Z [info     ] Added Permission can read on Plugins to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.744699Z [info     ] Added Permission can read on Providers to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.745880Z [info     ] Added Permission can create on Variables to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.747083Z [info     ] Added Permission can read on Variables to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.748410Z [info     ] Added Permission can edit on Variables to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.749652Z [info     ] Added Permission can delete on Variables to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.750810Z [info     ] Added Permission can create on XComs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.751947Z [info     ] Added Permission can edit on XComs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.753392Z [info     ] Added Permission can delete on XComs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.755095Z [info     ] Added Permission can edit on Assets to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.756264Z [info     ] Added Permission can delete on Assets to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.757415Z [info     ] Added Permission can create on Backfills to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.758581Z [info     ] Added Permission can edit on Backfills to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.759703Z [info     ] Added Permission can delete on Backfills to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.761014Z [info     ] Created Permission View: can read on Audit Logs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.761620Z [info     ] Added Permission can read on Audit Logs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.762789Z [info     ] Created Permission View: menu access on Audit Logs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.763384Z [info     ] Added Permission menu access on Audit Logs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.764607Z [info     ] Created Permission View: can read on All Audit Logs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.765164Z [info     ] Added Permission can read on All Audit Logs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.766546Z [info     ] Created Permission View: can read on All Import Errors [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.767205Z [info     ] Added Permission can read on All Import Errors to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.768693Z [info     ] Created Permission View: can read on Task Reschedules [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.769408Z [info     ] Added Permission can read on Task Reschedules to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.770785Z [info     ] Created Permission View: menu access on Task Reschedules [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.771403Z [info     ] Added Permission menu access on Task Reschedules to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.772675Z [info     ] Created Permission View: can read on Triggers [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.773336Z [info     ] Added Permission can read on Triggers to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.774573Z [info     ] Created Permission View: menu access on Triggers [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.775196Z [info     ] Added Permission menu access on Triggers to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.776548Z [info     ] Created Permission View: can read on Passwords [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.777202Z [info     ] Added Permission can read on Passwords to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.778468Z [info     ] Created Permission View: can edit on Passwords [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.779075Z [info     ] Added Permission can edit on Passwords to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.780278Z [info     ] Created Permission View: can read on Roles [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.780872Z [info     ] Added Permission can read on Roles to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.782053Z [info     ] Created Permission View: can edit on Roles [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.782789Z [info     ] Added Permission can edit on Roles to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.807855Z [info     ] Created Permission View: can create on Users [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.809540Z [info     ] Added Permission can create on Users to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.810856Z [info     ] Created Permission View: can read on Users [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.812302Z [info     ] Added Permission can read on Users to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.813507Z [info     ] Created Permission View: can edit on Users [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.814900Z [info     ] Added Permission can edit on Users to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.816207Z [info     ] Created Permission View: can delete on Users [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.817726Z [info     ] Added Permission can delete on Users to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.820467Z [info     ] Created Permission View: menu access on List Users [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.822077Z [info     ] Added Permission menu access on List Users to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.824588Z [info     ] Created Permission View: menu access on Security [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.826198Z [info     ] Added Permission menu access on Security to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.831235Z [info     ] Created Permission View: can create on Roles [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.831877Z [info     ] Added Permission can create on Roles to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.833144Z [info     ] Created Permission View: can delete on Roles [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.833763Z [info     ] Added Permission can delete on Roles to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.835952Z [info     ] Created Permission View: menu access on List Roles [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.837462Z [info     ] Added Permission menu access on List Roles to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.842151Z [info     ] Created Permission View: can read on User Stats Chart [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.843858Z [info     ] Added Permission can read on User Stats Chart to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.846249Z [info     ] Created Permission View: menu access on User's Statistics [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.847797Z [info     ] Added Permission menu access on User's Statistics to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.853175Z [info     ] Created Permission View: can read on Permissions [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.854906Z [info     ] Added Permission can read on Permissions to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.857244Z [info     ] Created Permission View: menu access on Actions [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.858886Z [info     ] Added Permission menu access on Actions to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.864899Z [info     ] Created Permission View: can read on View Menus [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.866724Z [info     ] Added Permission can read on View Menus to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.869048Z [info     ] Created Permission View: menu access on Resources [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.870728Z [info     ] Added Permission menu access on Resources to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.877869Z [info     ] Created Permission View: can read on Permission Views [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.881269Z [info     ] Added Permission can read on Permission Views to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.885307Z [info     ] Created Permission View: menu access on Permission Pairs [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1835
+airflow-init-1  | 2026-11-01T23:22:29.887759Z [info     ] Added Permission menu access on Permission Pairs to role Admin [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1897
+airflow-init-1  | 2026-11-01T23:22:29.966748Z [info     ] Added user airflow             [airflow.providers.fab.auth_manager.security_manager.override] loc=override.py:1481
+airflow-init-1  | User "airflow" created with role "Admin"
+airflow-init-1  | 3.3.2
+airflow-init-1  | 
+airflow-init-1  | Files in shared volumes:
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/config:
+airflow-init-1  | total 180
+airflow-init-1  | drwxr-xr-x 3 root    root     96 Nov  1 23:22 .
+airflow-init-1  | drwxrwxr-x 1 airflow root   4096 Nov  1 23:22 ..
+airflow-init-1  | -rw------- 1 root    root 176300 Nov  1 23:22 airflow.cfg
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/dags:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/logs:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/plugins:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | Running airflow config list to create default config file if missing.
+airflow-init-1  | 
+airflow-init-1  | The container is run as root user. For security, consider using a regular user account.
+airflow-init-1  | Values are hidden by default. Use `--show-values` to display them (may include sensitive data).
+airflow-init-1  | 
+airflow-init-1  | Files in shared volumes:
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/config:
+airflow-init-1  | total 180
+airflow-init-1  | drwxr-xr-x 3 root    root     96 Nov  1 23:22 .
+airflow-init-1  | drwxrwxr-x 1 airflow root   4096 Nov  1 23:22 ..
+airflow-init-1  | -rw------- 1 root    root 176300 Nov  1 23:22 airflow.cfg
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/dags:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/logs:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/plugins:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root    root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1 airflow root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | Change ownership of files in /opt/airflow to 502:0
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | Change ownership of files in shared volumes to 502:0
+airflow-init-1  | 
+airflow-init-1  | changed ownership of '/opt/airflow/logs' from root:root to 502:0
+airflow-init-1  | changed ownership of '/opt/airflow/dags' from root:root to 502:0
+airflow-init-1  | changed ownership of '/opt/airflow/plugins' from root:root to 502:0
+airflow-init-1  | changed ownership of '/opt/airflow/config/airflow.cfg' from root:root to 502:0
+airflow-init-1  | changed ownership of '/opt/airflow/config' from root:root to 502:0
+airflow-init-1  | 
+airflow-init-1  | Files in shared volumes:
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/config:
+airflow-init-1  | total 180
+airflow-init-1  | drwxr-xr-x 3 root root     96 Nov  1 23:22 .
+airflow-init-1  | drwxrwxr-x 1  502 root   4096 Nov  1 23:22 ..
+airflow-init-1  | -rw------- 1 root root 176300 Nov  1 23:22 airflow.cfg
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/dags:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1  502 root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/logs:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1  502 root 4096 Nov  1 23:22 ..
+airflow-init-1  | 
+airflow-init-1  | /opt/airflow/plugins:
+airflow-init-1  | total 4
+airflow-init-1  | drwxr-xr-x 2 root root   64 Nov  1 23:21 .
+airflow-init-1  | drwxrwxr-x 1  502 root 4096 Nov  1 23:22 ..
+[Kairflow-init-1 exited with code 0
+[exit 0]
+
+### 2026-11-02 01:22 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose up -d
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:22:40+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+ Container airflow-postgres-1 Running 
+ Container airflow-redis-1 Running 
+ Container airflow-airflow-scheduler-1 Creating 
+ Container airflow-airflow-triggerer-1 Creating 
+ Container airflow-airflow-apiserver-1 Creating 
+ Container airflow-airflow-dag-processor-1 Creating 
+ Container airflow-airflow-scheduler-1 Created 
+ Container airflow-airflow-apiserver-1 Created 
+ Container airflow-airflow-worker-1 Creating 
+ Container airflow-airflow-dag-processor-1 Created 
+ Container airflow-airflow-triggerer-1 Created 
+ Container airflow-airflow-worker-1 Created 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-redis-1 Healthy 
+ Container airflow-airflow-init-1 Starting 
+ Container airflow-airflow-init-1 Started 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-airflow-init-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-airflow-init-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-airflow-init-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-airflow-init-1 Waiting 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-redis-1 Healthy 
+ Container airflow-redis-1 Healthy 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-redis-1 Healthy 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-redis-1 Healthy 
+ Container airflow-airflow-init-1 Exited 
+ Container airflow-airflow-apiserver-1 Starting 
+ Container airflow-airflow-init-1 Exited 
+ Container airflow-airflow-triggerer-1 Starting 
+ Container airflow-airflow-init-1 Exited 
+ Container airflow-airflow-dag-processor-1 Starting 
+ Container airflow-airflow-init-1 Exited 
+ Container airflow-airflow-scheduler-1 Starting 
+ Container airflow-airflow-apiserver-1 Started 
+ Container airflow-airflow-apiserver-1 Waiting 
+ Container airflow-airflow-init-1 Waiting 
+ Container airflow-redis-1 Waiting 
+ Container airflow-postgres-1 Waiting 
+ Container airflow-airflow-triggerer-1 Started 
+ Container airflow-airflow-dag-processor-1 Started 
+ Container airflow-airflow-scheduler-1 Started 
+ Container airflow-airflow-init-1 Exited 
+ Container airflow-redis-1 Healthy 
+ Container airflow-postgres-1 Healthy 
+ Container airflow-airflow-apiserver-1 Healthy 
+ Container airflow-airflow-worker-1 Starting 
+ Container airflow-airflow-worker-1 Started 
+[exit 0]
+
+### 2026-11-02 01:24 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose ps --format "table {{.Name}}\t{{.Status}}"
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:38+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+NAME                              STATUS
+airflow-airflow-apiserver-1       Up About a minute (healthy)
+airflow-airflow-dag-processor-1   Up About a minute (healthy)
+airflow-airflow-scheduler-1       Up About a minute (healthy)
+airflow-airflow-triggerer-1       Up About a minute (healthy)
+airflow-airflow-worker-1          Up About a minute (healthy)
+airflow-postgres-1                Up 2 minutes (healthy)
+airflow-redis-1                   Up 2 minutes (healthy)
+[exit 0]
+
+### 2026-11-02 01:24 | arm64 | docker 29.5.2 | in ch08/airflow
+$ curl -s http://localhost:8080/api/v2/monitor/health
+{"metadatabase":{"status":"healthy"},"scheduler":{"status":"healthy","latest_scheduler_heartbeat":"2026-11-01T23:24:31.161605+00:00"},"triggerer":{"status":"healthy","latest_triggerer_heartbeat":"2026-11-01T23:24:31.866247+00:00"},"dag_processor":{"status":"healthy","latest_dag_processor_heartbeat":"2026-11-01T23:24:31.255257+00:00"}}
+[exit 0]
+
+### 2026-11-02 01:24 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker stats --no-stream --format "table {{.Name}}\t{{.MemUsage}}"
+NAME                              MEM USAGE / LIMIT
+airflow-airflow-worker-1          670.6MiB / 5.772GiB
+airflow-airflow-apiserver-1       269.3MiB / 5.772GiB
+airflow-airflow-dag-processor-1   324.3MiB / 5.772GiB
+airflow-airflow-triggerer-1       224.9MiB / 5.772GiB
+airflow-airflow-scheduler-1       260.5MiB / 5.772GiB
+airflow-postgres-1                56.48MiB / 5.772GiB
+airflow-redis-1                   15.22MiB / 5.772GiB
+[exit 0]
+
+### 2026-11-02 01:24 | arm64 | docker 29.5.2 | in ch08/airflow
+$ docker compose down -v
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+time="2026-11-02T01:24:55+02:00" level=warning msg="The \"FERNET_KEY\" variable is not set. Defaulting to a blank string."
+ Container airflow-airflow-triggerer-1 Stopping 
+ Container airflow-airflow-dag-processor-1 Stopping 
+ Container airflow-airflow-scheduler-1 Stopping 
+ Container airflow-airflow-worker-1 Stopping 
+ Container airflow-airflow-scheduler-1 Stopped 
+ Container airflow-airflow-scheduler-1 Removing 
+ Container airflow-airflow-scheduler-1 Removed 
+ Container airflow-airflow-dag-processor-1 Stopped 
+ Container airflow-airflow-dag-processor-1 Removing 
+ Container airflow-airflow-triggerer-1 Stopped 
+ Container airflow-airflow-triggerer-1 Removing 
+ Container airflow-airflow-dag-processor-1 Removed 
+ Container airflow-airflow-triggerer-1 Removed 
+ Container airflow-airflow-worker-1 Stopped 
+ Container airflow-airflow-worker-1 Removing 
+ Container airflow-airflow-worker-1 Removed 
+ Container airflow-airflow-apiserver-1 Stopping 
+ Container airflow-airflow-apiserver-1 Stopped 
+ Container airflow-airflow-apiserver-1 Removing 
+ Container airflow-airflow-apiserver-1 Removed 
+ Container airflow-airflow-init-1 Stopping 
+ Container airflow-airflow-init-1 Stopped 
+ Container airflow-airflow-init-1 Removing 
+ Container airflow-airflow-init-1 Removed 
+ Container airflow-postgres-1 Stopping 
+ Container airflow-redis-1 Stopping 
+ Container airflow-postgres-1 Stopped 
+ Container airflow-postgres-1 Removing 
+ Container airflow-postgres-1 Removed 
+ Container airflow-redis-1 Stopped 
+ Container airflow-redis-1 Removing 
+ Container airflow-redis-1 Removed 
+ Volume airflow_postgres-db-volume Removing 
+ Network airflow_default Removing 
+ Volume airflow_postgres-db-volume Removed 
+ Network airflow_default Removed 
+[exit 0]
+

@@ -1,0 +1,616 @@
+### 2026-11-05 03:25 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose up -d --wait 2>&1 | grep -v -E "Pull|Pulling|Download|Extract|Waiting|Layer|Digest|Status" | tail -8
+ Container vm-caddy-1 Created 
+ Container vm-api-1 Starting 
+ Container vm-api-1 Started 
+ Container vm-api-1 Healthy 
+ Container vm-caddy-1 Starting 
+ Container vm-caddy-1 Started 
+ Container vm-api-1 Healthy 
+ Container vm-caddy-1 Healthy 
+[exit 0]
+
+### 2026-11-05 03:25 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.0.0   Up 6 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up Less than a second
+[exit 0]
+
+### 2026-11-05 03:25 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ curl -sk https://localhost/health; curl -s -o /dev/null -w "http %{http_code} -> %{redirect_url}\n" http://localhost/health; curl -s -m 2 http://localhost:8000/health || echo "port 8000: connection refused"
+{"status":"ok"}http 308 -> https://localhost/health
+port 8000: connection refused
+[exit 0]
+
+### 2026-11-05 03:25 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ curl -skv https://localhost/health 2>&1 | grep -E "subject:|issuer:"
+*  subject: [NONE]
+*  issuer: CN=Caddy Local Authority - ECC Intermediate
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ curl -sk https://localhost/health
+{"status":"ok"}
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" http://localhost/health
+308 https://localhost/health
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ curl -s -m 2 http://localhost:8000/health; echo "curl exit code: $?"
+curl exit code: 7
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose exec api python -c "import os; os.kill(1, 15)"; sleep 8; docker inspect vm-api-1 --format "restarts: {{.RestartCount}}"; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+restarts: 1
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.0.0   Up 7 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 23 seconds
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ sudo systemctl restart docker; sleep 12; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.0.0   Up 12 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 12 seconds
+[exit 0]
+
+### 2026-11-05 03:26 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ ./watch.sh > codes.txt & W=$!; sleep 3; docker compose pull -q api; docker compose up -d api 2>&1 | tail -3; sleep 12; kill $W; sort codes.txt | uniq -c; rm codes.txt; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+ Image localhost:5001/ml-api:1.1.0 Pulling 
+ Image localhost:5001/ml-api:1.1.0 Pulled 
+ Container vm-api-1 Recreated 
+ Container vm-api-1 Starting 
+ Container vm-api-1 Started 
+     66 200
+      4 502
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.1.0   Up 12 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 28 seconds
+[exit 0]
+
+### 2026-11-05 03:31 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose up -d --wait api 2>&1 | tail -1; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+ Container vm-api-1 Healthy 
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.0.0   Up 5 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 5 minutes
+[exit 0]
+
+### 2026-11-05 03:31 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose logs api --tail 2
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+api-1  | INFO:     127.0.0.1:54214 - "GET /health HTTP/1.1" 200 OK
+[exit 0]
+
+### 2026-11-05 03:31 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker image ls --format "{{.Repository}}:{{.Tag}}" | grep ml-api; docker system df --format "{{.Type}} {{.Size}}" | head -1
+localhost:5001/ml-api:1.1.0
+ml-api:1.0.0
+localhost:5001/ml-api:1.0.0
+Images 4.236GB
+[exit 0]
+
+### 2026-11-05 03:31 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ true; ./watch.sh > codes.txt & P=$!; sleep 3; docker compose pull -q api; docker compose up -d api 2>&1 | tail -2; sleep 12; kill $P; wait $P 2>/dev/null; sort codes.txt | uniq -c; rm codes.txt; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+ Image localhost:5001/ml-api:1.1.0 Pulling 
+ Image localhost:5001/ml-api:1.1.0 Pulled 
+ Container vm-api-1 Starting 
+ Container vm-api-1 Started 
+     65 200
+      4 502
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.1.0   Up 12 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 5 minutes
+[exit 0]
+
+### 2026-11-05 03:32 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose up -d --wait api 2>&1 | tail -1; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+couldn't read env file: /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm/.env
+couldn't read env file: /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm/.env
+time="2026-11-05T03:32:06+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-05 03:32 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose down 2>&1 | tail -4
+couldn't read env file: /Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm/.env
+[exit 0]
+
+### 2026-11-05 03:32 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose up -d --wait api 2>&1 | tail -1; docker compose ps --format "table {{.Service}}\t{{.Image}}\t{{.Status}}"
+ Container vm-api-1 Healthy 
+SERVICE   IMAGE                         STATUS
+api       localhost:5001/ml-api:1.0.0   Up 5 seconds (healthy)
+caddy     caddy:2.11.8-alpine           Up 6 minutes
+[exit 0]
+
+### 2026-11-05 03:32 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch15/vm'
+$ docker compose down -v 2>&1 | tail -4
+ Volume vm_caddy-data Removing 
+ Network vm_default Removing 
+ Volume vm_caddy-data Removed 
+ Network vm_default Removed 
+[exit 0]
+
+### 2026-11-05 03:32 | arm64 | docker 29.5.2 | in ch15/app
+$ docker buildx build --platform linux/amd64 --load -t ml-api:amd64 . 2>&1 | tail -2
+#12 naming to docker.io/library/ml-api:amd64 done
+#12 DONE 5.0s
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ docker image inspect ml-api:amd64 --format "{{.Os}}/{{.Architecture}}"
+linux/amd64
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ docker run -d --name run-test -e PORT=8080 -p 127.0.0.1:8080:8080 --memory 512m --cpus 1 --read-only ml-api:amd64
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+e48dab8e67154577df710fa8ddee8537fa26bd9380eab4c9fdf4c2504d0e1f2c
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ until curl -sf localhost:8080/health; do sleep 1; done; echo
+{"status":"ok"}
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ curl -s -X POST localhost:8080/predict -H "Content-Type: application/json" -d "{\"input\": [6]}"
+{"prediction":[12.0]}
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ docker stats --no-stream --format "{{.Name}} {{.MemUsage}}" run-test
+run-test 218.6MiB / 512MiB
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ docker stop run-test; docker inspect run-test --format "exit code {{.State.ExitCode}}"; docker logs run-test 2>&1 | tail -4; docker rm run-test
+run-test
+exit code 143
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1]
+run-test
+[exit 0]
+
+### 2026-11-05 03:33 | arm64 | docker 29.5.2 | in ch15/app
+$ s=$(python3 -c "import time;print(time.time())"); docker run -d --name cold -p 127.0.0.1:8000:8000 ml-api:1.0.0 >/dev/null; until curl -sf localhost:8000/health >/dev/null; do sleep 0.1; done; python3 -c "import time;print(round(time.time()-$s,1),\"seconds until the first answer\")"; docker rm -f cold >/dev/null
+0.6 seconds until the first answer
+[exit 0]
+
+### 2026-11-05 03:34 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kind create cluster --name ml 2>&1
+Creating cluster "ml" ...
+ • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
+ ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
+ • Preparing nodes 📦   ...
+ ✓ Preparing nodes 📦 
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-ml"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-ml
+
+Thanks for using kind! 😊
+[exit 0]
+
+### 2026-11-05 03:34 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get nodes
+NAME               STATUS     ROLES           AGE   VERSION
+ml-control-plane   NotReady   control-plane   4s    v1.37.0
+[exit 0]
+
+### 2026-11-05 03:34 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl apply -f deployment.yaml -f service.yaml
+deployment.apps/ml-api created
+service/ml-api created
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-22qpv   0/1     Pending   0          11s
+ml-api-65649f796-jmrd4   0/1     Pending   0          11s
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl describe pod -l app=ml-api | grep -m1 -E "Failed.*pull|pull access|Failed to pull"
+[exit 1]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kind load docker-image ml-api:1.0.0 --name ml 2>&1
+Image: "ml-api:1.0.0" with ID "sha256:5998e68e727af8dfa7aa317d2a4d174ade1a6fdd0057beeef5955dc31e1f3867" not yet present on node "ml-control-plane", loading...
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout restart deployment/ml-api; kubectl rollout status deployment/ml-api --timeout=120s
+deployment.apps/ml-api restarted
+Waiting for deployment "ml-api" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "ml-api" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "ml-api" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "ml-api" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "ml-api" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "ml-api" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "ml-api" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "ml-api" rollout to finish: 1 old replicas are pending termination...
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                     READY   STATUS        RESTARTS   AGE
+ml-api-65649f796-22qpv   0/1     Terminating   0          24s
+ml-api-87c78c7d8-77jhg   1/1     Running       0          1s
+ml-api-87c78c7d8-grcnq   1/1     Running       0          6s
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl port-forward service/ml-api 8080:80 >/dev/null & P=$!; sleep 2; curl -s -X POST localhost:8080/predict -H "Content-Type: application/json" -d "{\"input\": [6]}"; kill $P
+{"prediction":[12.000000000000002]}
+[exit 0]
+
+### 2026-11-05 03:35 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kind create cluster --name ml --wait 60s 2>&1 | tail -6
+Set kubectl context to "kind-ml"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-ml
+
+Thanks for using kind! 😊
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get nodes
+NAME               STATUS   ROLES           AGE   VERSION
+ml-control-plane   Ready    control-plane   20s   v1.37.0
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl apply -f deployment.yaml -f service.yaml
+deployment.apps/ml-api created
+service/ml-api created
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                     READY   STATUS             RESTARTS   AGE
+ml-api-65649f796-8fgzp   0/1     ImagePullBackOff   0          26s
+ml-api-65649f796-xllzr   0/1     ImagePullBackOff   0          26s
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl describe pod -l app=ml-api | grep -m1 "Failed to pull"
+[exit 1]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kind load docker-image ml-api:1.0.0 --name ml 2>&1
+Image: "ml-api:1.0.0" with ID "sha256:5998e68e727af8dfa7aa317d2a4d174ade1a6fdd0057beeef5955dc31e1f3867" not yet present on node "ml-control-plane", loading...
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout status deployment/ml-api --timeout=180s | tail -1
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-8fgzp   1/1     Running   0          46s
+ml-api-65649f796-xllzr   1/1     Running   0          46s
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl port-forward service/ml-api 8080:80 >/dev/null & P=$!; sleep 2; curl -s -X POST localhost:8080/predict -H "Content-Type: application/json" -d "{\"input\": [6]}"; kill $P
+{"prediction":[12.000000000000002]}
+[exit 0]
+
+### 2026-11-05 03:36 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl delete pod $(kubectl get pods -o name | head -1 | cut -d/ -f2); kubectl get pods
+pod "ml-api-65649f796-8fgzp" deleted from default namespace
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-kg5l6   0/1     Running   0          0s
+ml-api-65649f796-xllzr   1/1     Running   0          49s
+[exit 0]
+
+### 2026-11-05 03:37 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-kg5l6   1/1     Running   0          8s
+ml-api-65649f796-xllzr   1/1     Running   0          57s
+[exit 0]
+
+### 2026-11-05 03:37 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl scale deployment/ml-api --replicas=4; kubectl rollout status deployment/ml-api --timeout=60s | tail -1; kubectl get pods
+deployment.apps/ml-api scaled
+deployment "ml-api" successfully rolled out
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-74fn2   1/1     Running   0          5s
+ml-api-65649f796-9xx9f   1/1     Running   0          5s
+ml-api-65649f796-kg5l6   1/1     Running   0          14s
+ml-api-65649f796-xllzr   1/1     Running   0          63s
+[exit 0]
+
+### 2026-11-05 03:37 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl scale deployment/ml-api --replicas=2
+deployment.apps/ml-api scaled
+[exit 0]
+
+### 2026-11-05 03:37 | arm64 | docker 29.5.2 | in ch15/app
+$ docker build -q -f Dockerfile.broken -t ml-api:1.1.0 . && kind load docker-image ml-api:1.1.0 --name ml 2>&1 | tail -1
+sha256:333b3c25e39d09288573dbb09bafaf7b78ec5b7af0e41abdf96a11b3dc9737c5
+Image: "ml-api:1.1.0" with ID "sha256:333b3c25e39d09288573dbb09bafaf7b78ec5b7af0e41abdf96a11b3dc9737c5" not yet present on node "ml-control-plane", loading...
+[exit 0]
+
+### 2026-11-05 03:37 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl set image deployment/ml-api api=ml-api:1.1.0; kubectl rollout status deployment/ml-api --timeout=45s | tail -2
+deployment.apps/ml-api image updated
+error: timed out waiting for the condition
+Waiting for deployment "ml-api" rollout to finish: 1 out of 2 new replicas have been updated...
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods
+NAME                      READY   STATUS    RESTARTS      AGE
+ml-api-65649f796-kg5l6    1/1     Running   0             66s
+ml-api-65649f796-xllzr    1/1     Running   0             115s
+ml-api-6c75b78cdf-9t8k9   0/1     Running   1 (15s ago)   45s
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl run client --rm -i --restart=Never --image=curlimages/curl:8.17.0 -- sh -c "for i in 1 2 3 4 5 6; do curl -s -o /dev/null -w \"%{http_code} \" http://ml-api/health; done; echo" 2>&1 | head -2
+All commands and output from this session will be recorded in container logs, including credentials and sensitive information passed through the command prompt.
+If you don't see a command prompt, try pressing enter.
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout undo deployment/ml-api; kubectl rollout status deployment/ml-api --timeout=60s | tail -1; sleep 3; kubectl get pods
+Warning: resource deployments/ml-api was previously managed with 'kubectl apply'. Rolling back will not update the kubectl.kubernetes.io/last-applied-configuration annotation, which may cause unexpected behavior on future 'kubectl apply' operations. Consider using 'kubectl apply' with your previous configuration file instead.
+deployment.apps/ml-api rolled back
+deployment "ml-api" successfully rolled out
+NAME                     READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-kg5l6   1/1     Running   0          75s
+ml-api-65649f796-xllzr   1/1     Running   0          2m4s
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout history deployment/ml-api
+deployment.apps/ml-api 
+REVISION  CHANGE-CAUSE
+2         <none>
+3         <none>
+
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl set resources deployment/ml-api -c api --requests=memory=32Mi --limits=memory=64Mi; sleep 25; kubectl get pods
+deployment.apps/ml-api resource requirements updated
+NAME                      READY   STATUS             RESTARTS      AGE
+ml-api-65649f796-kg5l6    1/1     Running            0             100s
+ml-api-65649f796-xllzr    1/1     Running            0             2m29s
+ml-api-869dfcf8f5-hf8gv   0/1     CrashLoopBackOff   2 (12s ago)   25s
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pods -o jsonpath="{range .items[*]}{.metadata.name}{\" \"}{.status.containerStatuses[0].lastState.terminated.reason}{\"\n\"}{end}"
+ml-api-65649f796-kg5l6 
+ml-api-65649f796-xllzr 
+ml-api-869dfcf8f5-hf8gv OOMKilled
+[exit 0]
+
+### 2026-11-05 03:38 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout undo deployment/ml-api; kubectl rollout status deployment/ml-api --timeout=60s | tail -1
+Warning: resource deployments/ml-api was previously managed with 'kubectl apply'. Rolling back will not update the kubectl.kubernetes.io/last-applied-configuration annotation, which may cause unexpected behavior on future 'kubectl apply' operations. Consider using 'kubectl apply' with your previous configuration file instead.
+deployment.apps/ml-api rolled back
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl run nope --image=ml-api:9.9.9; sleep 15; kubectl describe pod nope | grep -m1 "Failed to pull"; kubectl delete pod nope
+pod/nope created
+  Warning  Failed     14s   kubelet            spec.containers{nope}: Failed to pull image "ml-api:9.9.9": failed to pull and unpack image "docker.io/library/ml-api:9.9.9": failed to resolve reference "docker.io/library/ml-api:9.9.9": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+pod "nope" deleted from default namespace
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl set image deployment/ml-api api=ml-api:1.1.0; kubectl rollout status deployment/ml-api --timeout=30s 2>&1 | tail -1; kubectl get pods
+deployment.apps/ml-api image updated
+error: timed out waiting for the condition
+NAME                      READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-kg5l6    1/1     Running   0          2m57s
+ml-api-65649f796-xllzr    1/1     Running   0          3m46s
+ml-api-6c75b78cdf-p845q   0/1     Running   0          30s
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl run client --rm -i --quiet --restart=Never --image=curlimages/curl:8.17.0 -- sh -c "for i in 1 2 3 4 5 6; do curl -s -o /dev/null -w \"%{http_code} \" http://ml-api/health; done; echo"
+[exit 0]
+
+### 2026-11-05 03:39 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout undo deployment/ml-api 2>/dev/null; kubectl rollout status deployment/ml-api --timeout=60s | tail -1
+deployment.apps/ml-api rolled back
+deployment "ml-api" successfully rolled out
+[exit 0]
+
+### 2026-11-05 03:40 | arm64 | docker 29.5.2 | in ch11/server
+$ docker build -q --target server -t sentiment:1.0.0 . && kind load docker-image sentiment:1.0.0 --name ml 2>&1 | tail -1
+sha256:31d7b60bd3ed57e3af32181359ff8754a5e5e4c39f1896d4a9c19bc677931a85
+Image: "sentiment:1.0.0" with ID "sha256:31d7b60bd3ed57e3af32181359ff8754a5e5e4c39f1896d4a9c19bc677931a85" not yet present on node "ml-control-plane", loading...
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl apply -f model-volume.yaml
+persistentvolumeclaim/models created
+deployment.apps/sentiment created
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl wait --for=condition=Available deployment/sentiment --timeout=240s; kubectl get pods,pvc --no-headers | cut -c1-70
+deployment.apps/sentiment condition met
+pod/sentiment-6c88d78f5b-qssg2   1/1   Running   0     19s
+persistentvolumeclaim/models   Bound   pvc-8f7cb32f-e631-41b4-9408-884
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl logs deployment/sentiment -c server | grep model_loaded
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 0.07}
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl exec deployment/sentiment -c server -- du -sh /models
+256M	/models
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl exec deployment/sentiment -c server -- python -c "import urllib.request,json; r=urllib.request.Request(\"http://localhost:8000/predict\", json.dumps({\"texts\":[\"Deploying this was painless\"]}).encode(), {\"Content-Type\":\"application/json\"}); print(urllib.request.urlopen(r).read().decode())"
+[{"label":"NEGATIVE","score":0.963}]
+[exit 0]
+
+### 2026-11-05 03:41 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl rollout restart deployment/sentiment; time_start=$(date +%s); kubectl rollout status deployment/sentiment --timeout=120s | tail -1; echo "$(( $(date +%s) - time_start )) seconds"; kubectl logs deployment/sentiment -c server | grep model_loaded
+deployment.apps/sentiment restarted
+deployment "sentiment" successfully rolled out
+5 seconds
+Found 2 pods, using pod/sentiment-6c88d78f5b-qssg2
+{"event": "model_loaded", "model": "distilbert/distilbert-base-uncased-finetuned-sst-2-english", "seconds": 0.07}
+[exit 0]
+
+### 2026-11-05 03:42 | arm64 | docker 29.5.2 | in ch15/k8s
+$ sed "/runAsUser/d" model-volume.yaml | kubectl apply -f -; sleep 8; kubectl get pods --no-headers | cut -c1-60; kubectl describe pod -l app=sentiment | grep -m1 -o "container has runAsNonRoot.*non-root"; sed "/runAsUser/d" model-volume.yaml | kubectl delete -f - | tail -1
+persistentvolumeclaim/models created
+deployment.apps/sentiment created
+sentiment-7d5d69969b-tntqq   0/1   Init:CreateContainerConfi
+container has runAsNonRoot and image has non-numeric user (appuser), cannot verify user is non-root
+deployment.apps "sentiment" deleted from default namespace
+[exit 0]
+
+### 2026-11-05 03:42 | arm64 | docker 29.5.2 | in ch15/k8s
+$ s=$(date +%s); kubectl apply -f model-volume.yaml >/dev/null; kubectl wait --for=condition=Available deployment/sentiment --timeout=240s; echo "$(( $(date +%s) - s )) seconds"
+deployment.apps/sentiment condition met
+19 seconds
+[exit 0]
+
+### 2026-11-05 03:42 | arm64 | docker 29.5.2 | in ch15/k8s
+$ s=$(date +%s); kubectl rollout restart deployment/sentiment; kubectl rollout status deployment/sentiment --timeout=120s | tail -1; echo "$(( $(date +%s) - s )) seconds"
+deployment.apps/sentiment restarted
+deployment "sentiment" successfully rolled out
+6 seconds
+[exit 0]
+
+### 2026-11-05 03:42 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl get pvc models --no-headers | cut -c1-14; kubectl get pvc models -o jsonpath="{.status.phase} {.spec.accessModes[0]} {.status.capacity.storage}"; echo
+models   Bound
+Bound ReadWriteOnce 1Gi
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl set image deployment/ml-api api=ml-api:1.1.0; kubectl rollout status deployment/ml-api --timeout=30s 2>&1 | tail -1; kubectl get pods
+deployment.apps/ml-api image updated
+error: timed out waiting for the condition
+NAME                      READY   STATUS    RESTARTS   AGE
+ml-api-65649f796-dmpg5    1/1     Running   0          36s
+ml-api-65649f796-s2bn2    1/1     Running   0          36s
+ml-api-6c75b78cdf-mm8wl   0/1     Running   0          30s
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kubectl run client --rm -i --quiet --restart=Never --image=curlimages/curl:8.17.0 -- sh -c "sleep 3; for i in 1 2 3 4 5 6 7 8 9 10; do curl -s -o /dev/null -w \"%{http_code} \" http://ml-api/health; done; echo"
+200 200 200 200 200 200 200 200 200 200 
+[exit 0]
+
+### 2026-11-05 03:43 | arm64 | docker 29.5.2 | in ch15/k8s
+$ kind delete cluster --name ml 2>&1 | tail -1
+Deleted nodes: ["ml-control-plane"]
+[exit 0]
+
+### 2026-11-05 03:44 | arm64 | docker 29.5.2 | in ch15
+$ docker run -d --name notebook -p 8888:8888 ghcr.io/kubeflow/kubeflow/notebook-servers/jupyter-pytorch:v1.11.1
+187f663f2a3ea4793e664d6e13df55557c7dccc35794ec0e3065e92d94d3f446
+[exit 0]
+
+### 2026-11-05 03:44 | arm64 | docker 29.5.2 | in ch15
+$ docker logs notebook 2>&1 | grep -E "Jupyter Server|http://" | head -4
+[I 2026-11-05 01:44:12.417 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-11-05 01:44:12.417 ServerApp] http://0.0.0.0:8888/lab
+[I 2026-11-05 01:44:12.417 ServerApp]     http://127.0.0.1:8888/lab
+[exit 0]
+
+### 2026-11-05 03:44 | arm64 | docker 29.5.2 | in ch15
+$ curl -s -o /dev/null -w "%{http_code}\n" localhost:8888/lab
+200
+[exit 0]
+
+### 2026-11-05 03:44 | arm64 | docker 29.5.2 | in ch15
+$ docker exec notebook sh -c "id; python --version; python -c \"import torch; print(torch.__version__, torch.cuda.is_available())\""
+uid=1000(jovyan) gid=0(root) groups=0(root),100(users)
+Python 3.12.13
+2.12.0+cpu False
+[exit 0]
+
+### 2026-11-05 03:44 | arm64 | docker 29.5.2 | in ch15
+$ docker exec notebook env | grep NB_; docker inspect notebook --format "{{.Config.User}} {{.Config.Entrypoint}}"; 
+NB_USER=jovyan
+NB_UID=1000
+NB_GID=0
+NB_PREFIX=/
+1000 [/init]
+[exit 0]
+
+### 2026-11-05 03:45 | arm64 | docker 29.5.2 | in ch15
+$ docker run -d --name notebook -p 127.0.0.1:8888:8888 ghcr.io/kubeflow/kubeflow/notebook-servers/jupyter-pytorch:v1.11.1 2>&1 | tail -1
+2b2a97011dd7419884c97107f417a729b4bea6fab70e918ffd8587f7095879d1
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15
+$ docker logs notebook 2>&1 | grep -E "Jupyter Server [0-9.]+ is running"
+[I 2026-11-05 01:45:53.392 ServerApp] Jupyter Server 2.21.1 is running at:
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15
+$ curl -s -o /dev/null -w "%{http_code}\n" localhost:8888/lab; curl -s localhost:8888/api/status | cut -c1-60
+200
+{"connections": 0, "kernels": 0, "last_activity": "2026-11-0
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15/app
+$ docker build -q -t ml-api:1.0.0 .
+sha256:dafa7fc270e90776abbfb8d79cc36716f3aa86051acd0870cb08be010479fc02
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15/app
+$ docker run -d --name api -e PORT=9090 -p 127.0.0.1:9090:9090 ml-api:1.0.0; sleep 3; curl -s localhost:9090/health
+6397c69e9c209564efe84a03bb24ad6fd2657d39b2fa6d1da4303e9e3bb1efae
+{"status":"ok"}
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15/app
+$ docker exec api id; time docker stop api; docker rm api
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+api
+
+real	0m0.311s
+user	0m0.007s
+sys	0m0.005s
+api
+[exit 0]
+
+### 2026-11-05 03:46 | arm64 | docker 29.5.2 | in ch15/app
+$ docker run -d --name api -p 127.0.0.1:8000:8000 ml-api:1.0.0; sleep 3; curl -s localhost:8000/health; echo; docker exec api id; docker rm -f api
+f07c2bcaf1d142810e5e383ba9d7685b9599dde688d75a4e6c82c785db0260b9
+{"status":"ok"}
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+api
+[exit 0]
+

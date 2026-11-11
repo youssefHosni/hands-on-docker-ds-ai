@@ -1,0 +1,25 @@
+### 2026-11-01 17:42 | arm64 | docker 29.5.2 | in exercises/ch05
+$ docker build -q -t ml-app:3.0-nopip .
+sha256:417da254f57ab904c8eb1ca68cd542eef8c051b1451069a936bb422e43fb08ed
+[exit 0]
+
+### 2026-11-01 17:42 | arm64 | docker 29.5.2 | in exercises/ch05
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache aquasec/trivy:0.76.1 image --quiet --severity HIGH,CRITICAL ml-app:3.0-nopip | grep -E "^Total|^ml-app|^Python"
+ml-app:3.0-nopip (debian 13.7)
+Total: 46 (HIGH: 46, CRITICAL: 0)
+[exit 0]
+
+### 2026-11-01 17:42 | arm64 | docker 29.5.2 | in exercises/ch05
+$ docker images ml-app:3.0*
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+ml-app:3.0          a4a18bcb63a8        605MB          130MB        
+ml-app:3.0-multi    447557b65bd5       1.17GB          261MB        
+ml-app:3.0-nopip    417da254f57a        612MB          132MB        
+ml-app:3.0-single   ac94915c8e40        782MB          173MB        
+[exit 0]
+
+### 2026-11-01 17:42 | arm64 | docker 29.5.2 | in exercises/ch05
+$ docker run --rm -d --name nopip -p 8000:8000 ml-app:3.0-nopip > /dev/null; sleep 4; curl -s -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d "{\"input\": [6]}"; docker stop nopip > /dev/null
+{"prediction":[12.000000000000002]}
+[exit 0]
+

@@ -1,0 +1,103 @@
+### 2026-11-09 21:15 | arm64 | docker  | in .
+$ docker ps
+failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory
+[exit 1]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker run --rm -p 8000:8000 python:3.14-slim python -m http.server 8000
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint crazy_engelbart (bf24098757b4b43a8a383dd95293a396dc3412a5ef0cf7a6b0642ac0613d32b2): Bind for 0.0.0.0:8000 failed: port is already allocated
+
+Run 'docker run --help' for more information
+[exit 125]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker run --rm -p 8001:8000 -d python:3.14-slim python -m http.server 8000 | cut -c1-12; docker port $(docker ps -lq)
+092b778a172b
+8000/tcp -> 0.0.0.0:8001
+8000/tcp -> [::]:8001
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker run --rm curlimages/curl:8.17.0 -s -m 5 -o /dev/null -w "%{http_code}\n" http://localhost:8000/
+000
+[exit 7]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker run --rm --add-host=host.docker.internal:host-gateway curlimages/curl:8.17.0 -s -m 5 -o /dev/null -w "%{http_code}\n" http://host.docker.internal:8000/
+200
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker run --rm --network appnet curlimages/curl:8.17.0 -s -o /dev/null -w "%{http_code}\n" http://api:8000/
+200
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          2         0         241.7MB   241.7MB (99%)
+Containers      0         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ colima version
+colima version 0.10.3
+git commit: 00f6c297e92a82c04a4ab507db0a61435650d7e8
+
+runtime: docker
+arch: aarch64
+client: v29.9.2
+server: v29.5.2
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ docker version --format "client {{.Client.Version}}, server {{.Server.Version}} ({{.Server.Os}}/{{.Server.Arch}})"
+client 29.9.2, server 29.5.2 (linux/arm64)
+[exit 0]
+
+### 2026-11-09 21:16 | arm64 | docker 29.5.2 | in .
+$ colima list
+PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK     RUNTIME    ADDRESS
+default    Running    aarch64    4       6GiB      30GiB    docker     
+[exit 0]
+
+### 2026-11-09 21:17 | arm64 | docker 29.5.2 | in .
+$ docker context ls --format "{{.Name}}{{if .Current}} (in use){{end}}"
+colima (in use)
+default
+[exit 0]
+
+### 2026-11-09 21:24 | arm64 | docker 29.5.2 | in .
+$ mkdir -p "$TMPDIR/demo" && echo hello > "$TMPDIR/demo/note.txt" && ls "$TMPDIR/demo" && docker run --rm -v "$TMPDIR/demo":/data python:3.14-slim ls -la /data
+note.txt
+total 8
+drwxr-xr-x 2 root root 4096 Nov  9 19:17 .
+drwxr-xr-x 1 root root 4096 Nov  9 19:24 ..
+[exit 0]
+
+### 2026-11-11 16:14 | arm64 | docker 29.5.2 | in .
+$ docker run --rm pyhton:3.14-slim python --version
+Unable to find image 'pyhton:3.14-slim' locally
+docker: Error response from daemon: pull access denied for pyhton, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+[exit 125]
+
+### 2026-11-11 16:14 | arm64 | docker 29.5.2 | in .
+$ docker pull ml-api:9.9
+Error response from daemon: pull access denied for ml-api, repository does not exist or may require 'docker login'
+[exit 1]
+
+### 2026-11-11 16:15 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) /tmp
+$ sudo -u reader -i docker ps
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+time="2026-11-11T16:15:06+02:00" level=fatal msg="exit status 1"
+[exit 1]
+
+### 2026-11-11 16:15 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) /tmp
+$ sudo usermod -aG docker reader && sudo -u reader -i docker ps --format "{{.Names}}"; echo "exit $?"
+exit 0
+[exit 0]
+

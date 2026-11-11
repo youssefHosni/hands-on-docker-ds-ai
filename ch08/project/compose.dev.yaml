@@ -1,0 +1,8 @@
+# Development settings, added on top of compose.yaml:
+#   docker compose -f compose.yaml -f compose.dev.yaml up -d
+services:
+  api:
+    # Mount the code and restart the server whenever it changes
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    volumes:
+      - ./api:/app

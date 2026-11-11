@@ -1,0 +1,26 @@
+services:
+  vllm:
+    image: vllm/vllm-openai-cpu:v0.33.0
+    command:
+      - --model=HuggingFaceTB/SmolLM2-135M-Instruct
+      - --revision=12fd25f77366fa6b3b4b768ec3050bf629380bac
+      - --served-model-name=smollm2
+      - --max-model-len=2048
+    ports:
+      - "8000:8000"
+    environment:
+      VLLM_API_KEY: ${VLLM_API_KEY:?Set VLLM_API_KEY in the .env file}
+      # Memory, in GB, for the model's working memory (the KV cache) on the CPU
+      VLLM_CPU_KVCACHE_SPACE: 1
+    shm_size: 2g
+    volumes:
+      - cache:/root/.cache
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 3s
+      start_period: 5m
+    restart: unless-stopped
+
+volumes:
+  cache:

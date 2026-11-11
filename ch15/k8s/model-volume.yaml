@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: models
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentiment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sentiment
+  template:
+    metadata:
+      labels:
+        app: sentiment
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      initContainers:
+        - name: download
+          image: sentiment:1.0.0
+          command:
+            - python
+            - -c
+            - |
+              import os
+              from huggingface_hub import snapshot_download
+              snapshot_download(
+                  os.environ["MODEL_ID"],
+                  revision=os.environ["MODEL_REVISION"],
+                  allow_patterns=["config.json", "tokenizer_config.json", "vocab.txt", "model.safetensors"],
+              )
+          volumeMounts:
+            - name: models
+              mountPath: /models
+      containers:
+        - name: server
+          image: sentiment:1.0.0
+          env:
+            - name: HF_HUB_OFFLINE
+              value: "1"
+          ports:
+            - containerPort: 8000
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              memory: 1Gi
+          volumeMounts:
+            - name: models
+              mountPath: /models
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: models

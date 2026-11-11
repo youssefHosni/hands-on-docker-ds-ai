@@ -1,0 +1,34 @@
+### 2026-11-02 22:12 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch12/rag'
+$ docker compose run --rm ingest 2>&1 | grep Ingested
+Ingested 21 chunks from 7 files (768 dimensions) in 0.7 s
+[exit 0]
+
+### 2026-11-02 22:12 | arm64 | docker 29.5.2 | in ch12/rag
+$ curl -s localhost:8000/ask -H "Content-Type: application/json" -d '{"question": "I lost my laptop on Saturday. Can I wait until Monday to report it?"}' | python3 -m json.tool --no-ensure-ascii
+{
+    "answer": "“Lost Laptops: Report a lost or stolen laptop to the IT team within 2 hours, even outside working hours.”\n\nNo, you must report the lost laptop to the IT team within 2 hours of losing it, even on a Saturday.",
+    "sources": [
+        {
+            "file": "security.md",
+            "section": "Lost Laptops",
+            "score": 0.719
+        },
+        {
+            "file": "onboarding.md",
+            "section": "The First Week",
+            "score": 0.501
+        },
+        {
+            "file": "security.md",
+            "section": "Disk Encryption",
+            "score": 0.482
+        }
+    ]
+}
+[exit 0]
+
+### 2026-11-02 22:13 | arm64 | docker 29.5.2 | in Linux VM (colima ssh) '/Users/hosniy1/To-Data-Beyond-Management/Books Improving/Docker for AI & Data Science/2e-workspace/repos/hands-on-docker-ds-ai/ch12/rag'
+$ docker compose run --rm ingest 2>&1 | grep Ingested
+Ingested 18 chunks from 6 files (768 dimensions) in 0.6 s
+[exit 0]
+

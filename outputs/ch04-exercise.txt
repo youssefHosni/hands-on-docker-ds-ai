@@ -1,0 +1,26 @@
+### 2026-11-01 17:29 | arm64 | docker 29.5.2 | in exercises/ch04
+$ docker build -q -t ml-app:exercise .
+sha256:7ff260e9a37610c7eb495e1fb2a79626f2b92f6b866f82f50ec94aa925790a6c
+[exit 0]
+
+### 2026-11-01 17:29 | arm64 | docker 29.5.2 | in exercises/ch04
+$ docker run -d --name ml-ex -p 8000:8000 ml-app:exercise
+783484e78bb40a37dae121dfcc54a343749cdfa0cdd7eecc8f13972bff062020
+[exit 0]
+
+### 2026-11-01 17:29 | arm64 | docker 29.5.2 | in exercises/ch04
+$ docker exec ml-ex whoami
+appuser
+[exit 0]
+
+### 2026-11-01 17:29 | arm64 | docker 29.5.2 | in exercises/ch04
+$ docker ps --filter name=ml-ex --format "table {{.Names}}\t{{.Status}}"
+NAMES     STATUS
+ml-ex     Up 13 seconds (healthy)
+[exit 0]
+
+### 2026-11-01 17:29 | arm64 | docker 29.5.2 | in exercises/ch04
+$ docker rm -f ml-ex
+ml-ex
+[exit 0]
+

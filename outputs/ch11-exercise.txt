@@ -1,0 +1,17 @@
+### 2026-11-02 15:13 | arm64 | docker 29.5.2 | in exercises/ch11
+$ docker compose --profile load run --rm load 2>&1 | grep -v -E "^ *(Container|Network|Image|#)|Built|^\s*$"
+40 ok, 0 errors [], 3.8 requests/s
+latency: median 1.05 s, 95th percentile 1.10 s
+[exit 0]
+
+### 2026-11-02 15:14 | arm64 | docker 29.5.2 | in exercises/ch11
+$ docker compose --profile load run --rm load http://server:8000/predict 1 20 2>&1 | grep -v Container
+20 ok, 0 errors [], 3.5 requests/s
+latency: median 0.28 s, 95th percentile 0.34 s
+[exit 0]
+
+### 2026-11-02 15:14 | arm64 | docker 29.5.2 | in exercises/ch11
+$ docker compose down 2>&1 | tail -1
+ Network sentiment_default Removed 
+[exit 0]
+
