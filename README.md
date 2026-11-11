@@ -2,6 +2,16 @@
 
 *From your first container to LLMs and AI agents* · by Youssef Hosni (To Data & Beyond)
 
+<p align="center">
+  <a href="https://youssefhosni.gumroad.com/l/zhzbj"><img src="assets/front-cover.jpg" alt="Front cover of Hands-on Docker for Data Science & AI Projects, 2nd Edition" width="45%"></a>
+  &nbsp;
+  <a href="https://youssefhosni.gumroad.com/l/zhzbj"><img src="assets/back-cover.jpg" alt="Back cover of Hands-on Docker for Data Science & AI Projects, 2nd Edition" width="45%"></a>
+</p>
+
+<p align="center">
+  <a href="https://youssefhosni.gumroad.com/l/zhzbj"><img src="https://img.shields.io/badge/Get%20the%20book-on%20Gumroad-1D5C7A?style=for-the-badge&logo=gumroad&logoColor=white" alt="Get the book on Gumroad"></a>
+</p>
+
 Every Dockerfile, Compose file and script printed in the book, one folder per chapter.
 Every command in the book was run before it was printed; `outputs/` holds those runs, so you can
 compare yours against them.
