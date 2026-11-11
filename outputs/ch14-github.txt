@@ -1,0 +1,65 @@
+# Chapter 14 workflow run on GitHub, 11 Nov 2026: ch14/ copied to the root of a private test repository
+# (youssefHosni/docker-book-ch14-ci-test), runner ubuntu-24.04. Four runs: push to main, tag v1.4.2, tag v2.0.0-beta.1, a pull request.
+
+### run push main: success, 2026-11-11T21:23:42Z to 2026-11-11T21:30:10Z
+  Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1: success
+  Run docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1: success
+  Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069: success
+  Build: success
+  Test: success
+  Scan: success
+  Sign in to GitHub Container Registry: success
+  Work out the tags: success
+  Build for both architectures and push: success
+  Docker tags:
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:main
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:sha-788f9b0
+  ci/test.sh: PASSED
+
+### run push v1.4.2: success, 2026-11-11T21:30:46Z to 2026-11-11T21:32:47Z
+  Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1: success
+  Run docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1: success
+  Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069: success
+  Build: success
+  Test: success
+  Scan: success
+  Sign in to GitHub Container Registry: success
+  Work out the tags: success
+  Build for both architectures and push: success
+  Docker tags:
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:1.4.2
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:1.4
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:1
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:sha-788f9b0
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:latest
+  ci/test.sh: PASSED
+
+### run push v2.0.0-beta.1: success, 2026-11-11T21:33:26Z to 2026-11-11T21:34:35Z
+  Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1: success
+  Run docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1: success
+  Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069: success
+  Build: success
+  Test: success
+  Scan: success
+  Sign in to GitHub Container Registry: success
+  Work out the tags: success
+  Build for both architectures and push: success
+  Docker tags:
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:2.0.0-beta.1
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:sha-788f9b0
+  ci/test.sh: PASSED
+
+### run pull_request pr-test: success, 2026-11-11T21:30:52Z to 2026-11-11T21:32:29Z
+  Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1: success
+  Run docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1: success
+  Run docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069: success
+  Build: success
+  Test: success
+  Scan: success
+  Sign in to GitHub Container Registry: skipped
+  Work out the tags: success
+  Build for both architectures and push: skipped
+  Docker tags:
+    ghcr.io/youssefhosni/docker-book-ch14-ci-test:sha-3698fc2
+  ci/test.sh: PASSED
+
