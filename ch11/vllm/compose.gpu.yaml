@@ -1,4 +1,4 @@
-# For a Linux machine with an NVIDIA GPU (Chapter 9). Not run for this book: it follows vLLM's
+# For a Linux machine with an NVIDIA GPU (Chapter 9). It follows vLLM's
 # and Docker's documentation. Start with:
 #   docker compose -f compose.yaml -f compose.gpu.yaml up -d --wait
 services:

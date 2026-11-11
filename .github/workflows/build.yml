@@ -9,16 +9,28 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Build every Dockerfile
         run: |
           status=0
           for f in $(find . -name Dockerfile -not -path './.git/*' | sort); do
             dir=$(dirname "$f")
+            tag="test-$(echo "$dir" | tr '/.' '--' | sed 's/^-*//')"
             echo "::group::$dir"
-            docker build -t "test-$(echo "$dir" | tr '/.' '--' | sed 's/^-*//')" "$dir" || status=1
+            case "$dir" in
+              # Chapter 4's experiments change Chapter 3's Dockerfile and build in the ch03 folder, as in the book
+              ./ch04/entrypoint|./ch04/shell-form)
+                docker build -f "$f" -t "$tag" ch03 || status=1 ;;
+              # Chapter 4 shows that this one fails: scikit-learn has no Alpine wheel and the image has no compiler
+              ./ch04/alpine)
+                if docker build -f "$f" -t "$tag" ch03; then echo "expected this build to fail"; status=1; fi ;;
+              *)
+                docker build -t "$tag" "$dir" || status=1 ;;
+            esac
             echo "::endgroup::"
           done
           exit $status
